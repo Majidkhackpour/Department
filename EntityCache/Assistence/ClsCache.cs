@@ -2,7 +2,7 @@
 using System.Data.Entity.Migrations;
 using AutoMapper;
 using Nito.AsyncEx;
-using PacketParser.Service;
+using Services;
 
 namespace EntityCache.Assistence
 {

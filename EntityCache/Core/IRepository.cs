@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using PacketParser.Interfaces;
-using PacketParser.Service;
+using Services;
 
 namespace EntityCache.Core
 {
