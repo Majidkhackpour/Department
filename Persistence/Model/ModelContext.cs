@@ -16,5 +16,16 @@ namespace Persistence.Model
         {
         }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<CustomerLog> CustomerLog { get; set; }
+        public virtual DbSet<Order> Order { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetail { get; set; }
+        public virtual DbSet<PanelLineNumbers> PanelLineNumbers { get; set; }
+        public virtual DbSet<Products> Products { get; set; }
+        public virtual DbSet<Reception> Reception { get; set; }
+        public virtual DbSet<SafeBox> SafeBox { get; set; }
+        public virtual DbSet<SmsLog> SmsLog { get; set; }
+        public virtual DbSet<SmsPanels> SmsPanels { get; set; }
+        public virtual DbSet<UserLog> UserLog { get; set; }
     }
 }

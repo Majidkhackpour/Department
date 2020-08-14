@@ -52,11 +52,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\ICustomerLog.cs" />
+    <Compile Include="Interfaces\ICustomers.cs" />
     <Compile Include="Interfaces\IHasGuid.cs" />
+    <Compile Include="Interfaces\IOrder.cs" />
+    <Compile Include="Interfaces\IOrderDetail.cs" />
+    <Compile Include="Interfaces\IPanelLineNumbers.cs" />
+    <Compile Include="Interfaces\IProduct.cs" />
+    <Compile Include="Interfaces\IReception.cs" />
+    <Compile Include="Interfaces\ISafeBox.cs" />
+    <Compile Include="Interfaces\ISmsLog.cs" />
+    <Compile Include="Interfaces\ISmsPanels.cs" />
+    <Compile Include="Interfaces\IUserLog.cs" />
     <Compile Include="Interfaces\IUsers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Services\Services\Services\Services.csproj">
+      <Project>{DCB5BDE2-6238-422D-AD4E-F53AFCE9BF30}</Project>
+      <Name>Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

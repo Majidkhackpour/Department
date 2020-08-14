@@ -9,6 +9,17 @@ namespace EntityCache.Assistence
         public SqlProfile()
         {
             CreateMap<UsersBussines, Users>().ReverseMap();
+            CreateMap<CustomerBussines, Customer>().ReverseMap();
+            CreateMap<CustomerLogBussines, CustomerLog>().ReverseMap();
+            CreateMap<OrderBussines, Order>().ReverseMap();
+            CreateMap<OrderDetailBussines, OrderDetail>().ReverseMap();
+            CreateMap<PanelLineNumberBussines, PanelLineNumbers>().ReverseMap();
+            CreateMap<ProductBussines, Products>().ReverseMap();
+            CreateMap<ReceptionBussines, Reception>().ReverseMap();
+            CreateMap<SafeBoxBussines, SafeBox>().ReverseMap();
+            CreateMap<SmsLogBussines, SmsLog>().ReverseMap();
+            CreateMap<SmsPanelBussines, SmsPanels>().ReverseMap();
+            CreateMap<UserLogBussines, UserLog>().ReverseMap();
         }
     }
 }

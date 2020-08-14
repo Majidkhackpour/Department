@@ -1,4 +1,6 @@
-﻿namespace PacketParser.Interfaces
+﻿using Services;
+
+namespace PacketParser.Interfaces
 {
     public interface IUsers : IHasGuid
     {
@@ -7,5 +9,7 @@
         string Password { get; set; }
         string Mobile { get; set; }
         string Email { get; set; }
+        bool IsBlock { get; set; }
+        EnUserType Type { get; set; }
     }
 }

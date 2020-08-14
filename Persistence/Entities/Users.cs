@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using PacketParser.Interfaces;
+using Services;
 
 namespace Persistence.Entities
 {
@@ -20,5 +21,7 @@ namespace Persistence.Entities
         public string Mobile { get; set; }
         [MaxLength(50)]
         public string Email { get; set; }
+        public bool IsBlock { get; set; }
+        public EnUserType Type { get; set; }
     }
 }
