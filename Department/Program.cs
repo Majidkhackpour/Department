@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using EntityCache.Assistence;
+using Notification;
 
 namespace Department
 {
@@ -12,7 +14,7 @@ namespace Department
 
             ClsCache.Init();
 
-
+            clsNotification.Init(Color.Silver);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

@@ -173,6 +173,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\RealState\RealState\Notification\Notification.csproj">
+      <Project>{44a0f109-df64-482c-befb-df20038ee4df}</Project>
+      <Name>Notification</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Services\Services\Services\Services.csproj">
       <Project>{dcb5bde2-6238-422d-ad4e-f53afce9bf30}</Project>
       <Name>Services</Name>
@@ -181,6 +185,10 @@
       <Project>{13446c3b-6b94-49e4-bb9e-c5c0327d7848}</Project>
       <Name>EntityCache</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Ertegha\Ertegha.csproj">
+      <Project>{70d58b44-332f-41f1-8b8f-39617352f6cd}</Project>
+      <Name>Ertegha</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PacketParser\PacketParser.csproj">
       <Project>{a5fd8981-9406-4525-8215-fb9ea966c6c9}</Project>
       <Name>PacketParser</Name>
@@ -188,6 +196,10 @@
     <ProjectReference Include="..\Persistence\Persistence.csproj">
       <Project>{2598821c-6a69-4b3f-8a71-83390a289a01}</Project>
       <Name>Persistence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Setting\Settings.csproj">
+      <Project>{245adc01-0a09-4aec-bee0-0f203f973ad5}</Project>
+      <Name>Settings</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
