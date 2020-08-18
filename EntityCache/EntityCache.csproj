@@ -96,6 +96,7 @@
     <Compile Include="Bussines\ProductBussines.cs" />
     <Compile Include="Bussines\ReceptionBussines.cs" />
     <Compile Include="Bussines\SafeBoxBussines.cs" />
+    <Compile Include="Bussines\SettingsBussines.cs" />
     <Compile Include="Bussines\SmsLogBussines.cs" />
     <Compile Include="Bussines\SmsPanelBussines.cs" />
     <Compile Include="Bussines\UserLogBussines.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="Core\IReceptionRepository.cs" />
     <Compile Include="Core\IRepository.cs" />
     <Compile Include="Core\ISafeBoxRepository.cs" />
+    <Compile Include="Core\ISettingsRepository.cs" />
     <Compile Include="Core\ISmsLogRepository.cs" />
     <Compile Include="Core\ISmsPanelRepository.cs" />
     <Compile Include="Core\IUserLogRepository.cs" />
@@ -123,6 +125,7 @@
     <Compile Include="SqlServerPersistence\ProductPersistenceRepository.cs" />
     <Compile Include="SqlServerPersistence\ReceptionPersistenceRepository.cs" />
     <Compile Include="SqlServerPersistence\SafeBoxPersistenceRepository.cs" />
+    <Compile Include="SqlServerPersistence\SettingsPersistenceRepository.cs" />
     <Compile Include="SqlServerPersistence\SmsLogPersistenceRepository.cs" />
     <Compile Include="SqlServerPersistence\SmsPanelPersistenceRepository.cs" />
     <Compile Include="SqlServerPersistence\UserLogPersistenceRepository.cs" />
@@ -135,6 +138,7 @@
     <Compile Include="WebBussines\WebProduct.cs" />
     <Compile Include="WebBussines\WebReception.cs" />
     <Compile Include="WebBussines\WebSafeBox.cs" />
+    <Compile Include="WebBussines\WebSettings.cs" />
     <Compile Include="WebBussines\WebSmsLog.cs" />
     <Compile Include="WebBussines\WebSmsPanels.cs" />
     <Compile Include="WebBussines\WebUserLog.cs" />

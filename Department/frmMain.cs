@@ -9,26 +9,6 @@ namespace Department
 {
     public partial class frmMain : MetroForm
     {
-        private void LoadNewForm(Form frm)
-        {
-            try
-            {
-                frm.TopLevel = false;
-                frm.AutoScroll = true;
-                frm.ControlBox = false;
-                frm.Dock = DockStyle.Fill;
-                pnlContent.Controls.Clear();
-                pnlContent.BringToFront();
-                pnlContent.Controls.Add(frm);
-                frm.Dock = DockStyle.Fill;
-                pnlContent.AutoScroll = true;
-                frm.Show();
-            }
-            catch (Exception ex)
-            {
-                WebErrorLog.ErrorInstence.StartErrorLog(ex);
-            }
-        }
         private void SetClock()
         {
             try
@@ -102,7 +82,7 @@ namespace Department
         {
             try
             {
-                LoadNewForm(new frmShowUsers());
+                clsLoadNewForm.LoadNewForm(new frmShowUsers(), pnlContent);
             }
             catch (Exception ex)
             {

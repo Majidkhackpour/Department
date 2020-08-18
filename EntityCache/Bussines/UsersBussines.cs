@@ -110,7 +110,8 @@ namespace EntityCache.Bussines
                                                   (x.Name.ToLower().Contains(item.ToLower()) ||
                                                    x.UserName.ToLower().Contains(item.ToLower()) ||
                                                    x.Email.ToLower().Contains(item.ToLower()) ||
-                                                   x.Mobile.Contains(item))))
+                                                   x.Mobile.Contains(item)) ||
+                                                  x.TypeName.Contains(item)))
                                 ?.ToList();
                         }
                     }
@@ -130,5 +131,8 @@ namespace EntityCache.Bussines
         public static List<UsersBussines> GetAll(string search) => AsyncContext.Run(() => GetAllAsync(search));
 
         public static UsersBussines Get(Guid guid) => AsyncContext.Run(() => GetAsync(guid));
+
+        public static async Task<bool> CheckUserNameAsync(Guid guid, string userName) =>
+            await UnitOfWork.Users.CheckUserNameAsync(guid, userName);
     }
 }

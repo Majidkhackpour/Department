@@ -19,6 +19,7 @@ namespace EntityCache.Assistence
         private static ISmsLogRepository _smsLogRepository;
         private static ISmsPanelRepository _smsPanelRepository;
         private static IUserLogRepository _userLogRepository;
+        private static ISettingsRepository _settingsRepository;
         public static void Dispose() => db?.Dispose();
         public static void Set_Save() => db.SaveChanges();
 
@@ -80,5 +81,10 @@ namespace EntityCache.Assistence
         public static IUserLogRepository UserLog => _userLogRepository ??
                                                 (_userLogRepository =
                                                     new UserLogPersistenceRepository(db));
+
+
+        public static ISettingsRepository Settings => _settingsRepository ??
+                                                    (_settingsRepository =
+                                                        new SettingsPersistenceRepository(db));
     }
 }

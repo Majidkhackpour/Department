@@ -61,6 +61,7 @@
     <Compile Include="Interfaces\IProduct.cs" />
     <Compile Include="Interfaces\IReception.cs" />
     <Compile Include="Interfaces\ISafeBox.cs" />
+    <Compile Include="Interfaces\ISettings.cs" />
     <Compile Include="Interfaces\ISmsLog.cs" />
     <Compile Include="Interfaces\ISmsPanels.cs" />
     <Compile Include="Interfaces\IUserLog.cs" />
