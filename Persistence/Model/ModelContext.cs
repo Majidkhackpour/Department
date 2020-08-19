@@ -20,7 +20,6 @@ namespace Persistence.Model
         public virtual DbSet<CustomerLog> CustomerLog { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<OrderDetail> OrderDetail { get; set; }
-        public virtual DbSet<PanelLineNumbers> PanelLineNumbers { get; set; }
         public virtual DbSet<Products> Products { get; set; }
         public virtual DbSet<Reception> Reception { get; set; }
         public virtual DbSet<SafeBox> SafeBox { get; set; }

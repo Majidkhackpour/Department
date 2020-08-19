@@ -92,7 +92,6 @@
     <Compile Include="Bussines\CustomerBussines.cs" />
     <Compile Include="Bussines\OrderBussines.cs" />
     <Compile Include="Bussines\OrderDetailBussines.cs" />
-    <Compile Include="Bussines\PanelLineNumberBussines.cs" />
     <Compile Include="Bussines\ProductBussines.cs" />
     <Compile Include="Bussines\ReceptionBussines.cs" />
     <Compile Include="Bussines\SafeBoxBussines.cs" />
@@ -105,7 +104,6 @@
     <Compile Include="Core\ICustomerRepository.cs" />
     <Compile Include="Core\IOrderDetailRepository.cs" />
     <Compile Include="Core\IOrderRepository.cs" />
-    <Compile Include="Core\IPanelLineNumberRepository.cs" />
     <Compile Include="Core\IProductRepository.cs" />
     <Compile Include="Core\IReceptionRepository.cs" />
     <Compile Include="Core\IRepository.cs" />
@@ -121,7 +119,6 @@
     <Compile Include="SqlServerPersistence\GenericRepository.cs" />
     <Compile Include="SqlServerPersistence\OrderDetailPersistenceRepository.cs" />
     <Compile Include="SqlServerPersistence\OrderPersistenceRepository.cs" />
-    <Compile Include="SqlServerPersistence\PanelLineNumberPersistenceRepository.cs" />
     <Compile Include="SqlServerPersistence\ProductPersistenceRepository.cs" />
     <Compile Include="SqlServerPersistence\ReceptionPersistenceRepository.cs" />
     <Compile Include="SqlServerPersistence\SafeBoxPersistenceRepository.cs" />
@@ -134,7 +131,6 @@
     <Compile Include="WebBussines\WebCustomers.cs" />
     <Compile Include="WebBussines\WebOrder.cs" />
     <Compile Include="WebBussines\WebOrderDetail.cs" />
-    <Compile Include="WebBussines\WebPanelLineNumbers.cs" />
     <Compile Include="WebBussines\WebProduct.cs" />
     <Compile Include="WebBussines\WebReception.cs" />
     <Compile Include="WebBussines\WebSafeBox.cs" />

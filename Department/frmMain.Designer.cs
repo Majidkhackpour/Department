@@ -35,7 +35,6 @@
             this.pnlProducts = new DevComponents.DotNetBar.PanelEx();
             this.pnlSafeBox = new DevComponents.DotNetBar.PanelEx();
             this.pnlReception = new DevComponents.DotNetBar.PanelEx();
-            this.pnlLineNumbers = new DevComponents.DotNetBar.PanelEx();
             this.pnlSendToServer = new DevComponents.DotNetBar.PanelEx();
             this.pnlCustomers = new DevComponents.DotNetBar.PanelEx();
             this.pnlLog = new DevComponents.DotNetBar.PanelEx();
@@ -70,7 +69,6 @@
             this.panelEx1.Controls.Add(this.pnlProducts);
             this.panelEx1.Controls.Add(this.pnlSafeBox);
             this.panelEx1.Controls.Add(this.pnlReception);
-            this.panelEx1.Controls.Add(this.pnlLineNumbers);
             this.panelEx1.Controls.Add(this.pnlSendToServer);
             this.panelEx1.Controls.Add(this.pnlCustomers);
             this.panelEx1.Controls.Add(this.pnlLog);
@@ -102,7 +100,7 @@
             // 
             // pnlExit
             // 
-            this.pnlExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlExit.CanvasColor = System.Drawing.SystemColors.Control;
             this.pnlExit.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.pnlExit.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -185,27 +183,6 @@
             this.pnlReception.TabIndex = 11;
             this.pnlReception.Text = "دریافت های من";
             // 
-            // pnlLineNumbers
-            // 
-            this.pnlLineNumbers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlLineNumbers.CanvasColor = System.Drawing.SystemColors.Control;
-            this.pnlLineNumbers.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.pnlLineNumbers.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnlLineNumbers.DisabledBackColor = System.Drawing.Color.Empty;
-            this.pnlLineNumbers.Location = new System.Drawing.Point(3, 467);
-            this.pnlLineNumbers.Name = "pnlLineNumbers";
-            this.pnlLineNumbers.Size = new System.Drawing.Size(229, 29);
-            this.pnlLineNumbers.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.pnlLineNumbers.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.pnlLineNumbers.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.pnlLineNumbers.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.pnlLineNumbers.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.pnlLineNumbers.Style.Font = new System.Drawing.Font("B Yekan", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.pnlLineNumbers.Style.ForeColor.Color = System.Drawing.Color.Silver;
-            this.pnlLineNumbers.Style.GradientAngle = 90;
-            this.pnlLineNumbers.TabIndex = 11;
-            this.pnlLineNumbers.Text = "مدیریت خطوط ارسال پیامک";
-            // 
             // pnlSendToServer
             // 
             this.pnlSendToServer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -255,7 +232,7 @@
             this.pnlLog.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.pnlLog.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pnlLog.DisabledBackColor = System.Drawing.Color.Empty;
-            this.pnlLog.Location = new System.Drawing.Point(3, 502);
+            this.pnlLog.Location = new System.Drawing.Point(3, 468);
             this.pnlLog.Name = "pnlLog";
             this.pnlLog.Size = new System.Drawing.Size(229, 29);
             this.pnlLog.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -332,6 +309,7 @@
             this.pnlSmsPanels.Style.GradientAngle = 90;
             this.pnlSmsPanels.TabIndex = 11;
             this.pnlSmsPanels.Text = "مدیریت پنل های ارسال پیامک";
+            this.pnlSmsPanels.Click += new System.EventHandler(this.pnlSmsPanels_Click);
             // 
             // pnlNote
             // 
@@ -574,7 +552,6 @@
         private DevComponents.DotNetBar.PanelEx pnlExit;
         private DevComponents.DotNetBar.PanelEx pnlProducts;
         private DevComponents.DotNetBar.PanelEx pnlSafeBox;
-        private DevComponents.DotNetBar.PanelEx pnlLineNumbers;
         private DevComponents.DotNetBar.PanelEx pnlSendToServer;
         private DevComponents.DotNetBar.PanelEx pnlLog;
         private DevComponents.DotNetBar.PanelEx pnlUsers;

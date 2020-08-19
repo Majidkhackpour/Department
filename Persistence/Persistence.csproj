@@ -58,7 +58,6 @@
     <Compile Include="Entities\CustomerLog.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\OrderDetail.cs" />
-    <Compile Include="Entities\PanelLineNumbers.cs" />
     <Compile Include="Entities\Products.cs" />
     <Compile Include="Entities\Reception.cs" />
     <Compile Include="Entities\SafeBox.cs" />
@@ -78,6 +77,10 @@
     <Compile Include="Migrations\202008181453328__3.cs" />
     <Compile Include="Migrations\202008181453328__3.designer.cs">
       <DependentUpon>202008181453328__3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008191449051__4.cs" />
+    <Compile Include="Migrations\202008191449051__4.designer.cs">
+      <DependentUpon>202008191449051__4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\ModelContext.cs" />
@@ -106,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008181453328__3.resx">
       <DependentUpon>202008181453328__3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008191449051__4.resx">
+      <DependentUpon>202008191449051__4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

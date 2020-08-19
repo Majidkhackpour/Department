@@ -11,9 +11,9 @@ namespace Persistence.Entities
         public DateTime Modified { get; set; }
         public bool Status { get; set; }
         [MaxLength(200)]
-        public string UserName { get; set; }
+        public string Name { get; set; }
         [MaxLength(200)]
-        public string Password { get; set; }
+        public string LineNumber { get; set; }
         public string Api { get; set; }
     }
 }

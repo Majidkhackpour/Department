@@ -13,7 +13,6 @@ namespace EntityCache.Assistence
             CreateMap<CustomerLogBussines, CustomerLog>().ReverseMap();
             CreateMap<OrderBussines, Order>().ReverseMap();
             CreateMap<OrderDetailBussines, OrderDetail>().ReverseMap();
-            CreateMap<PanelLineNumberBussines, PanelLineNumbers>().ReverseMap();
             CreateMap<ProductBussines, Products>().ReverseMap();
             CreateMap<ReceptionBussines, Reception>().ReverseMap();
             CreateMap<SafeBoxBussines, SafeBox>().ReverseMap();

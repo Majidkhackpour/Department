@@ -12,7 +12,6 @@ namespace EntityCache.Assistence
         private static ICustomerLogRepository _customerLogRepository;
         private static IOrderRepository _orderRepository;
         private static IOrderDetailRepository _orderDetailRepository;
-        private static IPanelLineNumberRepository _panelLineNumberRepository;
         private static IProductRepository _productRepository;
         private static IReceptionRepository _receptionRepository;
         private static ISafeBoxRepository _safeBoxRepository;
@@ -48,12 +47,7 @@ namespace EntityCache.Assistence
                                                     new OrderDetailPersistenceRepository(db));
 
 
-        public static IPanelLineNumberRepository PanelLineNumber => _panelLineNumberRepository ??
-                                                (_panelLineNumberRepository =
-                                                    new PanelLineNumberPersistenceRepository(db));
-
-
-        public static IProductRepository Product => _productRepository ??
+       public static IProductRepository Product => _productRepository ??
                                                 (_productRepository =
                                                     new ProductPersistenceRepository(db));
 

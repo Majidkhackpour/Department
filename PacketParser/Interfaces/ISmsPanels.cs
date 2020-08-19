@@ -2,8 +2,8 @@
 {
     public interface ISmsPanels : IHasGuid
     {
-        string UserName { get; set; }
-        string Password { get; set; }
+        string Name { get; set; }
+        string LineNumber { get; set; }
         string Api { get; set; }
     }
 }

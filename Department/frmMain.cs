@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Department.SmsPanels;
 using Department.Users;
 using MetroFramework.Forms;
 using Services;
@@ -90,6 +91,16 @@ namespace Department
             }
         }
 
-
+        private void pnlSmsPanels_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                clsLoadNewForm.LoadNewForm(new frmShowSmsPanels(), pnlContent);
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
     }
 }
