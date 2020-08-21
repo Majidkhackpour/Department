@@ -90,6 +90,7 @@
     <Compile Include="Assistence\UnitOfWork.cs" />
     <Compile Include="Bussines\CustomerLogBussines.cs" />
     <Compile Include="Bussines\CustomerBussines.cs" />
+    <Compile Include="Bussines\NoteBussines.cs" />
     <Compile Include="Bussines\OrderBussines.cs" />
     <Compile Include="Bussines\OrderDetailBussines.cs" />
     <Compile Include="Bussines\ProductBussines.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Bussines\UsersBussines.cs" />
     <Compile Include="Core\ICustomerLogRepository.cs" />
     <Compile Include="Core\ICustomerRepository.cs" />
+    <Compile Include="Core\INoteRepository.cs" />
     <Compile Include="Core\IOrderDetailRepository.cs" />
     <Compile Include="Core\IOrderRepository.cs" />
     <Compile Include="Core\IProductRepository.cs" />
@@ -117,6 +119,7 @@
     <Compile Include="SqlServerPersistence\CustomerLogPersistenceRepository.cs" />
     <Compile Include="SqlServerPersistence\CustomerPersistenceRepository.cs" />
     <Compile Include="SqlServerPersistence\GenericRepository.cs" />
+    <Compile Include="SqlServerPersistence\NotePersistenceRepository.cs" />
     <Compile Include="SqlServerPersistence\OrderDetailPersistenceRepository.cs" />
     <Compile Include="SqlServerPersistence\OrderPersistenceRepository.cs" />
     <Compile Include="SqlServerPersistence\ProductPersistenceRepository.cs" />
@@ -129,6 +132,7 @@
     <Compile Include="SqlServerPersistence\UsersPersistenceRepository.cs" />
     <Compile Include="WebBussines\WebCustomerLog.cs" />
     <Compile Include="WebBussines\WebCustomers.cs" />
+    <Compile Include="WebBussines\WebNote.cs" />
     <Compile Include="WebBussines\WebOrder.cs" />
     <Compile Include="WebBussines\WebOrderDetail.cs" />
     <Compile Include="WebBussines\WebProduct.cs" />

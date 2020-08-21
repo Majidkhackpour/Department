@@ -333,6 +333,7 @@
             this.pnlNote.Style.GradientAngle = 90;
             this.pnlNote.TabIndex = 11;
             this.pnlNote.Text = "یادداشت های من";
+            this.pnlNote.Click += new System.EventHandler(this.pnlNote_Click);
             // 
             // pnlDashbord
             // 
@@ -354,6 +355,7 @@
             this.pnlDashbord.Style.GradientAngle = 90;
             this.pnlDashbord.TabIndex = 11;
             this.pnlDashbord.Text = "داشبورد";
+            this.pnlDashbord.Click += new System.EventHandler(this.pnlDashbord_Click);
             // 
             // line1
             // 

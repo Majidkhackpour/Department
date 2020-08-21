@@ -19,6 +19,7 @@ namespace EntityCache.Assistence
         private static ISmsPanelRepository _smsPanelRepository;
         private static IUserLogRepository _userLogRepository;
         private static ISettingsRepository _settingsRepository;
+        private static INoteRepository _noteRepository;
         public static void Dispose() => db?.Dispose();
         public static void Set_Save() => db.SaveChanges();
 
@@ -47,9 +48,9 @@ namespace EntityCache.Assistence
                                                     new OrderDetailPersistenceRepository(db));
 
 
-       public static IProductRepository Product => _productRepository ??
-                                                (_productRepository =
-                                                    new ProductPersistenceRepository(db));
+        public static IProductRepository Product => _productRepository ??
+                                                 (_productRepository =
+                                                     new ProductPersistenceRepository(db));
 
 
         public static IReceptionRepository Reception => _receptionRepository ??
@@ -80,5 +81,10 @@ namespace EntityCache.Assistence
         public static ISettingsRepository Settings => _settingsRepository ??
                                                     (_settingsRepository =
                                                         new SettingsPersistenceRepository(db));
+
+
+        public static INoteRepository Note => _noteRepository ??
+                                                      (_noteRepository =
+                                                          new NotePersistenceRepository(db));
     }
 }

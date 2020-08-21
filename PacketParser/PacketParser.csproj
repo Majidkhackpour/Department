@@ -55,6 +55,7 @@
     <Compile Include="Interfaces\ICustomerLog.cs" />
     <Compile Include="Interfaces\ICustomers.cs" />
     <Compile Include="Interfaces\IHasGuid.cs" />
+    <Compile Include="Interfaces\INote.cs" />
     <Compile Include="Interfaces\IOrder.cs" />
     <Compile Include="Interfaces\IOrderDetail.cs" />
     <Compile Include="Interfaces\IProduct.cs" />

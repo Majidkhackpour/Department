@@ -27,5 +27,6 @@ namespace Persistence.Model
         public virtual DbSet<SmsPanels> SmsPanels { get; set; }
         public virtual DbSet<UserLog> UserLog { get; set; }
         public virtual DbSet<Settings> Settings { get; set; }
+        public virtual DbSet<Note> Note { get; set; }
     }
 }

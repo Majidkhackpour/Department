@@ -142,6 +142,18 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Note\frmNoteMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Note\frmNoteMain.Designer.cs">
+      <DependentUpon>frmNoteMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Note\frmShowNotes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Note\frmShowNotes.Designer.cs">
+      <DependentUpon>frmShowNotes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Product\frmProductMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +217,12 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Note\frmNoteMain.resx">
+      <DependentUpon>frmNoteMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Note\frmShowNotes.resx">
+      <DependentUpon>frmShowNotes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Product\frmProductMain.resx">
       <DependentUpon>frmProductMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -243,6 +261,7 @@
       <DependentUpon>frmUserMain.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\EntityCache.Bussines.NoteBussines.datasource" />
     <None Include="Properties\DataSources\EntityCache.Bussines.ProductBussines.datasource" />
     <None Include="Properties\DataSources\EntityCache.Bussines.SafeBoxBussines.datasource" />
     <None Include="Properties\DataSources\EntityCache.Bussines.SmsPanelBussines.datasource" />
@@ -299,6 +318,7 @@
   <ItemGroup>
     <None Include="Resources\Arad_Icon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Department.Note;
 using Department.Product;
 using Department.SafeBox;
 using Department.SmsPanels;
@@ -158,6 +159,30 @@ namespace Department
             try
             {
                 clsLoadNewForm.LoadNewForm(new frmShowProducts(), pnlContent);
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
+
+        private void pnlNote_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                clsLoadNewForm.LoadNewForm(new frmShowNotes(), pnlContent);
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
+
+        private void pnlDashbord_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                clsLoadNewForm.LoadNewForm(new frmDashBoard(), pnlContent);
             }
             catch (Exception ex)
             {
