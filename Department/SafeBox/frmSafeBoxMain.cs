@@ -5,36 +5,37 @@ using MetroFramework.Forms;
 using Notification;
 using Services;
 
-namespace Department.SmsPanels
+namespace Department.SafeBox
 {
-    public partial class frmSmsPanelsMain : MetroForm
+    public partial class frmSafeBoxMain : MetroForm
     {
-        private SmsPanelBussines cls;
+        private SafeBoxBussines cls;
 
         private void SetData()
         {
             try
             {
                 txtName.Text = cls?.Name;
-                txtApi.Text = cls?.Api;
-                txtLineNumber.Text = cls?.LineNumber;
+                if (cls?.Type == EnSafeBox.Bank) rbtnBank.Checked = true;
+                else rbtnSandouq.Checked = true;
             }
             catch (Exception ex)
             {
                 WebErrorLog.ErrorInstence.StartErrorLog(ex);
             }
         }
-        public frmSmsPanelsMain()
+        public frmSafeBoxMain()
         {
             InitializeComponent();
-            cls = new SmsPanelBussines();
+            cls = new SafeBoxBussines();
         }
-        public frmSmsPanelsMain(Guid guid)
+        public frmSafeBoxMain(Guid guid)
         {
             InitializeComponent();
-            cls = SmsPanelBussines.Get(guid);
+            cls = SafeBoxBussines.Get(guid);
         }
-        private void frmSmsPanelsMain_Load(object sender, EventArgs e)
+
+        private void frmSafeBoxMain_Load(object sender, EventArgs e)
         {
             SetData();
         }
@@ -55,7 +56,7 @@ namespace Department.SmsPanels
             Close();
         }
 
-        private void frmSmsPanelsMain_KeyDown(object sender, KeyEventArgs e)
+        private void frmSafeBoxMain_KeyDown(object sender, KeyEventArgs e)
         {
             try
             {
@@ -92,25 +93,10 @@ namespace Department.SmsPanels
                     txtName.Focus();
                     return;
                 }
-
-                if (string.IsNullOrWhiteSpace(txtLineNumber.Text))
-                {
-                    frmNotification.PublicInfo.ShowMessage("شماره خط نمی تواند خالی باشد");
-                    txtLineNumber.Focus();
-                    return;
-                }
-
-                if (string.IsNullOrWhiteSpace(txtApi.Text))
-                {
-                    frmNotification.PublicInfo.ShowMessage("پل ارتباطی نمی تواند خالی باشد");
-                    txtApi.Focus();
-                    return;
-                }
-
+                
 
                 cls.Name = txtName.Text.Trim();
-                cls.LineNumber = txtLineNumber.Text.Trim();
-                cls.Api = txtApi.Text.Trim();
+                cls.Type = rbtnBank.Checked ? EnSafeBox.Bank : EnSafeBox.Sandouq;
 
                 var res = await cls.SaveAsync();
                 if (res.HasError)
@@ -125,16 +111,6 @@ namespace Department.SmsPanels
             {
                 WebErrorLog.ErrorInstence.StartErrorLog(exception);
             }
-        }
-
-        private void txtLineNumber_Enter(object sender, EventArgs e)
-        {
-            txtSetter.Focus(txtLineNumber, true);
-        }
-
-        private void txtLineNumber_Leave(object sender, EventArgs e)
-        {
-            txtSetter.Follow(txtLineNumber);
         }
     }
 }

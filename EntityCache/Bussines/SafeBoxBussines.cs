@@ -12,10 +12,11 @@ namespace EntityCache.Bussines
     public class SafeBoxBussines : ISafeBox
     {
         public Guid Guid { get; set; }
-        public DateTime Modified { get; set; }
-        public bool Status { get; set; }
+        public DateTime Modified { get; set; } = DateTime.Now;
+        public bool Status { get; set; } = true;
         public string Name { get; set; }
         public EnSafeBox Type { get; set; }
+        public string TypeName => Type.GetDisplay();
 
 
         public static async Task<SafeBoxBussines> GetAsync(Guid guid) => await UnitOfWork.SafeBox.GetAsync(guid);

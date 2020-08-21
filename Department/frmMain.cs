@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using Department.Product;
+using Department.SafeBox;
 using Department.SmsPanels;
 using Department.Users;
 using MetroFramework.Forms;
@@ -96,6 +98,30 @@ namespace Department
             try
             {
                 clsLoadNewForm.LoadNewForm(new frmShowSmsPanels(), pnlContent);
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
+
+        private void pnlSafeBox_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                clsLoadNewForm.LoadNewForm(new frmShowSafeBox(), pnlContent);
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
+
+        private void pnlProducts_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                clsLoadNewForm.LoadNewForm(new frmShowProducts(), pnlContent);
             }
             catch (Exception ex)
             {

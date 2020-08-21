@@ -23,7 +23,7 @@ namespace Department
             }
             catch (Exception ex)
             {
-                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+                //WebErrorLog.ErrorInstence.StartErrorLog(ex);
             }
         }
     }

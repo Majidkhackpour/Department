@@ -5,38 +5,61 @@ using MetroFramework.Forms;
 using Notification;
 using Services;
 
-namespace Department.SmsPanels
+namespace Department.Product
 {
-    public partial class frmSmsPanelsMain : MetroForm
+    public partial class frmProductMain : MetroForm
     {
-        private SmsPanelBussines cls;
+        private ProductBussines cls;
 
         private void SetData()
         {
             try
             {
                 txtName.Text = cls?.Name;
-                txtApi.Text = cls?.Api;
-                txtLineNumber.Text = cls?.LineNumber;
+                txtCode.Text = cls?.Code;
+                txtPrice.Text = cls?.Price.ToString();
+                if (cls?.Guid == Guid.Empty)
+                    txtCode.Text = NextCode();
             }
             catch (Exception ex)
             {
                 WebErrorLog.ErrorInstence.StartErrorLog(ex);
             }
         }
-        public frmSmsPanelsMain()
+
+        private string NextCode()
+        {
+            try
+            {
+                return ProductBussines.NextCode();
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+                return "";
+            }
+        }
+        public frmProductMain()
         {
             InitializeComponent();
-            cls = new SmsPanelBussines();
+            cls = new ProductBussines();
         }
-        public frmSmsPanelsMain(Guid guid)
+        public frmProductMain(Guid guid)
         {
             InitializeComponent();
-            cls = SmsPanelBussines.Get(guid);
+            cls = ProductBussines.Get(guid);
         }
-        private void frmSmsPanelsMain_Load(object sender, EventArgs e)
+
+        private void frmProductMain_Load(object sender, EventArgs e)
         {
             SetData();
+        }
+
+
+        #region TXtSetter
+        private void txtCode_Enter(object sender, EventArgs e)
+        {
+            txtSetter.Focus(txtCode, true);
         }
 
         private void txtName_Enter(object sender, EventArgs e)
@@ -44,10 +67,26 @@ namespace Department.SmsPanels
             txtSetter.Focus(txtName, true);
         }
 
+        private void txtPrice_Enter(object sender, EventArgs e)
+        {
+            txtSetter.Focus(txtPrice, true);
+        }
+
+        private void txtPrice_Leave(object sender, EventArgs e)
+        {
+            txtSetter.Follow(txtPrice);
+        }
+
         private void txtName_Leave(object sender, EventArgs e)
         {
             txtSetter.Follow(txtName);
         }
+
+        private void txtCode_Leave(object sender, EventArgs e)
+        {
+            txtSetter.Follow(txtCode);
+        }
+        #endregion
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -55,7 +94,7 @@ namespace Department.SmsPanels
             Close();
         }
 
-        private void frmSmsPanelsMain_KeyDown(object sender, KeyEventArgs e)
+        private void frmProductMain_KeyDown(object sender, KeyEventArgs e)
         {
             try
             {
@@ -86,6 +125,13 @@ namespace Department.SmsPanels
                 if (cls.Guid == Guid.Empty)
                     cls.Guid = Guid.NewGuid();
 
+                if (string.IsNullOrWhiteSpace(txtCode.Text))
+                {
+                    frmNotification.PublicInfo.ShowMessage("کد محصول نمی تواند خالی باشد");
+                    txtCode.Focus();
+                    return;
+                }
+
                 if (string.IsNullOrWhiteSpace(txtName.Text))
                 {
                     frmNotification.PublicInfo.ShowMessage("عنوان نمی تواند خالی باشد");
@@ -93,24 +139,17 @@ namespace Department.SmsPanels
                     return;
                 }
 
-                if (string.IsNullOrWhiteSpace(txtLineNumber.Text))
+                if (string.IsNullOrWhiteSpace(txtPrice.Text))
                 {
-                    frmNotification.PublicInfo.ShowMessage("شماره خط نمی تواند خالی باشد");
-                    txtLineNumber.Focus();
-                    return;
-                }
-
-                if (string.IsNullOrWhiteSpace(txtApi.Text))
-                {
-                    frmNotification.PublicInfo.ShowMessage("پل ارتباطی نمی تواند خالی باشد");
-                    txtApi.Focus();
+                    frmNotification.PublicInfo.ShowMessage("قیمت نمی تواند خالی باشد");
+                    txtPrice.Focus();
                     return;
                 }
 
 
                 cls.Name = txtName.Text.Trim();
-                cls.LineNumber = txtLineNumber.Text.Trim();
-                cls.Api = txtApi.Text.Trim();
+                cls.Code = txtCode.Text.Trim();
+                cls.Price = txtPrice.Text.ParseToDecimal();
 
                 var res = await cls.SaveAsync();
                 if (res.HasError)
@@ -125,16 +164,6 @@ namespace Department.SmsPanels
             {
                 WebErrorLog.ErrorInstence.StartErrorLog(exception);
             }
-        }
-
-        private void txtLineNumber_Enter(object sender, EventArgs e)
-        {
-            txtSetter.Focus(txtLineNumber, true);
-        }
-
-        private void txtLineNumber_Leave(object sender, EventArgs e)
-        {
-            txtSetter.Follow(txtLineNumber);
         }
     }
 }

@@ -6,17 +6,17 @@ using MetroFramework.Forms;
 using Notification;
 using Services;
 
-namespace Department.SmsPanels
+namespace Department.SafeBox
 {
-    public partial class frmShowSmsPanels : MetroForm
+    public partial class frmShowSafeBox : MetroForm
     {
         private bool _st = true;
         private void LoadData(bool status, string search = "")
         {
             try
             {
-                var list = SmsPanelBussines.GetAll(search).Where(q => q.Status == status).ToList();
-                panelBindingSource.DataSource = list.ToSortableBindingList();
+                var list = SafeBoxBussines.GetAll(search).Where(q => q.Status == status).ToList();
+                safeBindingSource.DataSource = list.ToSortableBindingList();
             }
             catch (Exception ex)
             {
@@ -34,7 +34,7 @@ namespace Department.SmsPanels
                 {
                     mnuChangeStatus.Text = "مشاهده غیرفعال ها";
                     LoadData(ST, txtSearch.Text);
-                    mnuDelete.Text = "حذف پنل جاری";
+                    mnuDelete.Text = "حذف SafeBox جاری";
                 }
                 else
                 {
@@ -44,47 +44,24 @@ namespace Department.SmsPanels
                 }
             }
         }
-        public frmShowSmsPanels()
+        public frmShowSafeBox()
         {
             InitializeComponent();
         }
 
-        private void frmShowSmsPanels_Load(object sender, EventArgs e)
+        private void frmShowSafeBox_Load(object sender, EventArgs e)
         {
             LoadData(ST);
-        }
-
-        private void mnuEdit_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (DGrid.RowCount <= 0) return;
-                if (DGrid.CurrentRow == null) return;
-                if (!ST)
-                {
-                    frmNotification.PublicInfo.ShowMessage(
-                        "شما مجاز به ویرایش داده حذف شده نمی باشید \r\n برای این منظور، ابتدا فیلد موردنظر را از حالت حذف شده به فعال، تغییر وضعیت دهید");
-                    return;
-                }
-                var guid = (Guid)DGrid[dgGuid.Index, DGrid.CurrentRow.Index].Value;
-                var frm = new frmSmsPanelsMain(guid);
-                if (frm.ShowDialog() == DialogResult.OK)
-                    LoadData(ST, txtSearch.Text);
-            }
-            catch (Exception ex)
-            {
-                WebErrorLog.ErrorInstence.StartErrorLog(ex);
-            }
-        }
-
-        private void mnuChangeStatus_Click(object sender, EventArgs e)
-        {
-            ST = !ST;
         }
 
         private void DGrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             DGrid.Rows[e.RowIndex].Cells["Radif"].Value = e.RowIndex + 1;
+        }
+
+        private void mnuChangeStatus_Click(object sender, EventArgs e)
+        {
+            ST = !ST;
         }
 
         private async void mnuDelete_Click(object sender, EventArgs e)
@@ -100,7 +77,7 @@ namespace Department.SmsPanels
                             $@"آیا از حذف {DGrid[dgName.Index, DGrid.CurrentRow.Index].Value} اطمینان دارید؟", "حذف",
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question) == DialogResult.No) return;
-                    var prd = await SmsPanelBussines.GetAsync(guid);
+                    var prd = await SafeBoxBussines.GetAsync(guid);
                     var res = await prd.ChangeStatusAsync(false);
                     if (res.HasError)
                     {
@@ -114,7 +91,7 @@ namespace Department.SmsPanels
                             $@"آیا از فعال کردن {DGrid[dgName.Index, DGrid.CurrentRow.Index].Value} اطمینان دارید؟", "حذف",
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question) == DialogResult.No) return;
-                    var prd = await SmsPanelBussines.GetAsync(guid);
+                    var prd = await SafeBoxBussines.GetAsync(guid);
                     var res = await prd.ChangeStatusAsync(true);
                     if (res.HasError)
                     {
@@ -143,7 +120,7 @@ namespace Department.SmsPanels
             }
         }
 
-        private void frmShowSmsPanels_KeyDown(object sender, KeyEventArgs e)
+        private void frmShowSafeBox_KeyDown(object sender, KeyEventArgs e)
         {
             try
             {
@@ -190,9 +167,32 @@ namespace Department.SmsPanels
         {
             try
             {
-                var frm = new frmSmsPanelsMain();
+                var frm = new frmSafeBoxMain();
                 if (frm.ShowDialog() == DialogResult.OK)
                     LoadData(ST);
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
+
+        private void mnuEdit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DGrid.RowCount <= 0) return;
+                if (DGrid.CurrentRow == null) return;
+                if (!ST)
+                {
+                    frmNotification.PublicInfo.ShowMessage(
+                        "شما مجاز به ویرایش داده حذف شده نمی باشید \r\n برای این منظور، ابتدا فیلد موردنظر را از حالت حذف شده به فعال، تغییر وضعیت دهید");
+                    return;
+                }
+                var guid = (Guid)DGrid[dgGuid.Index, DGrid.CurrentRow.Index].Value;
+                var frm = new frmSafeBoxMain(guid);
+                if (frm.ShowDialog() == DialogResult.OK)
+                    LoadData(ST, txtSearch.Text);
             }
             catch (Exception ex)
             {

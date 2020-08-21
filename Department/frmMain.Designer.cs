@@ -140,6 +140,7 @@
             this.pnlProducts.Style.GradientAngle = 90;
             this.pnlProducts.TabIndex = 11;
             this.pnlProducts.Text = "مدیریت محصولات";
+            this.pnlProducts.Click += new System.EventHandler(this.pnlProducts_Click);
             // 
             // pnlSafeBox
             // 
@@ -161,6 +162,7 @@
             this.pnlSafeBox.Style.GradientAngle = 90;
             this.pnlSafeBox.TabIndex = 11;
             this.pnlSafeBox.Text = "SafeBox  مدیریت";
+            this.pnlSafeBox.Click += new System.EventHandler(this.pnlSafeBox_Click);
             // 
             // pnlReception
             // 
