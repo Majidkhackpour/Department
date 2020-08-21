@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using EntityCache.Assistence;
 using EntityCache.Bussines;
 using EntityCache.Core;
 using Persistence.Entities;
@@ -29,6 +30,20 @@ namespace EntityCache.SqlServerPersistence
             {
                 WebErrorLog.ErrorInstence.StartErrorLog(exception);
                 return false;
+            }
+        }
+
+        public async Task<UsersBussines> GetAsync(string userName)
+        {
+            try
+            {
+                var acc = db.Users.AsNoTracking().FirstOrDefault(q => q.UserName == userName);
+                return Mappings.Default.Map<UsersBussines>(acc);
+            }
+            catch (Exception exception)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(exception);
+                return null;
             }
         }
     }

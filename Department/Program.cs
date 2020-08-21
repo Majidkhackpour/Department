@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Security.Principal;
 using System.Windows.Forms;
+using Department.Users;
 using EntityCache.Assistence;
 using Notification;
 using Services;
@@ -54,8 +55,16 @@ namespace Department
 
             clsNotification.Init(Color.Silver);
 
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+
+            var logForm = new frmLogin();
+            if (logForm.ShowDialog() != DialogResult.OK) return;
+
+
+
             Application.Run(new frmMain());
         }
     }

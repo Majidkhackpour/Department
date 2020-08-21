@@ -46,6 +46,38 @@ namespace Department
             InitializeComponent();
         }
 
+        private void SetAccess()
+        {
+            try
+            {
+                if (CurentUser.CurrentUser == null)
+                {
+                    Application.Exit();
+                    return;
+                }
+                if(CurentUser.CurrentUser.IsBlock) Application.Exit();
+                if (CurentUser.CurrentUser.Type == EnUserType.Manager)
+                {
+                    pnlUsers.Visible = true;
+                    pnlProducts.Visible = true;
+                    pnlSafeBox.Visible = true;
+                    pnlSmsPanels.Visible = true;
+                    pnlLog.Visible = true;
+                }
+                else
+                {
+                    pnlUsers.Visible = false;
+                    pnlProducts.Visible = false;
+                    pnlSafeBox.Visible = false;
+                    pnlSmsPanels.Visible = false;
+                    pnlLog.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
         private void frmMain_Load(object sender, EventArgs e)
         {
             try
@@ -53,6 +85,10 @@ namespace Department
                 lblSecond.Visible = true;
                 SetClock();
                 SetCalendar();
+                SetAccess();
+
+                clsLoadNewForm.LoadNewForm(new frmDashBoard(), pnlContent);
+
             }
             catch (Exception ex)
             {
