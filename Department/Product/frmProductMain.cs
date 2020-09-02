@@ -18,6 +18,7 @@ namespace Department.Product
                 txtName.Text = cls?.Name;
                 txtCode.Text = cls?.Code;
                 txtPrice.Text = cls?.Price.ToString();
+                txtBackUp.Text = cls?.BckUpPrice.ToString();
                 if (cls?.Guid == Guid.Empty)
                     txtCode.Text = NextCode();
             }
@@ -48,6 +49,7 @@ namespace Department.Product
         {
             InitializeComponent();
             cls = ProductBussines.Get(guid);
+            txtCode.Enabled = false;
         }
 
         private void frmProductMain_Load(object sender, EventArgs e)
@@ -85,6 +87,15 @@ namespace Department.Product
         private void txtCode_Leave(object sender, EventArgs e)
         {
             txtSetter.Follow(txtCode);
+        }
+        private void txtBackUp_Enter(object sender, EventArgs e)
+        {
+            txtSetter.Focus(txtBackUp, true);
+        }
+
+        private void txtBackUp_Leave(object sender, EventArgs e)
+        {
+            txtSetter.Follow(txtBackUp);
         }
         #endregion
 
@@ -150,6 +161,7 @@ namespace Department.Product
                 cls.Name = txtName.Text.Trim();
                 cls.Code = txtCode.Text.Trim();
                 cls.Price = txtPrice.Text.ParseToDecimal();
+                cls.BckUpPrice = txtBackUp.Text.ParseToDecimal();
 
                 var res = await cls.SaveAsync();
                 if (res.HasError)
@@ -165,5 +177,6 @@ namespace Department.Product
                 WebErrorLog.ErrorInstence.StartErrorLog(exception);
             }
         }
+
     }
 }

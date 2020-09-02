@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Department.Customer;
 using Department.Note;
 using Department.Product;
 using Department.SafeBox;
@@ -183,6 +184,18 @@ namespace Department
             try
             {
                 clsLoadNewForm.LoadNewForm(new frmDashBoard(), pnlContent);
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
+
+        private void pnlCustomers_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                clsLoadNewForm.LoadNewForm(new frmShowCustomers(), pnlContent);
             }
             catch (Exception ex)
             {

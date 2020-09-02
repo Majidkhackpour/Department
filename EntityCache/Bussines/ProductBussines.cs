@@ -17,7 +17,8 @@ namespace EntityCache.Bussines
         public string Name { get; set; }
         public string Code { get; set; }
         public decimal Price { get; set; }
-
+        public decimal BckUpPrice { get; set; }
+        public bool Checked { get; set; }
 
 
         public static async Task<ProductBussines> GetAsync(Guid guid) => await UnitOfWork.Product.GetAsync(guid);

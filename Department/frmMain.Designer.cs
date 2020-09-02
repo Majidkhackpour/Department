@@ -226,6 +226,7 @@
             this.pnlCustomers.Style.GradientAngle = 90;
             this.pnlCustomers.TabIndex = 11;
             this.pnlCustomers.Text = "مشتریان من";
+            this.pnlCustomers.Click += new System.EventHandler(this.pnlCustomers_Click);
             // 
             // pnlLog
             // 

@@ -130,6 +130,18 @@
   <ItemGroup>
     <Compile Include="AccGlobalSettings.cs" />
     <Compile Include="clsLoadNewForm.cs" />
+    <Compile Include="Customer\frmCustomerMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer\frmCustomerMain.Designer.cs">
+      <DependentUpon>frmCustomerMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\frmShowCustomers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer\frmShowCustomers.Designer.cs">
+      <DependentUpon>frmShowCustomers.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDashBoard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +171,12 @@
     </Compile>
     <Compile Include="Product\frmProductMain.Designer.cs">
       <DependentUpon>frmProductMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Product\frmSelectProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Product\frmSelectProduct.Designer.cs">
+      <DependentUpon>frmSelectProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="Product\frmShowProducts.cs">
       <SubType>Form</SubType>
@@ -211,6 +229,12 @@
     <Compile Include="Users\frmUserMain.Designer.cs">
       <DependentUpon>frmUserMain.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Customer\frmCustomerMain.resx">
+      <DependentUpon>frmCustomerMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customer\frmShowCustomers.resx">
+      <DependentUpon>frmShowCustomers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDashBoard.resx">
       <DependentUpon>frmDashBoard.cs</DependentUpon>
     </EmbeddedResource>
@@ -225,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Product\frmProductMain.resx">
       <DependentUpon>frmProductMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Product\frmSelectProduct.resx">
+      <DependentUpon>frmSelectProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Product\frmShowProducts.resx">
       <DependentUpon>frmShowProducts.cs</DependentUpon>
@@ -261,6 +288,7 @@
       <DependentUpon>frmUserMain.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\EntityCache.Bussines.CustomerBussines.datasource" />
     <None Include="Properties\DataSources\EntityCache.Bussines.NoteBussines.datasource" />
     <None Include="Properties\DataSources\EntityCache.Bussines.ProductBussines.datasource" />
     <None Include="Properties\DataSources\EntityCache.Bussines.SafeBoxBussines.datasource" />

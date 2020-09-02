@@ -11,10 +11,10 @@ namespace Persistence.Entities
         public DateTime Modified { get; set; }
         public bool Status { get; set; }
         public DateTime CreateDate { get; set; }
-        [MaxLength(10)]
-        public string Code { get; set; }
         [MaxLength(100)]
         public string Name { get; set; }
+        [MaxLength(100)]
+        public string CompanyName { get; set; }
         [MaxLength(20)]
         public string NationalCode { get; set; }
         [MaxLength(50)]
@@ -34,5 +34,6 @@ namespace Persistence.Entities
         public string Email { get; set; }
         public string Description { get; set; }
         public DateTime ExpireDate { get; set; }
+        public Guid UserGuid { get; set; }
     }
 }

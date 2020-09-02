@@ -5,8 +5,8 @@ namespace PacketParser.Interfaces
     public interface ICustomers : IHasGuid
     {
         DateTime CreateDate { get; set; }
-        string Code { get; set; }
         string Name { get; set; }
+        string CompanyName { get; set; }
         string NationalCode { get; set; }
         string AppSerial { get; set; }
         string Address { get; set; }
@@ -18,5 +18,6 @@ namespace PacketParser.Interfaces
         string Email { get; set; }
         string Description { get; set; }
         DateTime ExpireDate { get; set; }
+        Guid UserGuid { get; set; }
     }
 }

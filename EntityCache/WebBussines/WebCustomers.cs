@@ -9,8 +9,8 @@ namespace EntityCache.WebBussines
         public DateTime Modified { get; set; }
         public bool Status { get; set; }
         public DateTime CreateDate { get; set; }
-        public string Code { get; set; }
         public string Name { get; set; }
+        public string CompanyName { get; set; }
         public string NationalCode { get; set; }
         public string AppSerial { get; set; }
         public string Address { get; set; }
@@ -22,5 +22,6 @@ namespace EntityCache.WebBussines
         public string Email { get; set; }
         public string Description { get; set; }
         public DateTime ExpireDate { get; set; }
+        public Guid UserGuid { get; set; }
     }
 }

@@ -38,6 +38,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnFinish = new DevComponents.DotNetBar.ButtonX();
             this.btnCancel = new DevComponents.DotNetBar.ButtonX();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtBackUp = new System.Windows.Forms.TextBox();
             this.grp.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,16 +47,18 @@
             // 
             this.grp.CanvasColor = System.Drawing.SystemColors.Control;
             this.grp.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.grp.Controls.Add(this.txtBackUp);
             this.grp.Controls.Add(this.txtPrice);
             this.grp.Controls.Add(this.txtName);
             this.grp.Controls.Add(this.txtCode);
+            this.grp.Controls.Add(this.label4);
             this.grp.Controls.Add(this.label3);
             this.grp.Controls.Add(this.label2);
             this.grp.Controls.Add(this.label1);
             this.grp.DisabledBackColor = System.Drawing.Color.Empty;
             this.grp.Location = new System.Drawing.Point(8, 29);
             this.grp.Name = "grp";
-            this.grp.Size = new System.Drawing.Size(463, 170);
+            this.grp.Size = new System.Drawing.Size(463, 196);
             this.grp.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.grp.Style.BackColor1.Color = System.Drawing.Color.White;
             this.grp.Style.BackColor2.Color = System.Drawing.Color.White;
@@ -131,7 +135,7 @@
             this.btnFinish.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
             this.btnFinish.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFinish.Image = global::Department.Properties.Resources.tab_checkbox__;
-            this.btnFinish.Location = new System.Drawing.Point(330, 221);
+            this.btnFinish.Location = new System.Drawing.Point(330, 240);
             this.btnFinish.Name = "btnFinish";
             this.btnFinish.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10);
             this.btnFinish.Size = new System.Drawing.Size(125, 31);
@@ -150,7 +154,7 @@
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Image = global::Department.Properties.Resources.tab_close_;
-            this.btnCancel.Location = new System.Drawing.Point(30, 221);
+            this.btnCancel.Location = new System.Drawing.Point(30, 240);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10);
             this.btnCancel.Size = new System.Drawing.Size(125, 31);
@@ -160,11 +164,30 @@
             this.btnCancel.TextColor = System.Drawing.Color.Black;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Location = new System.Drawing.Point(376, 150);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(75, 20);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "مبلغ پشتیبانی";
+            // 
+            // txtBackUp
+            // 
+            this.txtBackUp.Location = new System.Drawing.Point(22, 147);
+            this.txtBackUp.Name = "txtBackUp";
+            this.txtBackUp.Size = new System.Drawing.Size(330, 27);
+            this.txtBackUp.TabIndex = 3;
+            this.txtBackUp.Enter += new System.EventHandler(this.txtBackUp_Enter);
+            this.txtBackUp.Leave += new System.EventHandler(this.txtBackUp_Leave);
+            // 
             // frmProductMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(479, 266);
+            this.ClientSize = new System.Drawing.Size(479, 286);
             this.Controls.Add(this.grp);
             this.Controls.Add(this.btnFinish);
             this.Controls.Add(this.btnCancel);
@@ -197,5 +220,7 @@
         private System.Windows.Forms.Label label1;
         private DevComponents.DotNetBar.ButtonX btnFinish;
         private DevComponents.DotNetBar.ButtonX btnCancel;
+        private System.Windows.Forms.TextBox txtBackUp;
+        private System.Windows.Forms.Label label4;
     }
 }

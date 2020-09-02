@@ -15,5 +15,6 @@ namespace Persistence.Entities
         [MaxLength(20)]
         public string Code { get; set; }
         public decimal Price { get; set; }
+        public decimal BckUpPrice { get; set; }
     }
 }

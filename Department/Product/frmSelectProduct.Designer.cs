@@ -1,6 +1,6 @@
 ﻿namespace Department.Product
 {
-    partial class frmShowProducts
+    partial class frmSelectProduct
     {
         /// <summary>
         /// Required designer variable.
@@ -36,27 +36,21 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmShowProducts));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSelectProduct));
             this.txtSearch = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.mnuChangeStatus = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuIns = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.prdBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DGrid = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.Radif = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prdBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnFinish = new DevComponents.DotNetBar.ButtonX();
+            this.dgChecked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dgCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BckUpPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgGuid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modifiedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.prdBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prdBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // txtSearch
@@ -68,65 +62,15 @@
             // 
             this.txtSearch.Border.Class = "TextBoxBorder";
             this.txtSearch.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtSearch.Location = new System.Drawing.Point(51, 26);
+            this.txtSearch.Location = new System.Drawing.Point(65, 16);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PreventEnterBeep = true;
-            this.txtSearch.Size = new System.Drawing.Size(701, 27);
-            this.txtSearch.TabIndex = 55715;
+            this.txtSearch.Size = new System.Drawing.Size(335, 27);
+            this.txtSearch.TabIndex = 55716;
             this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSearch.WatermarkText = "مورد جستجو را وارد نمایید ...";
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
-            // 
-            // mnuChangeStatus
-            // 
-            this.mnuChangeStatus.Name = "mnuChangeStatus";
-            this.mnuChangeStatus.Size = new System.Drawing.Size(171, 24);
-            this.mnuChangeStatus.Text = "مشاهده غیرفعال ها";
-            this.mnuChangeStatus.Click += new System.EventHandler(this.mnuChangeStatus_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(168, 6);
-            // 
-            // mnuDelete
-            // 
-            this.mnuDelete.Name = "mnuDelete";
-            this.mnuDelete.Size = new System.Drawing.Size(171, 24);
-            this.mnuDelete.Text = "حذف کالای جاری";
-            this.mnuDelete.Click += new System.EventHandler(this.mnuDelete_Click);
-            // 
-            // mnuEdit
-            // 
-            this.mnuEdit.Name = "mnuEdit";
-            this.mnuEdit.Size = new System.Drawing.Size(171, 24);
-            this.mnuEdit.Text = "ویرایش کالای جاری";
-            this.mnuEdit.Click += new System.EventHandler(this.mnuEdit_Click);
-            // 
-            // mnuIns
-            // 
-            this.mnuIns.Name = "mnuIns";
-            this.mnuIns.Size = new System.Drawing.Size(171, 24);
-            this.mnuIns.Text = "افزودن کالای جدید";
-            this.mnuIns.Click += new System.EventHandler(this.mnuIns_Click);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Font = new System.Drawing.Font("B Yekan", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuIns,
-            this.mnuEdit,
-            this.mnuDelete,
-            this.toolStripMenuItem1,
-            this.mnuChangeStatus});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(172, 106);
-            // 
-            // prdBindingSource
-            // 
-            this.prdBindingSource.DataSource = typeof(EntityCache.Bussines.ProductBussines);
             // 
             // DGrid
             // 
@@ -155,15 +99,14 @@
             this.DGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.DGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Radif,
-            this.codeDataGridViewTextBoxColumn,
+            this.dgChecked,
+            this.dgCode,
             this.dgName,
             this.priceDataGridViewTextBoxColumn,
             this.BckUpPrice,
             this.dgGuid,
             this.modifiedDataGridViewTextBoxColumn,
             this.statusDataGridViewCheckBoxColumn});
-            this.DGrid.ContextMenuStrip = this.contextMenuStrip1;
             this.DGrid.DataSource = this.prdBindingSource;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
@@ -174,10 +117,9 @@
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DGrid.DefaultCellStyle = dataGridViewCellStyle5;
             this.DGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.DGrid.Location = new System.Drawing.Point(3, 63);
+            this.DGrid.Location = new System.Drawing.Point(5, 51);
             this.DGrid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DGrid.Name = "DGrid";
-            this.DGrid.ReadOnly = true;
             this.DGrid.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.DGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
@@ -197,25 +139,43 @@
             this.DGrid.RowsDefaultCellStyle = dataGridViewCellStyle7;
             this.DGrid.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.DGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGrid.Size = new System.Drawing.Size(795, 530);
-            this.DGrid.TabIndex = 55714;
-            this.DGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DGrid_CellFormatting);
-            this.DGrid.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DGrid_KeyPress);
+            this.DGrid.Size = new System.Drawing.Size(461, 427);
+            this.DGrid.TabIndex = 55717;
             // 
-            // Radif
+            // prdBindingSource
             // 
-            this.Radif.HeaderText = "ردیف";
-            this.Radif.Name = "Radif";
-            this.Radif.ReadOnly = true;
-            this.Radif.Width = 50;
+            this.prdBindingSource.DataSource = typeof(EntityCache.Bussines.ProductBussines);
             // 
-            // codeDataGridViewTextBoxColumn
+            // btnFinish
             // 
-            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
-            this.codeDataGridViewTextBoxColumn.HeaderText = "کد محصول";
-            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
-            this.codeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codeDataGridViewTextBoxColumn.Width = 150;
+            this.btnFinish.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnFinish.BackColor = System.Drawing.Color.Silver;
+            this.btnFinish.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnFinish.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
+            this.btnFinish.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFinish.Location = new System.Drawing.Point(65, 485);
+            this.btnFinish.Name = "btnFinish";
+            this.btnFinish.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10);
+            this.btnFinish.Size = new System.Drawing.Size(335, 31);
+            this.btnFinish.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2013;
+            this.btnFinish.TabIndex = 55718;
+            this.btnFinish.Text = "انتخاب";
+            this.btnFinish.TextColor = System.Drawing.Color.Black;
+            this.btnFinish.Click += new System.EventHandler(this.btnFinish_Click);
+            // 
+            // dgChecked
+            // 
+            this.dgChecked.DataPropertyName = "Checked";
+            this.dgChecked.HeaderText = "";
+            this.dgChecked.Name = "dgChecked";
+            this.dgChecked.Width = 30;
+            // 
+            // dgCode
+            // 
+            this.dgCode.DataPropertyName = "Code";
+            this.dgCode.HeaderText = "کد";
+            this.dgCode.Name = "dgCode";
+            this.dgCode.Width = 60;
             // 
             // dgName
             // 
@@ -233,7 +193,7 @@
             this.priceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.priceDataGridViewTextBoxColumn.HeaderText = "قیمت";
             this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
+            this.priceDataGridViewTextBoxColumn.Visible = false;
             this.priceDataGridViewTextBoxColumn.Width = 200;
             // 
             // BckUpPrice
@@ -244,7 +204,7 @@
             this.BckUpPrice.DefaultCellStyle = dataGridViewCellStyle4;
             this.BckUpPrice.HeaderText = "مبلغ پشتیبانی";
             this.BckUpPrice.Name = "BckUpPrice";
-            this.BckUpPrice.ReadOnly = true;
+            this.BckUpPrice.Visible = false;
             this.BckUpPrice.Width = 200;
             // 
             // dgGuid
@@ -252,7 +212,6 @@
             this.dgGuid.DataPropertyName = "Guid";
             this.dgGuid.HeaderText = "Guid";
             this.dgGuid.Name = "dgGuid";
-            this.dgGuid.ReadOnly = true;
             this.dgGuid.Visible = false;
             // 
             // modifiedDataGridViewTextBoxColumn
@@ -260,7 +219,6 @@
             this.modifiedDataGridViewTextBoxColumn.DataPropertyName = "Modified";
             this.modifiedDataGridViewTextBoxColumn.HeaderText = "Modified";
             this.modifiedDataGridViewTextBoxColumn.Name = "modifiedDataGridViewTextBoxColumn";
-            this.modifiedDataGridViewTextBoxColumn.ReadOnly = true;
             this.modifiedDataGridViewTextBoxColumn.Visible = false;
             // 
             // statusDataGridViewCheckBoxColumn
@@ -268,32 +226,29 @@
             this.statusDataGridViewCheckBoxColumn.DataPropertyName = "Status";
             this.statusDataGridViewCheckBoxColumn.HeaderText = "Status";
             this.statusDataGridViewCheckBoxColumn.Name = "statusDataGridViewCheckBoxColumn";
-            this.statusDataGridViewCheckBoxColumn.ReadOnly = true;
             this.statusDataGridViewCheckBoxColumn.Visible = false;
             // 
-            // frmShowProducts
+            // frmSelectProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 600);
-            this.Controls.Add(this.txtSearch);
+            this.ClientSize = new System.Drawing.Size(473, 525);
+            this.Controls.Add(this.btnFinish);
             this.Controls.Add(this.DGrid);
+            this.Controls.Add(this.txtSearch);
             this.Font = new System.Drawing.Font("B Yekan", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(800, 600);
-            this.Name = "frmShowProducts";
+            this.Name = "frmSelectProduct";
             this.Padding = new System.Windows.Forms.Padding(27, 92, 27, 31);
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Style = MetroFramework.MetroColorStyle.Silver;
-            this.Load += new System.EventHandler(this.frmShowProducts_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmShowProducts_KeyDown);
-            this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.prdBindingSource)).EndInit();
+            this.Load += new System.EventHandler(this.frmSelectProduct_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prdBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -301,16 +256,11 @@
         #endregion
 
         private DevComponents.DotNetBar.Controls.TextBoxX txtSearch;
-        private System.Windows.Forms.ToolStripMenuItem mnuChangeStatus;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem mnuDelete;
-        private System.Windows.Forms.ToolStripMenuItem mnuEdit;
-        private System.Windows.Forms.ToolStripMenuItem mnuIns;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.BindingSource prdBindingSource;
         private DevComponents.DotNetBar.Controls.DataGridViewX DGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Radif;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource prdBindingSource;
+        private DevComponents.DotNetBar.ButtonX btnFinish;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dgChecked;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgName;
         private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn BckUpPrice;
