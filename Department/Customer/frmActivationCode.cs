@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
+using Department.Users;
 using EntityCache.Bussines;
 using MetroFramework.Forms;
 using Notification;
@@ -10,7 +12,7 @@ namespace Department.Customer
     public partial class frmActivationCode : MetroForm
     {
         private CustomerBussines cls;
-
+        private string side = "";
         private void SetData()
         {
             try
@@ -32,12 +34,30 @@ namespace Department.Customer
             cls = cus;
         }
 
-        private void frmActivationCode_Load(object sender, EventArgs e) => SetData();
+        private void frmActivationCode_Load(object sender, EventArgs e)
+        {
+            SetData();
+            var tt = new ToolTip();
+            tt.SetToolTip(picSms, "ارسال کد فعالسازی از طریق ارسال پیامک");
+            tt.SetToolTip(picEmail, "ارسال کد فعالسازی از طریق ایمیل");
+        }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
-            Close();
+            try
+            {
+                if (!string.IsNullOrEmpty(lblActivationCode.Text))
+                {
+                    frmNotification.PublicInfo.ShowMessage("کدفعالسازی تولید شده است. برای خروج از دکمه تایید استفاده نمایید");
+                    return;
+                }
+                DialogResult = DialogResult.Cancel;
+                Close();
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
         }
 
         private void frmActivationCode_KeyDown(object sender, KeyEventArgs e)
@@ -89,6 +109,22 @@ namespace Department.Customer
                     frmNotification.PublicInfo.ShowMessage(res.ErrorMessage);
                     return;
                 }
+
+                var log = new CustomerLogBussines
+                {
+                    Guid = Guid.NewGuid(),
+                    CustomerGuid = cls.Guid,
+                    Description = txtDesc.Text,
+                    SideName = string.IsNullOrEmpty(side) ? "تلفن" : side
+                };
+
+                var res_ = await log.SaveAsync();
+                if (res_.HasError)
+                {
+                    frmNotification.PublicInfo.ShowMessage(res_.ErrorMessage);
+                    return;
+                }
+
                 DialogResult = DialogResult.OK;
                 Close();
             }
@@ -123,8 +159,133 @@ namespace Department.Customer
                     frmNotification.PublicInfo.ShowMessage("کد فعالسازی را تولید نکرده اید");
                     return;
                 }
-                var code = SoftwareLock.GenerateActivationCodeServer.ActivationCode((int) txtTerm.Value, txtFanni.Text);
+                var code = SoftwareLock.GenerateActivationCodeServer.ActivationCode((int)txtTerm.Value, txtFanni.Text);
                 lblActivationCode.Text = code;
+
+
+                txtDesc.Text = $"سریال نرم افزار {lblAppSerial.Text} \r\n" +
+                               $"تاریخ اتمام پشتیبانی {Calendar.MiladiToShamsi(DateTime.Now.AddMonths((int) txtTerm.Value))}";
+
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
+
+        private void picEmail_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(txtFanni.Text))
+                {
+                    frmNotification.PublicInfo.ShowMessage("مشخصه فنی مشتری نمی تواند خالی باشد");
+                    txtFanni.Focus();
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(lblAppSerial.Text))
+                {
+                    frmNotification.PublicInfo.ShowMessage("کد فعالسازی را تولید نکرده اید");
+                    return;
+                }
+                if (string.IsNullOrEmpty(cls.Email))
+                {
+                    frmNotification.PublicInfo.ShowMessage("ایمیل مشتری جاری معتبر نمی باشد");
+                    return;
+                }
+
+                var subject = "کد ورود به برنامه";
+                var body = $"{cls.Name} عزیز \r\n" +
+                           $"مدیریت مجموعه {cls.CompanyName} \r\n" +
+                           $"سریال نرم افزار شما {lblAppSerial.Text} \r\n" +
+                           $"کد فعالسازی نرم افزار شما {lblActivationCode.Text} \r\n" +
+                           $"تاریخ اتمام پشتیبانی شما {Calendar.MiladiToShamsi(DateTime.Now.AddMonths((int)txtTerm.Value))} \r\n" +
+                           $"با سپاس ار انتخاب شما \r\n " +
+                           $"گروه مهندسی آراد \r\n" +
+                           $"تاریخ ارسال: {Calendar.MiladiToShamsi(DateTime.Now)}  {DateTime.Now.ToShortTimeString()}";
+
+                var send = SendEmail.Send(cls.Email, subject, body);
+
+                frmNotification.PublicInfo.ShowMessage(send
+                    ? "ایمیل کدفعالسازی با موفقیت ارسال شد"
+                    : "خطا در ارسال کدفعالسازی از طریق ایمیل");
+
+                side = "ارسال ایمیل";
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
+
+        private async void picSms_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(txtFanni.Text))
+                {
+                    frmNotification.PublicInfo.ShowMessage("مشخصه فنی مشتری نمی تواند خالی باشد");
+                    txtFanni.Focus();
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(lblAppSerial.Text))
+                {
+                    frmNotification.PublicInfo.ShowMessage("کد فعالسازی را تولید نکرده اید");
+                    return;
+                }
+
+                var body = $"{cls.Name} عزیز \r\n" +
+                           $"مدیریت مجموعه {cls.CompanyName} \r\n" +
+                           $"سریال نرم افزار شما {lblAppSerial.Text} \r\n" +
+                           $"کد فعالسازی نرم افزار شما {lblActivationCode.Text} \r\n" +
+                           $"تاریخ اتمام پشتیبانی شما {Calendar.MiladiToShamsi(DateTime.Now.AddMonths((int)txtTerm.Value))} \r\n" +
+                           $"با سپاس ار انتخاب شما \r\n " +
+                           $"گروه مهندسی آراد \r\n";
+
+
+                if (string.IsNullOrEmpty(Setting.Classes.clsGlobalSetting.DefaultPanelGuid)) return;
+                var guid = Guid.Parse(Setting.Classes.clsGlobalSetting.DefaultPanelGuid);
+                var panel = SmsPanelBussines.Get(guid);
+                if (panel == null) return;
+                var sApi = new Sms.Api(panel.Api.Trim());
+
+                var res = sApi.Send(panel.LineNumber, cls.Tell1, body);
+
+                var smsLog = new SmsLogBussines()
+                {
+                    Guid = Guid.NewGuid(),
+                    UserGuid = CurentUser.CurrentUser.Guid,
+                    Cost = res.Cost,
+                    Message = res.Message,
+                    MessageId = res.Messageid,
+                    Reciver = res.Receptor,
+                    Sender = res.Sender,
+                    StatusText = res.StatusText
+                };
+
+                var res1 = await smsLog.SaveAsync();
+                if (res1.HasError)
+                {
+                    frmNotification.PublicInfo.ShowMessage(res1.ErrorMessage);
+                    return;
+                }
+
+                frmNotification.PublicInfo.ShowMessage("ارسال پیامک با موفقیت انجام شد");
+
+                side = "ارسال پیامک";
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
+
+        private void btnLog_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var frm = new frmCustomerLog(cls.Guid);
+                frm.ShowDialog();
             }
             catch (Exception ex)
             {

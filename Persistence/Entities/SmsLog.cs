@@ -16,6 +16,10 @@ namespace Persistence.Entities
         public string Sender { get; set; }
         [MaxLength(100)]
         public string Reciver { get; set; }
-        public string Description { get; set; }
+        public string Message { get; set; }
+        public decimal Cost { get; set; }
+        public long MessageId { get; set; }
+        [MaxLength(200)]
+        public string StatusText { get; set; }
     }
 }

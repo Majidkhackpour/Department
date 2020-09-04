@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Department.Customer;
 using Department.Note;
@@ -6,7 +8,9 @@ using Department.Product;
 using Department.SafeBox;
 using Department.SmsPanels;
 using Department.Users;
+using EntityCache.Bussines;
 using MetroFramework.Forms;
+using Notification;
 using Services;
 using TMS.Class;
 
@@ -48,6 +52,76 @@ namespace Department
             InitializeComponent();
         }
 
+        private async Task SendFinishBackUpSms()
+        {
+            try
+            {
+                var now = DateTime.Now;
+
+                var allCus = await CustomerBussines.GetAllAsync();
+                allCus = allCus.Where(q => q.Status).ToList();
+
+                if (string.IsNullOrEmpty(Setting.Classes.clsGlobalSetting.DefaultPanelGuid)) return;
+                var guid = Guid.Parse(Setting.Classes.clsGlobalSetting.DefaultPanelGuid);
+                var panel = await SmsPanelBussines.GetAsync(guid);
+                if (panel == null) return;
+
+                foreach (var item in allCus)
+                {
+                    var dayCount = 0;
+                    if (item.ExpireDate > now && item.ExpireDate < now.AddDays(1))
+                        dayCount = 1;
+                    else if (item.ExpireDate > now.AddDays(3) && item.ExpireDate < now.AddDays(4))
+                        dayCount = 3;
+                    else if (item.ExpireDate > now.AddDays(7) && item.ExpireDate < now.AddDays(8))
+                        dayCount = 7;
+                    else if (item.ExpireDate > now.AddDays(10) && item.ExpireDate < now.AddDays(11))
+                        dayCount = 10;
+
+
+                    if (dayCount == 0) continue;
+
+                    var message = $"{item.Name} عزیز، تنها {dayCount} روز تا پایان پشتیبانی شما زمان باقی است \r\n" +
+                                  $"لطفا جهت تمدید پشتیبانی خود اقدام نمایید \r\n" +
+                                  $"گروه مهندسی آراد";
+
+
+                    var log = new CustomerLogBussines
+                    {
+                        Guid = Guid.NewGuid(),
+                        CustomerGuid = item.Guid,
+                        Description = message,
+                        SideName = "ارسال پیامک"
+                    };
+
+                    await log.SaveAsync();
+
+
+
+                    var sApi = new Sms.Api(panel.Api.Trim());
+
+                    var res = sApi.Send(panel.LineNumber, item.Tell1, message);
+
+                    var smsLog = new SmsLogBussines()
+                    {
+                        Guid = Guid.NewGuid(),
+                        UserGuid = CurentUser.CurrentUser.Guid,
+                        Cost = res.Cost,
+                        Message = res.Message,
+                        MessageId = res.Messageid,
+                        Reciver = res.Receptor,
+                        Sender = res.Sender,
+                        StatusText = res.StatusText
+                    };
+                    
+                    await smsLog.SaveAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
         private void SetAccess()
         {
             try
@@ -80,7 +154,7 @@ namespace Department
                 WebErrorLog.ErrorInstence.StartErrorLog(ex);
             }
         }
-        private void frmMain_Load(object sender, EventArgs e)
+        private async void frmMain_Load(object sender, EventArgs e)
         {
             try
             {
@@ -90,6 +164,8 @@ namespace Department
                 SetAccess();
 
                 clsLoadNewForm.LoadNewForm(new frmDashBoard(), pnlContent);
+
+                await SendFinishBackUpSms();
 
             }
             catch (Exception ex)

@@ -70,6 +70,8 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuActivationCode = new System.Windows.Forms.ToolStripMenuItem();
             this.txtSearch = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuLog = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cusBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGrid)).BeginInit();
@@ -363,10 +365,12 @@
             this.mnuView,
             this.mnuChangeStatus,
             this.toolStripMenuItem2,
-            this.mnuActivationCode});
+            this.mnuActivationCode,
+            this.toolStripMenuItem3,
+            this.mnuLog});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(209, 242);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(209, 282);
             // 
             // mnuIns
             // 
@@ -440,6 +444,18 @@
             this.txtSearch.WatermarkText = "مورد جستجو را وارد نمایید ...";
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(205, 6);
+            // 
+            // mnuLog
+            // 
+            this.mnuLog.Name = "mnuLog";
+            this.mnuLog.Size = new System.Drawing.Size(208, 34);
+            this.mnuLog.Text = "مشاهده لاگ مشتری";
+            this.mnuLog.Click += new System.EventHandler(this.mnuLog_Click);
+            // 
             // frmShowCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -507,5 +523,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn expireDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem mnuLog;
     }
 }

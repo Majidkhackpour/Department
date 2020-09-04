@@ -136,6 +136,12 @@
     <Compile Include="Customer\frmActivationCode.Designer.cs">
       <DependentUpon>frmActivationCode.cs</DependentUpon>
     </Compile>
+    <Compile Include="Customer\frmCustomerLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer\frmCustomerLog.Designer.cs">
+      <DependentUpon>frmCustomerLog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Customer\frmCustomerMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,6 +216,12 @@
     <Compile Include="SmsPanels\frmShowSmsPanels.Designer.cs">
       <DependentUpon>frmShowSmsPanels.cs</DependentUpon>
     </Compile>
+    <Compile Include="SmsPanels\frmSmsLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SmsPanels\frmSmsLog.Designer.cs">
+      <DependentUpon>frmSmsLog.cs</DependentUpon>
+    </Compile>
     <Compile Include="SmsPanels\frmSmsPanelsMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -237,6 +249,9 @@
     </Compile>
     <EmbeddedResource Include="Customer\frmActivationCode.resx">
       <DependentUpon>frmActivationCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customer\frmCustomerLog.resx">
+      <DependentUpon>frmCustomerLog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Customer\frmCustomerMain.resx">
       <DependentUpon>frmCustomerMain.cs</DependentUpon>
@@ -284,6 +299,9 @@
     <EmbeddedResource Include="SmsPanels\frmShowSmsPanels.resx">
       <DependentUpon>frmShowSmsPanels.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SmsPanels\frmSmsLog.resx">
+      <DependentUpon>frmSmsLog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SmsPanels\frmSmsPanelsMain.resx">
       <DependentUpon>frmSmsPanelsMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -298,9 +316,11 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\EntityCache.Bussines.CustomerBussines.datasource" />
+    <None Include="Properties\DataSources\EntityCache.Bussines.CustomerLogBussines.datasource" />
     <None Include="Properties\DataSources\EntityCache.Bussines.NoteBussines.datasource" />
     <None Include="Properties\DataSources\EntityCache.Bussines.ProductBussines.datasource" />
     <None Include="Properties\DataSources\EntityCache.Bussines.SafeBoxBussines.datasource" />
+    <None Include="Properties\DataSources\EntityCache.Bussines.SmsLogBussines.datasource" />
     <None Include="Properties\DataSources\EntityCache.Bussines.SmsPanelBussines.datasource" />
     <None Include="Properties\DataSources\EntityCache.Bussines.UsersBussines.datasource" />
     <None Include="Properties\Settings.settings">
@@ -328,6 +348,10 @@
     <ProjectReference Include="..\..\..\Services\Services\Services\Services.csproj">
       <Project>{dcb5bde2-6238-422d-ad4e-f53afce9bf30}</Project>
       <Name>Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Sms\Sms\Sms\Sms.csproj">
+      <Project>{b3fb214c-0212-4375-a063-742b58bcb925}</Project>
+      <Name>Sms</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\SoftwareLock\SoftwareLock\SoftwareLock\SoftwareLock.csproj">
       <Project>{00d987f6-802c-45e1-a81c-f12ff68265a2}</Project>
@@ -363,7 +387,12 @@
   <ItemGroup>
     <None Include="Resources\Arad_Icon.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\sms-6-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mail3.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

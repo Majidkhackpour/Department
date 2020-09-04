@@ -12,6 +12,9 @@ namespace EntityCache.WebBussines
         public Guid UserGuid { get; set; }
         public string Sender { get; set; }
         public string Reciver { get; set; }
-        public string Description { get; set; }
+        public string Message { get; set; }
+        public decimal Cost { get; set; }
+        public long MessageId { get; set; }
+        public string StatusText { get; set; }
     }
 }

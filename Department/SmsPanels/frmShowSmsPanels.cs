@@ -199,5 +199,63 @@ namespace Department.SmsPanels
                 WebErrorLog.ErrorInstence.StartErrorLog(ex);
             }
         }
+
+        private void mnuDefault_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DGrid.RowCount <= 0) return;
+                if (DGrid.CurrentRow == null) return;
+                var guid = (Guid)DGrid[dgGuid.Index, DGrid.CurrentRow.Index].Value;
+
+                Setting.Classes.clsGlobalSetting.DefaultPanelGuid = guid.ToString();
+
+                frmNotification.PublicInfo.ShowMessage("پنل پیش فرض با موفقیت تغییر کرد");
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
+
+        private void mnuPanelInfo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DGrid.RowCount <= 0) return;
+                if (DGrid.CurrentRow == null) return;
+                var guid = (Guid)DGrid[dgGuid.Index, DGrid.CurrentRow.Index].Value;
+                var panel = SmsPanelBussines.Get(guid);
+                if (panel == null) return;
+
+                var api = new Sms.Api(panel.Api.Trim());
+                var res = api.AccountInfo();
+
+                MessageBox.Show($"مانده حساب پنل {panel.Name} {res.RemainCredit} ریال می باشد");
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
+
+        private void mnuLog_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DGrid.RowCount <= 0) return;
+                if (DGrid.CurrentRow == null) return;
+                var guid = (Guid)DGrid[dgGuid.Index, DGrid.CurrentRow.Index].Value;
+                var panel = SmsPanelBussines.Get(guid);
+                if (panel == null) return;
+
+                var frm = new frmSmsLog(panel);
+                frm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
     }
 }

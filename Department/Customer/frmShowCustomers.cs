@@ -250,6 +250,23 @@ namespace Department.Customer
                 if (cus == null) return;
                 var frm = new frmActivationCode(cus);
                 frm.ShowDialog();
+                LoadData(ST, txtSearch.Text);
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
+
+        private void mnuLog_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DGrid.RowCount <= 0) return;
+                if (DGrid.CurrentRow == null) return;
+                var guid = (Guid)DGrid[dgGuid.Index, DGrid.CurrentRow.Index].Value;
+                var frm = new frmCustomerLog(guid);
+                frm.ShowDialog();
             }
             catch (Exception ex)
             {

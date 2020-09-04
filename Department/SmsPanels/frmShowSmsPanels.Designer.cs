@@ -42,6 +42,8 @@
             this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuIns = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuDefault = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuPanelInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.panelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DGrid = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.Radif = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +53,9 @@
             this.modifiedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.apiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mnuLog = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGrid)).BeginInit();
@@ -78,33 +83,33 @@
             // mnuChangeStatus
             // 
             this.mnuChangeStatus.Name = "mnuChangeStatus";
-            this.mnuChangeStatus.Size = new System.Drawing.Size(180, 24);
+            this.mnuChangeStatus.Size = new System.Drawing.Size(212, 24);
             this.mnuChangeStatus.Text = "مشاهده غیرفعال ها";
             this.mnuChangeStatus.Click += new System.EventHandler(this.mnuChangeStatus_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(209, 6);
             // 
             // mnuDelete
             // 
             this.mnuDelete.Name = "mnuDelete";
-            this.mnuDelete.Size = new System.Drawing.Size(180, 24);
+            this.mnuDelete.Size = new System.Drawing.Size(212, 24);
             this.mnuDelete.Text = "حذف پنل جاری";
             this.mnuDelete.Click += new System.EventHandler(this.mnuDelete_Click);
             // 
             // mnuEdit
             // 
             this.mnuEdit.Name = "mnuEdit";
-            this.mnuEdit.Size = new System.Drawing.Size(180, 24);
+            this.mnuEdit.Size = new System.Drawing.Size(212, 24);
             this.mnuEdit.Text = "ویرایش پنل جاری";
             this.mnuEdit.Click += new System.EventHandler(this.mnuEdit_Click);
             // 
             // mnuIns
             // 
             this.mnuIns.Name = "mnuIns";
-            this.mnuIns.Size = new System.Drawing.Size(180, 24);
+            this.mnuIns.Size = new System.Drawing.Size(212, 24);
             this.mnuIns.Text = "افزودن پنل جدید";
             this.mnuIns.Click += new System.EventHandler(this.mnuIns_Click);
             // 
@@ -116,10 +121,29 @@
             this.mnuEdit,
             this.mnuDelete,
             this.toolStripMenuItem1,
-            this.mnuChangeStatus});
+            this.mnuChangeStatus,
+            this.toolStripMenuItem2,
+            this.mnuDefault,
+            this.toolStripMenuItem3,
+            this.mnuPanelInfo,
+            this.mnuLog});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 128);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(213, 212);
+            // 
+            // mnuDefault
+            // 
+            this.mnuDefault.Name = "mnuDefault";
+            this.mnuDefault.Size = new System.Drawing.Size(212, 24);
+            this.mnuDefault.Text = "انتخاب به عنوان پیش فرض";
+            this.mnuDefault.Click += new System.EventHandler(this.mnuDefault_Click);
+            // 
+            // mnuPanelInfo
+            // 
+            this.mnuPanelInfo.Name = "mnuPanelInfo";
+            this.mnuPanelInfo.Size = new System.Drawing.Size(212, 24);
+            this.mnuPanelInfo.Text = "مانده اعتبار پنل";
+            this.mnuPanelInfo.Click += new System.EventHandler(this.mnuPanelInfo_Click);
             // 
             // panelBindingSource
             // 
@@ -253,6 +277,23 @@
             this.apiDataGridViewTextBoxColumn.ReadOnly = true;
             this.apiDataGridViewTextBoxColumn.Visible = false;
             // 
+            // mnuLog
+            // 
+            this.mnuLog.Name = "mnuLog";
+            this.mnuLog.Size = new System.Drawing.Size(212, 24);
+            this.mnuLog.Text = "مشاهده لاگ پیامک ها";
+            this.mnuLog.Click += new System.EventHandler(this.mnuLog_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(209, 6);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(209, 6);
+            // 
             // frmShowSmsPanels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -296,5 +337,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn modifiedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn statusDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn apiDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripMenuItem mnuDefault;
+        private System.Windows.Forms.ToolStripMenuItem mnuPanelInfo;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem mnuLog;
     }
 }
