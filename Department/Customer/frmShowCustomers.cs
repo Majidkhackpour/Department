@@ -238,5 +238,23 @@ namespace Department.Customer
         {
             ST = !ST;
         }
+
+        private void mnuActivationCode_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DGrid.RowCount <= 0) return;
+                if (DGrid.CurrentRow == null) return;
+                var guid = (Guid)DGrid[dgGuid.Index, DGrid.CurrentRow.Index].Value;
+                var cus = CustomerBussines.Get(guid);
+                if (cus == null) return;
+                var frm = new frmActivationCode(cus);
+                frm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
     }
 }

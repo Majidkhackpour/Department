@@ -130,6 +130,12 @@
   <ItemGroup>
     <Compile Include="AccGlobalSettings.cs" />
     <Compile Include="clsLoadNewForm.cs" />
+    <Compile Include="Customer\frmActivationCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer\frmActivationCode.Designer.cs">
+      <DependentUpon>frmActivationCode.cs</DependentUpon>
+    </Compile>
     <Compile Include="Customer\frmCustomerMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,6 +235,9 @@
     <Compile Include="Users\frmUserMain.Designer.cs">
       <DependentUpon>frmUserMain.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Customer\frmActivationCode.resx">
+      <DependentUpon>frmActivationCode.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Customer\frmCustomerMain.resx">
       <DependentUpon>frmCustomerMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -308,6 +317,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\DataBaseUtilities\DataBaseUtilities\DataBaseUtilities\DataBaseUtilities.csproj">
+      <Project>{6c91d45f-9ab2-4202-916b-dc256bdc02d7}</Project>
+      <Name>DataBaseUtilities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\RealState\RealState\Notification\Notification.csproj">
       <Project>{44a0f109-df64-482c-befb-df20038ee4df}</Project>
       <Name>Notification</Name>
@@ -315,6 +328,10 @@
     <ProjectReference Include="..\..\..\Services\Services\Services\Services.csproj">
       <Project>{dcb5bde2-6238-422d-ad4e-f53afce9bf30}</Project>
       <Name>Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\SoftwareLock\SoftwareLock\SoftwareLock\SoftwareLock.csproj">
+      <Project>{00d987f6-802c-45e1-a81c-f12ff68265a2}</Project>
+      <Name>SoftwareLock</Name>
     </ProjectReference>
     <ProjectReference Include="..\EntityCache\EntityCache.csproj">
       <Project>{13446c3b-6b94-49e4-bb9e-c5c0327d7848}</Project>
