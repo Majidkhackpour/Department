@@ -1,4 +1,6 @@
-﻿namespace Department.SafeBox
+﻿using DepartmentDal.Classes;
+
+namespace Department.SafeBox
 {
     partial class frmShowSafeBox
     {
@@ -123,7 +125,7 @@
             // 
             // safeBindingSource
             // 
-            this.safeBindingSource.DataSource = typeof(EntityCache.Bussines.SafeBoxBussines);
+            this.safeBindingSource.DataSource = typeof(SafeBoxBussines);
             // 
             // DGrid
             // 

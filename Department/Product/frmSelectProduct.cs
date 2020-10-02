@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using EntityCache.Bussines;
+using DepartmentDal.Classes;
 using MetroFramework.Forms;
 using Services;
 

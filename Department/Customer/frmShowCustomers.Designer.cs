@@ -1,4 +1,6 @@
-﻿namespace Department.Customer
+﻿using DepartmentDal.Classes;
+
+namespace Department.Customer
 {
     partial class frmShowCustomers
     {
@@ -94,7 +96,7 @@
             // 
             // userBindingSource
             // 
-            this.userBindingSource.DataSource = typeof(EntityCache.Bussines.UsersBussines);
+            this.userBindingSource.DataSource = typeof(UserBussines);
             // 
             // lblUsers
             // 
@@ -108,7 +110,7 @@
             // 
             // cusBindingSource
             // 
-            this.cusBindingSource.DataSource = typeof(EntityCache.Bussines.CustomerBussines);
+            this.cusBindingSource.DataSource = typeof(CustomerBussines);
             // 
             // DGrid
             // 

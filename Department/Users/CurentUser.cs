@@ -1,11 +1,11 @@
-﻿using System;
-using EntityCache.Bussines;
+﻿using DepartmentDal.Classes;
+using System;
 
 namespace Department.Users
 {
     public static class CurentUser
     {
-        public static UsersBussines CurrentUser { get; set; }
+        public static UserBussines CurrentUser { get; set; }
         public static DateTime LastVorrod { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Department.Users;
-using EntityCache.Bussines;
+using DepartmentDal.Classes;
 using MetroFramework.Forms;
 using Notification;
 using Services;
@@ -164,7 +164,7 @@ namespace Department.Customer
 
 
                 txtDesc.Text = $"سریال نرم افزار {lblAppSerial.Text} \r\n" +
-                               $"تاریخ اتمام پشتیبانی {Calendar.MiladiToShamsi(DateTime.Now.AddMonths((int) txtTerm.Value))}";
+                               $"تاریخ اتمام پشتیبانی {Calendar.MiladiToShamsi(DateTime.Now.AddMonths((int)txtTerm.Value))}";
 
             }
             catch (Exception ex)
@@ -243,9 +243,7 @@ namespace Department.Customer
                            $"گروه مهندسی آراد \r\n";
 
 
-                if (string.IsNullOrEmpty(Setting.Classes.clsGlobalSetting.DefaultPanelGuid)) return;
-                var guid = Guid.Parse(Setting.Classes.clsGlobalSetting.DefaultPanelGuid);
-                var panel = SmsPanelBussines.Get(guid);
+                var panel = SmsPanelBussines.GetCurrent();
                 if (panel == null) return;
                 var sApi = new Sms.Api(panel.Api.Trim());
 

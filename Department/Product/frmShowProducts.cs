@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using EntityCache.Bussines;
+using DepartmentDal.Classes;
 using MetroFramework.Forms;
 using Notification;
 using Services;

@@ -166,18 +166,6 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Note\frmNoteMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Note\frmNoteMain.Designer.cs">
-      <DependentUpon>frmNoteMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Note\frmShowNotes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Note\frmShowNotes.Designer.cs">
-      <DependentUpon>frmShowNotes.cs</DependentUpon>
-    </Compile>
     <Compile Include="Product\frmProductMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,23 +198,11 @@
     <Compile Include="SafeBox\frmShowSafeBox.Designer.cs">
       <DependentUpon>frmShowSafeBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="SmsPanels\frmShowSmsPanels.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SmsPanels\frmShowSmsPanels.Designer.cs">
-      <DependentUpon>frmShowSmsPanels.cs</DependentUpon>
-    </Compile>
     <Compile Include="SmsPanels\frmSmsLog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SmsPanels\frmSmsLog.Designer.cs">
       <DependentUpon>frmSmsLog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SmsPanels\frmSmsPanelsMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SmsPanels\frmSmsPanelsMain.Designer.cs">
-      <DependentUpon>frmSmsPanelsMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Users\CurentUser.cs" />
     <Compile Include="Users\frmLogin.cs">
@@ -265,12 +241,6 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Note\frmNoteMain.resx">
-      <DependentUpon>frmNoteMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Note\frmShowNotes.resx">
-      <DependentUpon>frmShowNotes.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Product\frmProductMain.resx">
       <DependentUpon>frmProductMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -296,14 +266,8 @@
     <EmbeddedResource Include="SafeBox\frmShowSafeBox.resx">
       <DependentUpon>frmShowSafeBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SmsPanels\frmShowSmsPanels.resx">
-      <DependentUpon>frmShowSmsPanels.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="SmsPanels\frmSmsLog.resx">
       <DependentUpon>frmSmsLog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SmsPanels\frmSmsPanelsMain.resx">
-      <DependentUpon>frmSmsPanelsMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -357,25 +321,9 @@
       <Project>{00d987f6-802c-45e1-a81c-f12ff68265a2}</Project>
       <Name>SoftwareLock</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EntityCache\EntityCache.csproj">
-      <Project>{13446c3b-6b94-49e4-bb9e-c5c0327d7848}</Project>
-      <Name>EntityCache</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Ertegha\Ertegha.csproj">
-      <Project>{70d58b44-332f-41f1-8b8f-39617352f6cd}</Project>
-      <Name>Ertegha</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PacketParser\PacketParser.csproj">
-      <Project>{a5fd8981-9406-4525-8215-fb9ea966c6c9}</Project>
-      <Name>PacketParser</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Persistence\Persistence.csproj">
-      <Project>{2598821c-6a69-4b3f-8a71-83390a289a01}</Project>
-      <Name>Persistence</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Setting\Settings.csproj">
-      <Project>{245adc01-0a09-4aec-bee0-0f203f973ad5}</Project>
-      <Name>Settings</Name>
+    <ProjectReference Include="..\DepartmentDal\DepartmentDal.csproj">
+      <Project>{29808fac-36c9-43bc-ad9a-343d03b6f114}</Project>
+      <Name>DepartmentDal</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Department.Product;
 using Department.Users;
-using EntityCache.Bussines;
+using DepartmentDal.Classes;
 using MetroFramework.Forms;
 using Notification;
 using Services;

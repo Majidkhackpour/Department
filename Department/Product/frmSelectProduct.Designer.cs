@@ -1,4 +1,6 @@
-﻿namespace Department.Product
+﻿using DepartmentDal.Classes;
+
+namespace Department.Product
 {
     partial class frmSelectProduct
     {
@@ -144,7 +146,7 @@
             // 
             // prdBindingSource
             // 
-            this.prdBindingSource.DataSource = typeof(EntityCache.Bussines.ProductBussines);
+            this.prdBindingSource.DataSource = typeof(ProductBussines);
             // 
             // btnFinish
             // 

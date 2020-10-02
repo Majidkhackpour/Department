@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Department.Users;
-using EntityCache.Bussines;
+using DepartmentDal.Classes;
 using MetroFramework.Forms;
 using Services;
 
@@ -30,8 +30,8 @@ namespace Department.SmsPanels
             try
             {
 
-                var list = UsersBussines.GetAll().ToList();
-                list.Add(new UsersBussines()
+                var list = UserBussines.GetAll().ToList();
+                list.Add(new UserBussines()
                 {
                     Guid = Guid.Empty,
                     Name = "[کلیه کاربران]"

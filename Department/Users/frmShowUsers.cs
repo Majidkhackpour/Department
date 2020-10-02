@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using EntityCache.Bussines;
+using DepartmentDal.Classes;
 using MetroFramework.Forms;
 using Notification;
 using Services;
@@ -15,7 +15,7 @@ namespace Department.Users
         {
             try
             {
-                var list = UsersBussines.GetAll(search).Where(q => q.Status == status).ToList();
+                var list = UserBussines.GetAll(search).Where(q => q.Status == status).ToList();
                 userBindingSource.DataSource = list.ToSortableBindingList();
             }
             catch (Exception ex)
@@ -121,7 +121,7 @@ namespace Department.Users
                             $@"آیا از حذف {DGrid[dgName.Index, DGrid.CurrentRow.Index].Value} اطمینان دارید؟", "حذف",
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question) == DialogResult.No) return;
-                    var prd = await UsersBussines.GetAsync(guid);
+                    var prd = await UserBussines.GetAsync(guid);
                     var res = await prd.ChangeStatusAsync(false);
                     if (res.HasError)
                     {
@@ -135,7 +135,7 @@ namespace Department.Users
                             $@"آیا از فعال کردن {DGrid[dgName.Index, DGrid.CurrentRow.Index].Value} اطمینان دارید؟", "حذف",
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question) == DialogResult.No) return;
-                    var prd = await UsersBussines.GetAsync(guid);
+                    var prd = await UserBussines.GetAsync(guid);
                     var res = await prd.ChangeStatusAsync(true);
                     if (res.HasError)
                     {

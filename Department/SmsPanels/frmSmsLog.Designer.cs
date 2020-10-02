@@ -1,4 +1,6 @@
-﻿namespace Department.SmsPanels
+﻿using DepartmentDal.Classes;
+
+namespace Department.SmsPanels
 {
     partial class frmSmsLog
     {
@@ -102,7 +104,7 @@
             // 
             // userBindingSource
             // 
-            this.userBindingSource.DataSource = typeof(EntityCache.Bussines.UsersBussines);
+            this.userBindingSource.DataSource = typeof(UserBussines);
             // 
             // lblUsers
             // 
@@ -116,7 +118,7 @@
             // 
             // logBindingSource
             // 
-            this.logBindingSource.DataSource = typeof(EntityCache.Bussines.SmsLogBussines);
+            this.logBindingSource.DataSource = typeof(SmsLogBussines);
             // 
             // DGrid
             // 

@@ -3,10 +3,8 @@ using System.Drawing;
 using System.Security.Principal;
 using System.Windows.Forms;
 using Department.Users;
-using EntityCache.Assistence;
 using Notification;
 using Services;
-using Setting.Classes;
 
 namespace Department
 {
@@ -28,29 +26,28 @@ namespace Department
             //    return;
             //}
 
-            ClsCache.Init();
 
             var currentVersion = AccGlobalSettings.AppVersion.ParseToInt();
-            var dbVersion = clsGlobalSetting.ApplicationVersion.ParseToInt();
+            //var dbVersion = clsGlobalSetting.ApplicationVersion.ParseToInt();
 
             ErrorHandler.AddHandler(currentVersion.ToString(), ENSource.Department, Application.StartupPath);
 
 
-            if (dbVersion <= 0)
-            {
-                dbVersion = currentVersion;
-                clsGlobalSetting.ApplicationVersion = dbVersion.ToString();
-            }
+            //if (dbVersion <= 0)
+            //{
+            //    dbVersion = currentVersion;
+            //    clsGlobalSetting.ApplicationVersion = dbVersion.ToString();
+            //}
 
-            if (currentVersion < dbVersion)
-            {
-                MessageBox.Show($"نسخه فایل اجرایی {currentVersion} و نسخه بانک اطلاعاتی {dbVersion} می باشد. \r\n" +
-                                $"لطفا جهت بروزرسانی نسخه اجرایی خود، با تیم پشتیبانی تماس حاصل فرمایید");
-                return;
-            }
+            //if (currentVersion < dbVersion)
+            //{
+            //    MessageBox.Show($"نسخه فایل اجرایی {currentVersion} و نسخه بانک اطلاعاتی {dbVersion} می باشد. \r\n" +
+            //                    $"لطفا جهت بروزرسانی نسخه اجرایی خود، با تیم پشتیبانی تماس حاصل فرمایید");
+            //    return;
+            //}
 
-            if (currentVersion > dbVersion)
-                clsGlobalSetting.ApplicationVersion = currentVersion.ToString();
+            //if (currentVersion > dbVersion)
+            //    clsGlobalSetting.ApplicationVersion = currentVersion.ToString();
           
 
             clsNotification.Init(Color.Silver);

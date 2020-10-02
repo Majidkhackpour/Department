@@ -4,10 +4,9 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
-using EntityCache.Bussines;
+using DepartmentDal.Classes;
 using Notification;
 using Services;
-using Setting.Classes;
 
 namespace Department.Users
 {
@@ -46,13 +45,13 @@ namespace Department.Users
             try
             {
                 var myCollection = new AutoCompleteStringCollection();
-                var list = await UsersBussines.GetAllAsync();
+                var list = await UserBussines.GetAllAsync();
                 foreach (var item in list.ToList())
                     myCollection.Add(item.UserName);
                 txtUserName.AutoCompleteCustomSource = myCollection;
 
 
-                txtUserName.Text = clsGlobalSetting.LastUser;
+                
                 if (!string.IsNullOrEmpty(txtUserName.Text)) txtPassword.Focus();
             }
             catch (Exception ex)
@@ -93,7 +92,7 @@ namespace Department.Users
                     return;
                 }
 
-                var user = await UsersBussines.GetAsync(txtUserName.Text.Trim());
+                var user = await UserBussines.GetAsync(txtUserName.Text.Trim());
                 if (user == null)
                 {
                     frmNotification.PublicInfo.ShowMessage($"کاربر با نام کاربری {txtUserName.Text} یافت نشد");
@@ -119,7 +118,6 @@ namespace Department.Users
                 CurentUser.CurrentUser = user;
                 CurentUser.LastVorrod = DateTime.Now;
 
-                clsGlobalSetting.LastUser = user.UserName;
 
                 DialogResult = DialogResult.OK;
                 Close();

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
-using EntityCache.Bussines;
+using DepartmentDal.Classes;
 using MetroFramework.Forms;
 using Notification;
 using Services;
@@ -12,7 +12,7 @@ namespace Department.Users
 {
     public partial class frmUserMain : MetroForm
     {
-        private UsersBussines cls;
+        private UserBussines cls;
 
         private void SetData()
         {
@@ -48,12 +48,12 @@ namespace Department.Users
         public frmUserMain()
         {
             InitializeComponent();
-            cls = new UsersBussines();
+            cls = new UserBussines();
         }
         public frmUserMain(Guid guid)
         {
             InitializeComponent();
-            cls = UsersBussines.Get(guid);
+            cls = UserBussines.Get(guid);
         }
 
         private void frmUserMain_Load(object sender, System.EventArgs e)
@@ -62,7 +62,7 @@ namespace Department.Users
             {
                 SetData();
                 var myCollection = new AutoCompleteStringCollection();
-                var list = UsersBussines.GetAll();
+                var list = UserBussines.GetAll();
                 foreach (var item in list.ToList())
                     myCollection.Add(item.Email);
                 txtEmail.AutoCompleteCustomSource = myCollection;
@@ -186,7 +186,7 @@ namespace Department.Users
                     txtUserName.Focus();
                     return;
                 }
-                if (!await UsersBussines.CheckUserNameAsync(cls.Guid, txtUserName.Text))
+                if (!await UserBussines.CheckUserNameAsync(cls.Guid, txtUserName.Text))
                 {
                     frmNotification.PublicInfo.ShowMessage("نام کاربری تکراری می باشد");
                     txtUserName.Focus();

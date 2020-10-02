@@ -1,4 +1,6 @@
-﻿namespace Department.Users
+﻿using DepartmentDal.Classes;
+
+namespace Department.Users
 {
     partial class frmShowUsers
     {
@@ -186,7 +188,7 @@
             // 
             // userBindingSource
             // 
-            this.userBindingSource.DataSource = typeof(EntityCache.Bussines.UsersBussines);
+            this.userBindingSource.DataSource = typeof(UserBussines);
             // 
             // txtSearch
             // 

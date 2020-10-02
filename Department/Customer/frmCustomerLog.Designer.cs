@@ -1,4 +1,6 @@
-﻿namespace Department.Customer
+﻿using DepartmentDal.Classes;
+
+namespace Department.Customer
 {
     partial class frmCustomerLog
     {
@@ -53,7 +55,7 @@
             // 
             // logBindingSource
             // 
-            this.logBindingSource.DataSource = typeof(EntityCache.Bussines.CustomerLogBussines);
+            this.logBindingSource.DataSource = typeof(CustomerLogBussines);
             // 
             // DGrid
             // 
