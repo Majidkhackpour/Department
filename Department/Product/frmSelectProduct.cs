@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using DepartmentDal.Classes;
 using MetroFramework.Forms;
@@ -12,12 +13,12 @@ namespace Department.Product
     {
         public List<ProductBussines> PrdList { get; set; }
         private string serial;
-        private void LoadData(string search = "")
+        private async Task LoadDataAsync(string search = "")
         {
             try
             {
-                var list = ProductBussines.GetAll(search).Where(q => q.Status).ToList();
-                prdBindingSource.DataSource = list.ToSortableBindingList();
+                var list = await ProductBussines.GetAllAsync(search);
+                prdBindingSource.DataSource = list.Where(q => q.Status).ToList().ToSortableBindingList();
 
 
                 if (string.IsNullOrEmpty(serial)) return;
@@ -60,16 +61,13 @@ namespace Department.Product
             serial = _serial;
         }
 
-        private void frmSelectProduct_Load(object sender, EventArgs e)
-        {
-            LoadData();
-        }
+        private async void frmSelectProduct_Load(object sender, EventArgs e) => await LoadDataAsync();
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
+        private async void txtSearch_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                LoadData(txtSearch.Text);
+                await LoadDataAsync(txtSearch.Text);
             }
             catch (Exception ex)
             {

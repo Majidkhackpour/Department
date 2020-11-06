@@ -20,11 +20,11 @@ namespace DepartmentDal.Classes
         {
             throw new NotImplementedException();
         }
-        public static ProductBussines Get(Guid guid)
+        public static async Task<List<ProductBussines>> GetAllAsync(string search)
         {
             throw new NotImplementedException();
         }
-        public static List<CustomerBussines> GetAll(string search)
+        public static ProductBussines Get(Guid guid)
         {
             throw new NotImplementedException();
         }

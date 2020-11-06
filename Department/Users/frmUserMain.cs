@@ -56,13 +56,13 @@ namespace Department.Users
             cls = UserBussines.Get(guid);
         }
 
-        private void frmUserMain_Load(object sender, System.EventArgs e)
+        private async void frmUserMain_Load(object sender, System.EventArgs e)
         {
             try
             {
                 SetData();
                 var myCollection = new AutoCompleteStringCollection();
-                var list = UserBussines.GetAll();
+                var list = await UserBussines.GetAllAsync();
                 foreach (var item in list.ToList())
                     myCollection.Add(item.Email);
                 txtEmail.AutoCompleteCustomSource = myCollection;

@@ -32,15 +32,15 @@ namespace DepartmentDal.Classes
         {
             throw new NotImplementedException();
         }
-        public static List<SmsLogBussines> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-        public static List<SmsLogBussines> GetAll(string search, Guid userGuid)
-        {
-            throw new NotImplementedException();
-        }
         public async Task<ReturnedSaveFuncInfo> SaveAsync()
+        {
+            throw new NotImplementedException();
+        }
+        public static async Task<List<SmsLogBussines>> GetAllAsync(string search,Guid userGuid)
+        {
+            throw new NotImplementedException();
+        }
+        public static async Task<List<SmsLogBussines>> GetAllAsync()
         {
             throw new NotImplementedException();
         }

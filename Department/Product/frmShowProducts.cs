@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using DepartmentDal.Classes;
 using MetroFramework.Forms;
@@ -11,12 +12,12 @@ namespace Department.Product
     public partial class frmShowProducts : MetroForm
     {
         private bool _st = true;
-        private void LoadData(bool status, string search = "")
+        private async Task LoadDataAsync(bool status, string search = "")
         {
             try
             {
-                var list = ProductBussines.GetAll(search).Where(q => q.Status == status).ToList();
-                prdBindingSource.DataSource = list.ToSortableBindingList();
+                var list = await ProductBussines.GetAllAsync(search);
+                prdBindingSource.DataSource = list.Where(q => q.Status == status).ToList().ToSortableBindingList();
             }
             catch (Exception ex)
             {
@@ -33,13 +34,13 @@ namespace Department.Product
                 if (_st)
                 {
                     mnuChangeStatus.Text = "مشاهده غیرفعال ها";
-                    LoadData(ST, txtSearch.Text);
+                    Task.Run(()=> LoadDataAsync(ST, txtSearch.Text));
                     mnuDelete.Text = "حذف کالای جاری";
                 }
                 else
                 {
                     mnuChangeStatus.Text = "مشاهده فعال ها";
-                    LoadData(ST, txtSearch.Text);
+                    Task.Run(() => LoadDataAsync(ST, txtSearch.Text));
                     mnuDelete.Text = "تغییر وضعیت به فعال";
                 }
             }
@@ -49,10 +50,7 @@ namespace Department.Product
             InitializeComponent();
         }
 
-        private void frmShowProducts_Load(object sender, EventArgs e)
-        {
-            LoadData(ST);
-        }
+        private async void frmShowProducts_Load(object sender, EventArgs e) => await LoadDataAsync(ST);
 
         private void DGrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -100,7 +98,7 @@ namespace Department.Product
                     }
                 }
 
-                LoadData(ST, txtSearch.Text);
+                await LoadDataAsync(ST, txtSearch.Text);
             }
             catch (Exception ex)
             {
@@ -108,11 +106,11 @@ namespace Department.Product
             }
         }
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
+        private async void txtSearch_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                LoadData(ST, txtSearch.Text);
+                await LoadDataAsync(ST, txtSearch.Text);
             }
             catch (Exception ex)
             {
@@ -163,13 +161,13 @@ namespace Department.Product
             }
         }
 
-        private void mnuIns_Click(object sender, EventArgs e)
+        private async void mnuIns_Click(object sender, EventArgs e)
         {
             try
             {
                 var frm = new frmProductMain();
                 if (frm.ShowDialog() == DialogResult.OK)
-                    LoadData(ST);
+                    await LoadDataAsync(ST);
             }
             catch (Exception ex)
             {
@@ -177,7 +175,7 @@ namespace Department.Product
             }
         }
 
-        private void mnuEdit_Click(object sender, EventArgs e)
+        private async void mnuEdit_Click(object sender, EventArgs e)
         {
             try
             {
@@ -192,7 +190,7 @@ namespace Department.Product
                 var guid = (Guid)DGrid[dgGuid.Index, DGrid.CurrentRow.Index].Value;
                 var frm = new frmProductMain(guid);
                 if (frm.ShowDialog() == DialogResult.OK)
-                    LoadData(ST, txtSearch.Text);
+                    await LoadDataAsync(ST, txtSearch.Text);
             }
             catch (Exception ex)
             {

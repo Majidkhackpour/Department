@@ -36,11 +36,7 @@ namespace DepartmentDal.Classes
         {
             throw new NotImplementedException();
         }
-        public static List<UserBussines> GetAll(string search)
-        {
-            throw new NotImplementedException();
-        }
-        public static List<UserBussines> GetAll()
+        public static async Task<List<UserBussines>> GetAllAsync(string search)
         {
             throw new NotImplementedException();
         }

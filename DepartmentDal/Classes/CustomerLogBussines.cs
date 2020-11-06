@@ -20,7 +20,7 @@ namespace DepartmentDal.Classes
         {
             throw new NotImplementedException();
         }
-        public static List<CustomerLogBussines> GetAll(Guid cusGuid)
+        public static async Task<List<CustomerLogBussines>> GetAllAsync(Guid cusGuid)
         {
             throw new NotImplementedException();
         }

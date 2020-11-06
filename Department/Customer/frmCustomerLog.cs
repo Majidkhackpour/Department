@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using DepartmentDal.Classes;
 using MetroFramework.Forms;
@@ -10,12 +11,12 @@ namespace Department.Customer
     public partial class frmCustomerLog : MetroForm
     {
         private Guid CusGuid;
-        private void LoadData()
+        private async Task LoadDataAsync()
         {
             try
             {
-                var list = CustomerLogBussines.GetAll(CusGuid).OrderByDescending(q => q.Date);
-                logBindingSource.DataSource = list.ToList();
+                var list = await CustomerLogBussines.GetAllAsync(CusGuid);
+                logBindingSource.DataSource = list.OrderByDescending(q => q.Date).ToList();
             }
             catch (Exception ex)
             {
@@ -28,10 +29,7 @@ namespace Department.Customer
             CusGuid = cusGuid;
         }
 
-        private void frmCustomerLog_Load(object sender, EventArgs e)
-        {
-            LoadData();
-        }
+        private async void frmCustomerLog_Load(object sender, EventArgs e) => await LoadDataAsync();
 
         private void DGrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {

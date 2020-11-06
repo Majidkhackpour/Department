@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Department.Users;
 using DepartmentDal.Classes;
@@ -12,25 +13,25 @@ namespace Department.Customer
     public partial class frmShowCustomers : MetroForm
     {
         private bool _st = true;
-        private void LoadData(bool status, string search = "")
+        private async Task LoadDataAsync(bool status, string search = "")
         {
             try
             {
                 if (cmbUsers.SelectedValue == null) return;
-                var list = CustomerBussines.GetAll(search, (Guid)cmbUsers.SelectedValue).Where(q => q.Status == status);
-                cusBindingSource.DataSource = list.ToList();
+                var list = await CustomerBussines.GetAllAsync(search,(Guid)cmbUsers.SelectedValue);
+                cusBindingSource.DataSource = list.Where(q => q.Status == status).ToList();
             }
             catch (Exception ex)
             {
                 WebErrorLog.ErrorInstence.StartErrorLog(ex);
             }
         }
-        private void FillCmb()
+        private async Task FillCmbAsync()
         {
             try
             {
 
-                var list = UserBussines.GetAll().ToList();
+                var list = await UserBussines.GetAllAsync();
                 list.Add(new UserBussines()
                 {
                     Guid = Guid.Empty,
@@ -53,13 +54,13 @@ namespace Department.Customer
                 if (_st)
                 {
                     mnuChangeStatus.Text = "مشاهده غیرفعال ها";
-                    LoadData(ST, txtSearch.Text);
+                    Task.Run(()=> LoadDataAsync(ST, txtSearch.Text));
                     mnuDelete.Text = "حذف مشتری جاری";
                 }
                 else
                 {
                     mnuChangeStatus.Text = "مشاهده فعال ها";
-                    LoadData(ST, txtSearch.Text);
+                    Task.Run(() => LoadDataAsync(ST, txtSearch.Text));
                     mnuDelete.Text = "تغییر وضعیت به فعال";
                 }
             }
@@ -81,10 +82,10 @@ namespace Department.Customer
             }
         }
 
-        private void frmShowCustomers_Load(object sender, EventArgs e)
+        private async void frmShowCustomers_Load(object sender, EventArgs e)
         {
-            FillCmb();
-            LoadData(ST);
+           await FillCmbAsync();
+           await LoadDataAsync(ST);
         }
 
         private void DGrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -92,11 +93,11 @@ namespace Department.Customer
             DGrid.Rows[e.RowIndex].Cells["Radif"].Value = e.RowIndex + 1;
         }
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
+        private async void txtSearch_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                LoadData(ST, txtSearch.Text);
+                await LoadDataAsync(ST, txtSearch.Text);
             }
             catch (Exception ex)
             {
@@ -130,11 +131,11 @@ namespace Department.Customer
             }
         }
 
-        private void cmbUsers_SelectedIndexChanged(object sender, EventArgs e)
+        private async void cmbUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                LoadData(ST, txtSearch.Text);
+                await LoadDataAsync(ST, txtSearch.Text);
             }
             catch (Exception ex)
             {
@@ -178,7 +179,7 @@ namespace Department.Customer
                     }
                 }
 
-                LoadData(ST, txtSearch.Text);
+                await LoadDataAsync(ST, txtSearch.Text);
             }
             catch (Exception ex)
             {
@@ -186,13 +187,13 @@ namespace Department.Customer
             }
         }
 
-        private void mnuIns_Click(object sender, EventArgs e)
+        private async void mnuIns_Click(object sender, EventArgs e)
         {
             try
             {
                 var frm = new frmCustomerMain();
                 if (frm.ShowDialog() == DialogResult.OK)
-                    LoadData(ST, txtSearch.Text);
+                    await LoadDataAsync(ST, txtSearch.Text);
             }
             catch (Exception ex)
             {
@@ -200,7 +201,7 @@ namespace Department.Customer
             }
         }
 
-        private void mnuEdit_Click(object sender, EventArgs e)
+        private async void mnuEdit_Click(object sender, EventArgs e)
         {
             try
             {
@@ -209,7 +210,7 @@ namespace Department.Customer
                 var guid = (Guid)DGrid[dgGuid.Index, DGrid.CurrentRow.Index].Value;
                 var frm = new frmCustomerMain(guid, false);
                 if (frm.ShowDialog() == DialogResult.OK)
-                    LoadData(ST, txtSearch.Text);
+                    await LoadDataAsync(ST, txtSearch.Text);
             }
             catch (Exception ex)
             {
@@ -225,8 +226,7 @@ namespace Department.Customer
                 if (DGrid.CurrentRow == null) return;
                 var guid = (Guid)DGrid[dgGuid.Index, DGrid.CurrentRow.Index].Value;
                 var frm = new frmCustomerMain(guid, true);
-                if (frm.ShowDialog() == DialogResult.OK)
-                    LoadData(ST, txtSearch.Text);
+                frm.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -239,7 +239,7 @@ namespace Department.Customer
             ST = !ST;
         }
 
-        private void mnuActivationCode_Click(object sender, EventArgs e)
+        private async void mnuActivationCode_Click(object sender, EventArgs e)
         {
             try
             {
@@ -250,7 +250,7 @@ namespace Department.Customer
                 if (cus == null) return;
                 var frm = new frmActivationCode(cus);
                 frm.ShowDialog();
-                LoadData(ST, txtSearch.Text);
+                await LoadDataAsync(ST, txtSearch.Text);
             }
             catch (Exception ex)
             {

@@ -44,10 +44,11 @@ namespace DepartmentDal.Classes
         {
             throw new NotImplementedException();
         }
-        public static List<CustomerBussines> GetAll(string search,Guid userGuid)
+        public static async Task<List<CustomerBussines>> GetAllAsync(string search,Guid userGuid)
         {
             throw new NotImplementedException();
         }
+
         public async Task<ReturnedSaveFuncInfo> SaveAsync()
         {
             throw new NotImplementedException();
