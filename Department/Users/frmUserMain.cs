@@ -224,7 +224,7 @@ namespace Department.Users
                     return;
                 }
 
-
+                cls.Status = true;
                 cls.Name = txtName.Text.Trim();
                 cls.UserName = txtUserName.Text.Trim();
                 var ue = new UTF8Encoding();
@@ -237,7 +237,7 @@ namespace Department.Users
                 cls.Mobile = txtMobile.Text.Trim();
                 cls.Type = (EnUserType)cmbAccessLevel.SelectedIndex;
 
-                var res = await cls.SaveAsync();
+                var res = await UserBussines.SaveAsync(cls);
                 if (res.HasError)
                 {
                     frmNotification.PublicInfo.ShowMessage(res.ErrorMessage);

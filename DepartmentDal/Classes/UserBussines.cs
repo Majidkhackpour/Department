@@ -2,7 +2,10 @@
 using Servicess.Interfaces.Department;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
+using Nito.AsyncEx;
 
 namespace DepartmentDal.Classes
 {
@@ -22,35 +25,113 @@ namespace DepartmentDal.Classes
 
         public static async Task<UserBussines> GetAsync(Guid guid)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var res = await client.GetStringAsync(Utilities.WebApi + "/Users_Get/" + guid);
+                    var user = res.FromJson<UserBussines>();
+                    return user;
+                }
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+                return null;
+            }
         }
         public static async Task<UserBussines> GetAsync(string userName)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var res = await client.GetStringAsync(Utilities.WebApi + "/User_Get/" + userName);
+                    var user = res.FromJson<UserBussines>();
+                    return user;
+                }
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+                return null;
+            }
         }
-        public static UserBussines Get(Guid guid)
-        {
-            throw new NotImplementedException();
-        }
+        public static UserBussines Get(Guid guid) => AsyncContext.Run(() => GetAsync(guid));
         public static async Task<List<UserBussines>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var res = await client.GetStringAsync(Utilities.WebApi + "/Users_GetAll");
+                    var user = res.FromJson<List<UserBussines>>();
+                    return user;
+                }
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+                return null;
+            }
         }
-        public static async Task<List<UserBussines>> GetAllAsync(string search)
+        public static async Task<ReturnedSaveFuncInfo> SaveAsync(UserBussines cls)
         {
-            throw new NotImplementedException();
+            var res = new ReturnedSaveFuncInfo();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var json = Json.ToStringJson(cls);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+                    var result = client.PostAsync(Utilities.WebApi + "/api/User/PostData", content).Result;
+                }
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+                res.AddReturnedValue(ex);
+            }
+
+            return res;
         }
-        public async Task<ReturnedSaveFuncInfo> SaveAsync()
+        public static async Task<ReturnedSaveFuncInfo> ChangeStatusAsync(UserBussines cls)
         {
-            throw new NotImplementedException();
+            var res = new ReturnedSaveFuncInfo();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var json = Json.ToStringJson(cls);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+                    var result = client.PostAsync(Utilities.WebApi + "/api/User/PostData", content).Result;
+                }
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+                res.AddReturnedValue(ex);
+            }
+
+            return res;
         }
-        public async Task<ReturnedSaveFuncInfo> ChangeStatusAsync(bool status)
+        public static async Task<bool> CheckUserNameAsync(Guid guid, string userName)
         {
-            throw new NotImplementedException();
-        }
-        public static async Task<bool> CheckUserNameAsync(Guid guid,string userName)
-        {
-            throw new NotImplementedException();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var res = await client.GetStringAsync(Utilities.WebApi + "/Users_CheckUserName/" + guid + "," +
+                                                          userName);
+                    var user = res.FromJson<bool>();
+                    return user;
+                }
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+                return false;
+            }
         }
     }
 }

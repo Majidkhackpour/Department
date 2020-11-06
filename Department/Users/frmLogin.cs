@@ -46,7 +46,7 @@ namespace Department.Users
             {
                 var myCollection = new AutoCompleteStringCollection();
                 var list = await UserBussines.GetAllAsync();
-                foreach (var item in list.ToList())
+                foreach (var item in list)
                     myCollection.Add(item.UserName);
                 txtUserName.AutoCompleteCustomSource = myCollection;
 

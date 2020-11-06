@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Security.Principal;
 using System.Windows.Forms;
 using Department.Users;
+using DepartmentDal.Classes;
 using Notification;
 using Services;
 
@@ -26,29 +27,11 @@ namespace Department
             //    return;
             //}
 
-
+            DepartmentDal.Utilities.NEVER_EAT_POISON_Disable_CertificateValidation();
             var currentVersion = AccGlobalSettings.AppVersion.ParseToInt();
-            //var dbVersion = clsGlobalSetting.ApplicationVersion.ParseToInt();
 
             ErrorHandler.AddHandler(currentVersion.ToString(), ENSource.Department, Application.StartupPath);
 
-
-            //if (dbVersion <= 0)
-            //{
-            //    dbVersion = currentVersion;
-            //    clsGlobalSetting.ApplicationVersion = dbVersion.ToString();
-            //}
-
-            //if (currentVersion < dbVersion)
-            //{
-            //    MessageBox.Show($"نسخه فایل اجرایی {currentVersion} و نسخه بانک اطلاعاتی {dbVersion} می باشد. \r\n" +
-            //                    $"لطفا جهت بروزرسانی نسخه اجرایی خود، با تیم پشتیبانی تماس حاصل فرمایید");
-            //    return;
-            //}
-
-            //if (currentVersion > dbVersion)
-            //    clsGlobalSetting.ApplicationVersion = currentVersion.ToString();
-          
 
             clsNotification.Init(Color.Silver);
 

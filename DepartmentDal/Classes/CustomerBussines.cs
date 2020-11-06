@@ -2,7 +2,12 @@
 using Servicess.Interfaces.Department;
 using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
+using Nito.AsyncEx;
 
 namespace DepartmentDal.Classes
 {
@@ -40,9 +45,25 @@ namespace DepartmentDal.Classes
         {
             throw new NotImplementedException();
         }
+
+        public static List<CustomerBussines> GetAll() => AsyncContext.Run(() => GetAllAsync());
         public static async Task<List<CustomerBussines>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            try
+            {
+                Utilities.NEVER_EAT_POISON_Disable_CertificateValidation();
+                using (var client = new HttpClient())
+                {
+                    var res = await client.GetStringAsync(Utilities.WebApi + "/Customer_GetAll");
+                    var user = res.FromJson<List<CustomerBussines>>();
+                    return user;
+                }
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+                return null;
+            }
         }
         public static async Task<List<CustomerBussines>> GetAllAsync(string search,Guid userGuid)
         {
