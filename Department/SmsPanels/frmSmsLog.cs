@@ -12,14 +12,52 @@ namespace Department.SmsPanels
 {
     public partial class frmSmsLog : MetroForm
     {
+        private List<SmsLogBussines> list;
+        private void Search(string search)
+        {
+            try
+            {
+                var res = list;
+                if (string.IsNullOrEmpty(search)) search = "";
+                var searchItems = search.SplitString();
+                if (searchItems?.Count > 0)
+                    foreach (var item in searchItems)
+                    {
+                        if (!string.IsNullOrEmpty(item) && item.Trim() != "")
+                        {
+                            res = list.Where(x => x.Sender.ToLower().Contains(item.ToLower()) ||
+                                                  x.Reciver.ToLower().Contains(item.ToLower()) ||
+                                                  x.Cost.ToString().ToLower().Contains(item.ToLower()) ||
+                                                  x.StatusText.ToLower().Contains(item.ToLower()) ||
+                                                  x.Message.ToLower().Contains(item.ToLower()))
+                                ?.ToList();
+                        }
+                    }
+
+
+                res = res?.OrderByDescending(o => o.Date).ToList();
+                Invoke(new MethodInvoker(() =>
+                {
+                    if (cmbUsers.SelectedValue != null && (Guid)cmbUsers.SelectedValue != Guid.Empty)
+                        res = res?.Where(q => q.UserGuid == (Guid)cmbUsers.SelectedValue).ToList();
+                    logBindingSource.DataSource =
+                        res?.ToSortableBindingList();
+                }));
+
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
         private async Task LoadDataAsync(string search = "")
         {
             try
             {
                 txtMessage.Text = "";
                 if (cmbUsers.SelectedValue == null) return;
-                var list = await SmsLogBussines.GetAllAsync(search, (Guid)cmbUsers.SelectedValue);
-                logBindingSource.DataSource = list.ToList();
+                list = await SmsLogBussines.GetAllAsync();
+                Search(search);
             }
             catch (Exception ex)
             {
@@ -139,7 +177,7 @@ namespace Department.SmsPanels
                     var log = await SmsLogBussines.GetAsync(item.Messageid);
                     if (log == null) continue;
                     log.StatusText = item.Statustext;
-                    await log.SaveAsync();
+                    await SmsLogBussines.SaveAsync(log);
                     await LoadDataAsync();
                 }
             }

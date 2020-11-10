@@ -45,12 +45,10 @@ namespace Department.SmsPanels
             this.logBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DGrid = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.Radif = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateShDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.senderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.reciverDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.costDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusTextDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgGuid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modifiedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -104,7 +102,7 @@ namespace Department.SmsPanels
             // 
             // userBindingSource
             // 
-            this.userBindingSource.DataSource = typeof(UserBussines);
+            this.userBindingSource.DataSource = typeof(DepartmentDal.Classes.UserBussines);
             // 
             // lblUsers
             // 
@@ -118,7 +116,7 @@ namespace Department.SmsPanels
             // 
             // logBindingSource
             // 
-            this.logBindingSource.DataSource = typeof(SmsLogBussines);
+            this.logBindingSource.DataSource = typeof(DepartmentDal.Classes.SmsLogBussines);
             // 
             // DGrid
             // 
@@ -148,12 +146,10 @@ namespace Department.SmsPanels
             this.DGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Radif,
-            this.dateShDataGridViewTextBoxColumn,
             this.senderDataGridViewTextBoxColumn,
             this.reciverDataGridViewTextBoxColumn,
             this.costDataGridViewTextBoxColumn,
             this.statusTextDataGridViewTextBoxColumn,
-            this.dgUserName,
             this.dgGuid,
             this.modifiedDataGridViewTextBoxColumn,
             this.statusDataGridViewCheckBoxColumn,
@@ -207,13 +203,6 @@ namespace Department.SmsPanels
             this.Radif.ReadOnly = true;
             this.Radif.Width = 50;
             // 
-            // dateShDataGridViewTextBoxColumn
-            // 
-            this.dateShDataGridViewTextBoxColumn.DataPropertyName = "DateSh";
-            this.dateShDataGridViewTextBoxColumn.HeaderText = "تاریخ ارسال";
-            this.dateShDataGridViewTextBoxColumn.Name = "dateShDataGridViewTextBoxColumn";
-            this.dateShDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // senderDataGridViewTextBoxColumn
             // 
             this.senderDataGridViewTextBoxColumn.DataPropertyName = "Sender";
@@ -247,14 +236,6 @@ namespace Department.SmsPanels
             this.statusTextDataGridViewTextBoxColumn.Name = "statusTextDataGridViewTextBoxColumn";
             this.statusTextDataGridViewTextBoxColumn.ReadOnly = true;
             this.statusTextDataGridViewTextBoxColumn.Width = 120;
-            // 
-            // dgUserName
-            // 
-            this.dgUserName.DataPropertyName = "UserName";
-            this.dgUserName.HeaderText = "کاربر";
-            this.dgUserName.Name = "dgUserName";
-            this.dgUserName.ReadOnly = true;
-            this.dgUserName.Width = 130;
             // 
             // dgGuid
             // 
@@ -320,7 +301,7 @@ namespace Department.SmsPanels
             this.mnuUpAll});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(238, 74);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(238, 52);
             // 
             // mnuUpSingle
             // 
@@ -365,7 +346,6 @@ namespace Department.SmsPanels
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
-            this.ControlBox = false;
             this.Controls.Add(this.txtMessage);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.cmbUsers);
@@ -374,6 +354,7 @@ namespace Department.SmsPanels
             this.Controls.Add(this.DGrid);
             this.Font = new System.Drawing.Font("B Yekan", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

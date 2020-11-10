@@ -45,7 +45,7 @@ namespace Department.Customer
                     if (cmbUsers.SelectedValue != null && (Guid)cmbUsers.SelectedValue != Guid.Empty)
                         res = res?.Where(q => q.UserGuid == (Guid)cmbUsers.SelectedValue).ToList();
                     cusBindingSource.DataSource =
-                        res?.Where(q => q.Status == status).ToList().ToSortableBindingList();
+                        res?.Where(q => q.Status == status).ToSortableBindingList();
                 }));
 
             }

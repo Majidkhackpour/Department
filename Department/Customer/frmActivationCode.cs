@@ -263,7 +263,7 @@ namespace Department.Customer
                     StatusText = res.StatusText
                 };
 
-                var res1 = await smsLog.SaveAsync();
+                var res1 = await SmsLogBussines.SaveAsync(smsLog);
                 if (res1.HasError)
                 {
                     frmNotification.PublicInfo.ShowMessage(res1.ErrorMessage);

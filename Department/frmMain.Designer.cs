@@ -35,13 +35,12 @@
             this.pnlProducts = new DevComponents.DotNetBar.PanelEx();
             this.pnlSafeBox = new DevComponents.DotNetBar.PanelEx();
             this.pnlReception = new DevComponents.DotNetBar.PanelEx();
-            this.pnlSendToServer = new DevComponents.DotNetBar.PanelEx();
             this.pnlCustomers = new DevComponents.DotNetBar.PanelEx();
             this.pnlLog = new DevComponents.DotNetBar.PanelEx();
             this.pnlUsers = new DevComponents.DotNetBar.PanelEx();
             this.pnlContract = new DevComponents.DotNetBar.PanelEx();
             this.pnlSmsPanels = new DevComponents.DotNetBar.PanelEx();
-            this.pnlNote = new DevComponents.DotNetBar.PanelEx();
+            this.pnlPardakht = new DevComponents.DotNetBar.PanelEx();
             this.pnlDashbord = new DevComponents.DotNetBar.PanelEx();
             this.line1 = new DevComponents.DotNetBar.Controls.Line();
             this.lblYear = new System.Windows.Forms.Label();
@@ -69,13 +68,12 @@
             this.panelEx1.Controls.Add(this.pnlProducts);
             this.panelEx1.Controls.Add(this.pnlSafeBox);
             this.panelEx1.Controls.Add(this.pnlReception);
-            this.panelEx1.Controls.Add(this.pnlSendToServer);
             this.panelEx1.Controls.Add(this.pnlCustomers);
             this.panelEx1.Controls.Add(this.pnlLog);
             this.panelEx1.Controls.Add(this.pnlUsers);
             this.panelEx1.Controls.Add(this.pnlContract);
             this.panelEx1.Controls.Add(this.pnlSmsPanels);
-            this.panelEx1.Controls.Add(this.pnlNote);
+            this.panelEx1.Controls.Add(this.pnlPardakht);
             this.panelEx1.Controls.Add(this.pnlDashbord);
             this.panelEx1.Controls.Add(this.line1);
             this.panelEx1.Controls.Add(this.lblYear);
@@ -127,7 +125,7 @@
             this.pnlProducts.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.pnlProducts.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pnlProducts.DisabledBackColor = System.Drawing.Color.Empty;
-            this.pnlProducts.Location = new System.Drawing.Point(3, 362);
+            this.pnlProducts.Location = new System.Drawing.Point(3, 327);
             this.pnlProducts.Name = "pnlProducts";
             this.pnlProducts.Size = new System.Drawing.Size(229, 29);
             this.pnlProducts.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -149,7 +147,7 @@
             this.pnlSafeBox.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.pnlSafeBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pnlSafeBox.DisabledBackColor = System.Drawing.Color.Empty;
-            this.pnlSafeBox.Location = new System.Drawing.Point(3, 397);
+            this.pnlSafeBox.Location = new System.Drawing.Point(3, 362);
             this.pnlSafeBox.Name = "pnlSafeBox";
             this.pnlSafeBox.Size = new System.Drawing.Size(229, 29);
             this.pnlSafeBox.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -185,27 +183,6 @@
             this.pnlReception.TabIndex = 11;
             this.pnlReception.Text = "دریافت های من";
             // 
-            // pnlSendToServer
-            // 
-            this.pnlSendToServer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlSendToServer.CanvasColor = System.Drawing.SystemColors.Control;
-            this.pnlSendToServer.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.pnlSendToServer.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnlSendToServer.DisabledBackColor = System.Drawing.Color.Empty;
-            this.pnlSendToServer.Location = new System.Drawing.Point(3, 292);
-            this.pnlSendToServer.Name = "pnlSendToServer";
-            this.pnlSendToServer.Size = new System.Drawing.Size(229, 29);
-            this.pnlSendToServer.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.pnlSendToServer.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.pnlSendToServer.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.pnlSendToServer.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.pnlSendToServer.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.pnlSendToServer.Style.Font = new System.Drawing.Font("B Yekan", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.pnlSendToServer.Style.ForeColor.Color = System.Drawing.Color.Silver;
-            this.pnlSendToServer.Style.GradientAngle = 90;
-            this.pnlSendToServer.TabIndex = 11;
-            this.pnlSendToServer.Text = "تبادل داده ها با هاست";
-            // 
             // pnlCustomers
             // 
             this.pnlCustomers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -235,7 +212,7 @@
             this.pnlLog.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.pnlLog.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pnlLog.DisabledBackColor = System.Drawing.Color.Empty;
-            this.pnlLog.Location = new System.Drawing.Point(3, 468);
+            this.pnlLog.Location = new System.Drawing.Point(3, 433);
             this.pnlLog.Name = "pnlLog";
             this.pnlLog.Size = new System.Drawing.Size(229, 29);
             this.pnlLog.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -247,7 +224,7 @@
             this.pnlLog.Style.ForeColor.Color = System.Drawing.Color.Silver;
             this.pnlLog.Style.GradientAngle = 90;
             this.pnlLog.TabIndex = 11;
-            this.pnlLog.Text = "لاگ عملکرد";
+            this.pnlLog.Text = "گزارش عملکرد کاربران";
             // 
             // pnlUsers
             // 
@@ -256,7 +233,7 @@
             this.pnlUsers.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.pnlUsers.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pnlUsers.DisabledBackColor = System.Drawing.Color.Empty;
-            this.pnlUsers.Location = new System.Drawing.Point(3, 327);
+            this.pnlUsers.Location = new System.Drawing.Point(3, 292);
             this.pnlUsers.Name = "pnlUsers";
             this.pnlUsers.Size = new System.Drawing.Size(229, 29);
             this.pnlUsers.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -299,7 +276,7 @@
             this.pnlSmsPanels.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.pnlSmsPanels.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pnlSmsPanels.DisabledBackColor = System.Drawing.Color.Empty;
-            this.pnlSmsPanels.Location = new System.Drawing.Point(3, 432);
+            this.pnlSmsPanels.Location = new System.Drawing.Point(3, 397);
             this.pnlSmsPanels.Name = "pnlSmsPanels";
             this.pnlSmsPanels.Size = new System.Drawing.Size(229, 29);
             this.pnlSmsPanels.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -314,27 +291,26 @@
             this.pnlSmsPanels.Text = "مدیریت پنل های ارسال پیامک";
             this.pnlSmsPanels.Click += new System.EventHandler(this.pnlSmsPanels_Click);
             // 
-            // pnlNote
+            // pnlPardakht
             // 
-            this.pnlNote.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlNote.CanvasColor = System.Drawing.SystemColors.Control;
-            this.pnlNote.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.pnlNote.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnlNote.DisabledBackColor = System.Drawing.Color.Empty;
-            this.pnlNote.Location = new System.Drawing.Point(3, 257);
-            this.pnlNote.Name = "pnlNote";
-            this.pnlNote.Size = new System.Drawing.Size(229, 29);
-            this.pnlNote.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.pnlNote.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.pnlNote.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.pnlNote.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.pnlNote.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.pnlNote.Style.Font = new System.Drawing.Font("B Yekan", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.pnlNote.Style.ForeColor.Color = System.Drawing.Color.Silver;
-            this.pnlNote.Style.GradientAngle = 90;
-            this.pnlNote.TabIndex = 11;
-            this.pnlNote.Text = "یادداشت های من";
-            this.pnlNote.Click += new System.EventHandler(this.pnlNote_Click);
+            this.pnlPardakht.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlPardakht.CanvasColor = System.Drawing.SystemColors.Control;
+            this.pnlPardakht.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.pnlPardakht.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pnlPardakht.DisabledBackColor = System.Drawing.Color.Empty;
+            this.pnlPardakht.Location = new System.Drawing.Point(3, 257);
+            this.pnlPardakht.Name = "pnlPardakht";
+            this.pnlPardakht.Size = new System.Drawing.Size(229, 29);
+            this.pnlPardakht.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.pnlPardakht.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.pnlPardakht.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.pnlPardakht.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.pnlPardakht.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.pnlPardakht.Style.Font = new System.Drawing.Font("B Yekan", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.pnlPardakht.Style.ForeColor.Color = System.Drawing.Color.Silver;
+            this.pnlPardakht.Style.GradientAngle = 90;
+            this.pnlPardakht.TabIndex = 11;
+            this.pnlPardakht.Text = "پرداخت های من";
             // 
             // pnlDashbord
             // 
@@ -557,11 +533,10 @@
         private DevComponents.DotNetBar.PanelEx pnlExit;
         private DevComponents.DotNetBar.PanelEx pnlProducts;
         private DevComponents.DotNetBar.PanelEx pnlSafeBox;
-        private DevComponents.DotNetBar.PanelEx pnlSendToServer;
         private DevComponents.DotNetBar.PanelEx pnlLog;
         private DevComponents.DotNetBar.PanelEx pnlUsers;
         private DevComponents.DotNetBar.PanelEx pnlSmsPanels;
-        private DevComponents.DotNetBar.PanelEx pnlNote;
+        private DevComponents.DotNetBar.PanelEx pnlPardakht;
         private DevComponents.DotNetBar.PanelEx panelEx15;
         private System.Windows.Forms.Label label1;
         private DevComponents.DotNetBar.PanelEx pnlContent;

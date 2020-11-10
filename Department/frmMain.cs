@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Department.Customer;
 using Department.Product;
 using Department.SafeBox;
 using Department.SmsPanels;
 using Department.Users;
-using DepartmentDal.Classes;
 using MetroFramework.Forms;
-using Notification;
 using Services;
 using TMS.Class;
 
@@ -82,7 +78,7 @@ namespace Department
                 WebErrorLog.ErrorInstence.StartErrorLog(ex);
             }
         }
-        private async void frmMain_Load(object sender, EventArgs e)
+        private void frmMain_Load(object sender, EventArgs e)
         {
             try
             {
@@ -168,11 +164,6 @@ namespace Department
             {
                 WebErrorLog.ErrorInstence.StartErrorLog(ex);
             }
-        }
-
-        private void pnlNote_Click(object sender, EventArgs e)
-        {
-           
         }
 
         private void pnlDashbord_Click(object sender, EventArgs e)

@@ -21,16 +21,16 @@ namespace Department.SmsPanels
                 var res = list;
                 if (string.IsNullOrEmpty(search)) search = "";
                 var searchItems = search.SplitString();
-                //if (searchItems?.Count > 0)
-                //    foreach (var item in searchItems)
-                //    {
-                //        if (!string.IsNullOrEmpty(item) && item.Trim() != "")
-                //        {
-                //            res = list.Where(x => x.Name.ToLower().Contains(item.ToLower()) ||
-                //                                  x.Code.ToLower().Contains(item.ToLower()))
-                //                ?.ToList();
-                //        }
-                //    }
+                if (searchItems?.Count > 0)
+                    foreach (var item in searchItems)
+                    {
+                        if (!string.IsNullOrEmpty(item) && item.Trim() != "")
+                        {
+                            res = list.Where(x => x.Name.ToLower().Contains(item.ToLower()) ||
+                                                  x.Sender.ToLower().Contains(item.ToLower()))
+                                ?.ToList();
+                        }
+                    }
 
                 res = res?.OrderBy(o => o.Name).ToList();
                 Invoke(new MethodInvoker(() =>

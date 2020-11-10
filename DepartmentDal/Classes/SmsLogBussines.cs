@@ -2,7 +2,10 @@
 using Servicess.Interfaces.Department;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
+using Nito.AsyncEx;
 
 namespace DepartmentDal.Classes
 {
@@ -22,27 +25,75 @@ namespace DepartmentDal.Classes
 
         public static async Task<SmsLogBussines> GetAsync(Guid guid)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var res = await client.GetStringAsync(Utilities.WebApi + "/SmsLog_Get/" + guid);
+                    var user = res.FromJson<SmsLogBussines>();
+                    return user;
+                }
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+                return null;
+            }
         }
         public static async Task<SmsLogBussines> GetAsync(long messageId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var res = await client.GetStringAsync(Utilities.WebApi + "/SmsLog_GetByMessageId/" + messageId);
+                    var user = res.FromJson<SmsLogBussines>();
+                    return user;
+                }
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+                return null;
+            }
         }
-        public static SmsLogBussines Get(Guid guid)
+        public static SmsLogBussines Get(Guid guid) => AsyncContext.Run(() => GetAsync(guid));
+        public static async Task<ReturnedSaveFuncInfo> SaveAsync(SmsLogBussines cls)
         {
-            throw new NotImplementedException();
-        }
-        public async Task<ReturnedSaveFuncInfo> SaveAsync()
-        {
-            throw new NotImplementedException();
-        }
-        public static async Task<List<SmsLogBussines>> GetAllAsync(string search,Guid userGuid)
-        {
-            throw new NotImplementedException();
+            var res = new ReturnedSaveFuncInfo();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var json = Json.ToStringJson(cls);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+                    var result = await client.PostAsync(Utilities.WebApi + "/api/SmsLog/SaveAsync", content);
+                }
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+                res.AddReturnedValue(ex);
+            }
+
+            return res;
         }
         public static async Task<List<SmsLogBussines>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var res = await client.GetStringAsync(Utilities.WebApi + "/SmsLog_GetAll");
+                    var user = res.FromJson<List<SmsLogBussines>>();
+                    return user;
+                }
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+                return null;
+            }
         }
     }
 }

@@ -42,20 +42,19 @@
             this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuIns = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuDefault = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuPanelInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLog = new System.Windows.Forms.ToolStripMenuItem();
             this.panelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DGrid = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.Radif = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lineNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sender = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgGuid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modifiedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.apiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mnuLog = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGrid)).BeginInit();
@@ -129,7 +128,12 @@
             this.mnuLog});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(213, 212);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(213, 190);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(209, 6);
             // 
             // mnuDefault
             // 
@@ -138,12 +142,24 @@
             this.mnuDefault.Text = "انتخاب به عنوان پیش فرض";
             this.mnuDefault.Click += new System.EventHandler(this.mnuDefault_Click);
             // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(209, 6);
+            // 
             // mnuPanelInfo
             // 
             this.mnuPanelInfo.Name = "mnuPanelInfo";
             this.mnuPanelInfo.Size = new System.Drawing.Size(212, 24);
             this.mnuPanelInfo.Text = "مانده اعتبار پنل";
             this.mnuPanelInfo.Click += new System.EventHandler(this.mnuPanelInfo_Click);
+            // 
+            // mnuLog
+            // 
+            this.mnuLog.Name = "mnuLog";
+            this.mnuLog.Size = new System.Drawing.Size(212, 24);
+            this.mnuLog.Text = "مشاهده لاگ پیامک ها";
+            this.mnuLog.Click += new System.EventHandler(this.mnuLog_Click);
             // 
             // panelBindingSource
             // 
@@ -178,11 +194,10 @@
             this.DGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Radif,
             this.dgName,
-            this.lineNumberDataGridViewTextBoxColumn,
+            this.Sender,
             this.dgGuid,
             this.modifiedDataGridViewTextBoxColumn,
-            this.statusDataGridViewCheckBoxColumn,
-            this.apiDataGridViewTextBoxColumn});
+            this.statusDataGridViewCheckBoxColumn});
             this.DGrid.ContextMenuStrip = this.contextMenuStrip1;
             this.DGrid.DataSource = this.panelBindingSource;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
@@ -237,13 +252,13 @@
             this.dgName.Name = "dgName";
             this.dgName.ReadOnly = true;
             // 
-            // lineNumberDataGridViewTextBoxColumn
+            // Sender
             // 
-            this.lineNumberDataGridViewTextBoxColumn.DataPropertyName = "LineNumber";
-            this.lineNumberDataGridViewTextBoxColumn.HeaderText = "شماره خط";
-            this.lineNumberDataGridViewTextBoxColumn.Name = "lineNumberDataGridViewTextBoxColumn";
-            this.lineNumberDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lineNumberDataGridViewTextBoxColumn.Width = 200;
+            this.Sender.DataPropertyName = "Sender";
+            this.Sender.HeaderText = "شماره خط";
+            this.Sender.Name = "Sender";
+            this.Sender.ReadOnly = true;
+            this.Sender.Width = 200;
             // 
             // dgGuid
             // 
@@ -268,31 +283,6 @@
             this.statusDataGridViewCheckBoxColumn.Name = "statusDataGridViewCheckBoxColumn";
             this.statusDataGridViewCheckBoxColumn.ReadOnly = true;
             this.statusDataGridViewCheckBoxColumn.Visible = false;
-            // 
-            // apiDataGridViewTextBoxColumn
-            // 
-            this.apiDataGridViewTextBoxColumn.DataPropertyName = "Api";
-            this.apiDataGridViewTextBoxColumn.HeaderText = "Api";
-            this.apiDataGridViewTextBoxColumn.Name = "apiDataGridViewTextBoxColumn";
-            this.apiDataGridViewTextBoxColumn.ReadOnly = true;
-            this.apiDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // mnuLog
-            // 
-            this.mnuLog.Name = "mnuLog";
-            this.mnuLog.Size = new System.Drawing.Size(212, 24);
-            this.mnuLog.Text = "مشاهده لاگ پیامک ها";
-            this.mnuLog.Click += new System.EventHandler(this.mnuLog_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(209, 6);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(209, 6);
             // 
             // frmShowSmsPanels
             // 
@@ -330,17 +320,18 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.BindingSource panelBindingSource;
         private DevComponents.DotNetBar.Controls.DataGridViewX DGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Radif;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgName;
         private System.Windows.Forms.DataGridViewTextBoxColumn lineNumberDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgGuid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn modifiedDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn statusDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn apiDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripMenuItem mnuDefault;
         private System.Windows.Forms.ToolStripMenuItem mnuPanelInfo;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem mnuLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Radif;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sender;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgGuid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn modifiedDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn statusDataGridViewCheckBoxColumn;
     }
 }
