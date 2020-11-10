@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using EntityCache.Bussines;
+using DepartmentDal.Classes;
 using MetroFramework.Forms;
 using Notification;
 using Services;
@@ -11,12 +13,42 @@ namespace Department.SmsPanels
     public partial class frmShowSmsPanels : MetroForm
     {
         private bool _st = true;
-        private void LoadData(bool status, string search = "")
+        private List<SmsPanelBussines> list;
+        private void Search(string search, bool status)
         {
             try
             {
-                var list = SmsPanelBussines.GetAll(search).Where(q => q.Status == status).ToList();
-                panelBindingSource.DataSource = list.ToSortableBindingList();
+                var res = list;
+                if (string.IsNullOrEmpty(search)) search = "";
+                var searchItems = search.SplitString();
+                //if (searchItems?.Count > 0)
+                //    foreach (var item in searchItems)
+                //    {
+                //        if (!string.IsNullOrEmpty(item) && item.Trim() != "")
+                //        {
+                //            res = list.Where(x => x.Name.ToLower().Contains(item.ToLower()) ||
+                //                                  x.Code.ToLower().Contains(item.ToLower()))
+                //                ?.ToList();
+                //        }
+                //    }
+
+                res = res?.OrderBy(o => o.Name).ToList();
+                Invoke(new MethodInvoker(() =>
+                    panelBindingSource.DataSource =
+                        res?.Where(q => q.Status == status).ToList().ToSortableBindingList()));
+
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
+        private async Task LoadDataAsync(bool status, string search = "")
+        {
+            try
+            {
+                list = await SmsPanelBussines.GetAllAsync();
+                Search(search, status);
             }
             catch (Exception ex)
             {
@@ -33,13 +65,13 @@ namespace Department.SmsPanels
                 if (_st)
                 {
                     mnuChangeStatus.Text = "مشاهده غیرفعال ها";
-                    LoadData(ST, txtSearch.Text);
+                    Task.Run(() => LoadDataAsync(ST, txtSearch.Text));
                     mnuDelete.Text = "حذف پنل جاری";
                 }
                 else
                 {
                     mnuChangeStatus.Text = "مشاهده فعال ها";
-                    LoadData(ST, txtSearch.Text);
+                    Task.Run(() => LoadDataAsync(ST, txtSearch.Text));
                     mnuDelete.Text = "تغییر وضعیت به فعال";
                 }
             }
@@ -49,12 +81,9 @@ namespace Department.SmsPanels
             InitializeComponent();
         }
 
-        private void frmShowSmsPanels_Load(object sender, EventArgs e)
-        {
-            LoadData(ST);
-        }
+        private async void frmShowSmsPanels_Load(object sender, EventArgs e) => await LoadDataAsync(ST);
 
-        private void mnuEdit_Click(object sender, EventArgs e)
+        private async void mnuEdit_Click(object sender, EventArgs e)
         {
             try
             {
@@ -69,7 +98,7 @@ namespace Department.SmsPanels
                 var guid = (Guid)DGrid[dgGuid.Index, DGrid.CurrentRow.Index].Value;
                 var frm = new frmSmsPanelsMain(guid);
                 if (frm.ShowDialog() == DialogResult.OK)
-                    LoadData(ST, txtSearch.Text);
+                    await LoadDataAsync(ST, txtSearch.Text);
             }
             catch (Exception ex)
             {
@@ -101,7 +130,8 @@ namespace Department.SmsPanels
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question) == DialogResult.No) return;
                     var prd = await SmsPanelBussines.GetAsync(guid);
-                    var res = await prd.ChangeStatusAsync(false);
+                    prd.Status = false;
+                    var res = await SmsPanelBussines.SaveAsync(prd);
                     if (res.HasError)
                     {
                         frmNotification.PublicInfo.ShowMessage(res.ErrorMessage);
@@ -115,7 +145,8 @@ namespace Department.SmsPanels
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question) == DialogResult.No) return;
                     var prd = await SmsPanelBussines.GetAsync(guid);
-                    var res = await prd.ChangeStatusAsync(true);
+                    prd.Status = true;
+                    var res = await SmsPanelBussines.SaveAsync(prd);
                     if (res.HasError)
                     {
                         frmNotification.PublicInfo.ShowMessage(res.ErrorMessage);
@@ -123,7 +154,7 @@ namespace Department.SmsPanels
                     }
                 }
 
-                LoadData(ST, txtSearch.Text);
+                await LoadDataAsync(ST, txtSearch.Text);
             }
             catch (Exception ex)
             {
@@ -131,11 +162,11 @@ namespace Department.SmsPanels
             }
         }
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
+        private async void txtSearch_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                LoadData(ST, txtSearch.Text);
+                await LoadDataAsync(ST, txtSearch.Text);
             }
             catch (Exception ex)
             {
@@ -186,13 +217,13 @@ namespace Department.SmsPanels
             }
         }
 
-        private void mnuIns_Click(object sender, EventArgs e)
+        private async void mnuIns_Click(object sender, EventArgs e)
         {
             try
             {
                 var frm = new frmSmsPanelsMain();
                 if (frm.ShowDialog() == DialogResult.OK)
-                    LoadData(ST);
+                    await LoadDataAsync(ST);
             }
             catch (Exception ex)
             {
@@ -200,7 +231,7 @@ namespace Department.SmsPanels
             }
         }
 
-        private void mnuDefault_Click(object sender, EventArgs e)
+        private async void mnuDefault_Click(object sender, EventArgs e)
         {
             try
             {
@@ -208,7 +239,25 @@ namespace Department.SmsPanels
                 if (DGrid.CurrentRow == null) return;
                 var guid = (Guid)DGrid[dgGuid.Index, DGrid.CurrentRow.Index].Value;
 
-                Setting.Classes.clsGlobalSetting.DefaultPanelGuid = guid.ToString();
+                var panel = await SmsPanelBussines.GetAsync(guid);
+                if (panel == null) return;
+                panel.IsCurrent = true;
+
+
+                var all = await SmsPanelBussines.GetAllAsync();
+                foreach (var item in all)
+                {
+                    item.IsCurrent = false;
+                    await SmsPanelBussines.SaveAsync(item);
+                }
+
+
+                var res = await SmsPanelBussines.SaveAsync(panel);
+                if (res.HasError)
+                {
+                    frmNotification.PublicInfo.ShowMessage(res.ErrorMessage);
+                    return;
+                }
 
                 frmNotification.PublicInfo.ShowMessage("پنل پیش فرض با موفقیت تغییر کرد");
             }
@@ -218,17 +267,17 @@ namespace Department.SmsPanels
             }
         }
 
-        private void mnuPanelInfo_Click(object sender, EventArgs e)
+        private async void mnuPanelInfo_Click(object sender, EventArgs e)
         {
             try
             {
                 if (DGrid.RowCount <= 0) return;
                 if (DGrid.CurrentRow == null) return;
                 var guid = (Guid)DGrid[dgGuid.Index, DGrid.CurrentRow.Index].Value;
-                var panel = SmsPanelBussines.Get(guid);
+                var panel = await SmsPanelBussines.GetAsync(guid);
                 if (panel == null) return;
 
-                var api = new Sms.Api(panel.Api.Trim());
+                var api = new Sms.Api(panel.API.Trim());
                 var res = api.AccountInfo();
 
                 MessageBox.Show($"مانده حساب پنل {panel.Name} {res.RemainCredit} ریال می باشد");

@@ -44,18 +44,18 @@ namespace Department.SafeBox
             this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuIns = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.safeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DGrid = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.safeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Radif = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typeNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgGuid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modifiedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.safeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.safeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // txtSearch
@@ -121,11 +121,7 @@ namespace Department.SafeBox
             this.mnuChangeStatus});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(199, 128);
-            // 
-            // safeBindingSource
-            // 
-            this.safeBindingSource.DataSource = typeof(SafeBoxBussines);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(199, 106);
             // 
             // DGrid
             // 
@@ -156,7 +152,7 @@ namespace Department.SafeBox
             this.DGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Radif,
             this.dgName,
-            this.typeNameDataGridViewTextBoxColumn,
+            this.TypeName,
             this.dgGuid,
             this.modifiedDataGridViewTextBoxColumn,
             this.statusDataGridViewCheckBoxColumn,
@@ -200,6 +196,10 @@ namespace Department.SafeBox
             this.DGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DGrid_CellFormatting);
             this.DGrid.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DGrid_KeyPress);
             // 
+            // safeBindingSource
+            // 
+            this.safeBindingSource.DataSource = typeof(DepartmentDal.Classes.SafeBoxBussines);
+            // 
             // Radif
             // 
             this.Radif.HeaderText = "ردیف";
@@ -215,12 +215,12 @@ namespace Department.SafeBox
             this.dgName.Name = "dgName";
             this.dgName.ReadOnly = true;
             // 
-            // typeNameDataGridViewTextBoxColumn
+            // TypeName
             // 
-            this.typeNameDataGridViewTextBoxColumn.DataPropertyName = "TypeName";
-            this.typeNameDataGridViewTextBoxColumn.HeaderText = "نوع";
-            this.typeNameDataGridViewTextBoxColumn.Name = "typeNameDataGridViewTextBoxColumn";
-            this.typeNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.TypeName.DataPropertyName = "TypeName";
+            this.TypeName.HeaderText = "نوع";
+            this.TypeName.Name = "TypeName";
+            this.TypeName.ReadOnly = true;
             // 
             // dgGuid
             // 
@@ -275,8 +275,8 @@ namespace Department.SafeBox
             this.Load += new System.EventHandler(this.frmShowSafeBox_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmShowSafeBox_KeyDown);
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.safeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.safeBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -292,9 +292,10 @@ namespace Department.SafeBox
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.BindingSource safeBindingSource;
         private DevComponents.DotNetBar.Controls.DataGridViewX DGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn typeNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Radif;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn typeNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TypeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgGuid;
         private System.Windows.Forms.DataGridViewTextBoxColumn modifiedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn statusDataGridViewCheckBoxColumn;

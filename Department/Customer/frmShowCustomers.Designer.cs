@@ -71,9 +71,10 @@ namespace Department.Customer
             this.mnuChangeStatus = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuActivationCode = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtSearch = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuLog = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtSearch = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.mnuInsLog = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cusBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGrid)).BeginInit();
@@ -96,7 +97,7 @@ namespace Department.Customer
             // 
             // userBindingSource
             // 
-            this.userBindingSource.DataSource = typeof(UserBussines);
+            this.userBindingSource.DataSource = typeof(DepartmentDal.Classes.UserBussines);
             // 
             // lblUsers
             // 
@@ -110,7 +111,7 @@ namespace Department.Customer
             // 
             // cusBindingSource
             // 
-            this.cusBindingSource.DataSource = typeof(CustomerBussines);
+            this.cusBindingSource.DataSource = typeof(DepartmentDal.Classes.CustomerBussines);
             // 
             // DGrid
             // 
@@ -369,10 +370,11 @@ namespace Department.Customer
             this.toolStripMenuItem2,
             this.mnuActivationCode,
             this.toolStripMenuItem3,
+            this.mnuInsLog,
             this.mnuLog});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(209, 282);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(209, 316);
             // 
             // mnuIns
             // 
@@ -427,6 +429,18 @@ namespace Department.Customer
             this.mnuActivationCode.Text = "کد فعالسازی";
             this.mnuActivationCode.Click += new System.EventHandler(this.mnuActivationCode_Click);
             // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(205, 6);
+            // 
+            // mnuLog
+            // 
+            this.mnuLog.Name = "mnuLog";
+            this.mnuLog.Size = new System.Drawing.Size(208, 34);
+            this.mnuLog.Text = "مشاهده لاگ مشتری";
+            this.mnuLog.Click += new System.EventHandler(this.mnuLog_Click);
+            // 
             // txtSearch
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -446,17 +460,12 @@ namespace Department.Customer
             this.txtSearch.WatermarkText = "مورد جستجو را وارد نمایید ...";
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
-            // toolStripMenuItem3
+            // mnuInsLog
             // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(205, 6);
-            // 
-            // mnuLog
-            // 
-            this.mnuLog.Name = "mnuLog";
-            this.mnuLog.Size = new System.Drawing.Size(208, 34);
-            this.mnuLog.Text = "مشاهده لاگ مشتری";
-            this.mnuLog.Click += new System.EventHandler(this.mnuLog_Click);
+            this.mnuInsLog.Name = "mnuInsLog";
+            this.mnuInsLog.Size = new System.Drawing.Size(208, 34);
+            this.mnuInsLog.Text = "افزودن لاگ جدید";
+            this.mnuInsLog.Click += new System.EventHandler(this.mnuInsLog_Click);
             // 
             // frmShowCustomers
             // 
@@ -527,5 +536,6 @@ namespace Department.Customer
         private System.Windows.Forms.DataGridViewTextBoxColumn expireDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem mnuLog;
+        private System.Windows.Forms.ToolStripMenuItem mnuInsLog;
     }
 }

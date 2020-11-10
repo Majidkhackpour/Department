@@ -27,7 +27,10 @@ namespace Department.Users
                     {
                         if (!string.IsNullOrEmpty(item) && item.Trim() != "")
                         {
-                            res = list.Where(x => x.Name.ToLower().Contains(item.ToLower()))
+                            res = list.Where(x => x.Name.ToLower().Contains(item.ToLower())||
+                                                  x.UserName.ToLower().Contains(item.ToLower())||
+                                                  x.Mobile.ToLower().Contains(item.ToLower())||
+                                                  x.Email.ToLower().Contains(item.ToLower()))
                                 ?.ToList();
                         }
                     }

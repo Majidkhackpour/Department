@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,13 +14,58 @@ namespace Department.Customer
     public partial class frmShowCustomers : MetroForm
     {
         private bool _st = true;
+        private List<CustomerBussines> list;
+        private void Search(string search, bool status)
+        {
+            try
+            {
+                var res = list;
+                if (string.IsNullOrEmpty(search)) search = "";
+                var searchItems = search.SplitString();
+                if (searchItems?.Count > 0)
+                    foreach (var item in searchItems)
+                    {
+                        if (!string.IsNullOrEmpty(item) && item.Trim() != "")
+                        {
+                            res = list.Where(x => x.Name.ToLower().Contains(item.ToLower()) ||
+                                                  x.CompanyName.ToLower().Contains(item.ToLower()) ||
+                                                  x.Tell1.ToLower().Contains(item.ToLower()) ||
+                                                  x.Tell2.ToLower().Contains(item.ToLower()) ||
+                                                  x.AppSerial.ToLower().Contains(item.ToLower()) ||
+                                                  x.ExpireDateSh.ToLower().Contains(item.ToLower()) ||
+                                                  x.UserName.ToLower().Contains(item.ToLower()))
+                                ?.ToList();
+                        }
+                    }
+
+
+                res = res?.OrderBy(o => o.Name).ToList();
+                Invoke(new MethodInvoker(() =>
+                {
+                    if (cmbUsers.SelectedValue != null && (Guid)cmbUsers.SelectedValue != Guid.Empty)
+                        res = res?.Where(q => q.UserGuid == (Guid)cmbUsers.SelectedValue).ToList();
+                    cusBindingSource.DataSource =
+                        res?.Where(q => q.Status == status).ToList().ToSortableBindingList();
+                }));
+
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
         private async Task LoadDataAsync(bool status, string search = "")
         {
             try
             {
-                if (cmbUsers.SelectedValue == null) return;
-                var list = await CustomerBussines.GetAllAsync(search,(Guid)cmbUsers.SelectedValue);
-                cusBindingSource.DataSource = list.Where(q => q.Status == status).ToList();
+                if (InvokeRequired)
+                    Invoke(new MethodInvoker(() =>
+                    {
+                        if (cmbUsers.SelectedValue == null) return;
+                    }));
+                else if (cmbUsers.SelectedValue == null) return;
+                list = await CustomerBussines.GetAllAsync();
+                Search(search, status);
             }
             catch (Exception ex)
             {
@@ -54,7 +100,7 @@ namespace Department.Customer
                 if (_st)
                 {
                     mnuChangeStatus.Text = "مشاهده غیرفعال ها";
-                    Task.Run(()=> LoadDataAsync(ST, txtSearch.Text));
+                    Task.Run(() => LoadDataAsync(ST, txtSearch.Text));
                     mnuDelete.Text = "حذف مشتری جاری";
                 }
                 else
@@ -84,8 +130,7 @@ namespace Department.Customer
 
         private async void frmShowCustomers_Load(object sender, EventArgs e)
         {
-           await FillCmbAsync();
-           await LoadDataAsync(ST);
+            await FillCmbAsync();
         }
 
         private void DGrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -157,7 +202,8 @@ namespace Department.Customer
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question) == DialogResult.No) return;
                     var prd = await CustomerBussines.GetAsync(guid);
-                    var res = await prd.ChangeStatusAsync(false);
+                    prd.Status = false;
+                    var res = await CustomerBussines.SaveAsync(prd);
                     if (res.HasError)
                     {
                         frmNotification.PublicInfo.ShowMessage(res.ErrorMessage);
@@ -171,7 +217,8 @@ namespace Department.Customer
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question) == DialogResult.No) return;
                     var prd = await CustomerBussines.GetAsync(guid);
-                    var res = await prd.ChangeStatusAsync(true);
+                    prd.Status = true;
+                    var res = await CustomerBussines.SaveAsync(prd);
                     if (res.HasError)
                     {
                         frmNotification.PublicInfo.ShowMessage(res.ErrorMessage);
@@ -266,6 +313,24 @@ namespace Department.Customer
                 if (DGrid.CurrentRow == null) return;
                 var guid = (Guid)DGrid[dgGuid.Index, DGrid.CurrentRow.Index].Value;
                 var frm = new frmCustomerLog(guid);
+                frm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
+
+        private void mnuInsLog_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DGrid.RowCount <= 0) return;
+                if (DGrid.CurrentRow == null) return;
+                var guid = (Guid)DGrid[dgGuid.Index, DGrid.CurrentRow.Index].Value;
+                var cus = CustomerBussines.Get(guid);
+                if (cus == null) return;
+                var frm = new frmCustomerLogMain(cus);
                 frm.ShowDialog();
             }
             catch (Exception ex)

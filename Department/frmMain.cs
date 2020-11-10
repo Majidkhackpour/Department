@@ -136,7 +136,14 @@ namespace Department
 
         private void pnlSmsPanels_Click(object sender, EventArgs e)
         {
-           
+            try
+            {
+                clsLoadNewForm.LoadNewForm(new frmShowSmsPanels(), pnlContent);
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
         }
 
         private void pnlSafeBox_Click(object sender, EventArgs e)

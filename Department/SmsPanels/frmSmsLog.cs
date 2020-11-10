@@ -131,7 +131,7 @@ namespace Department.SmsPanels
         {
             try
             {
-                var api = new Sms.Api(cls.Api.Trim());
+                var api = new Sms.Api(cls.API.Trim());
                 var resList = api.Status(lstMessageId);
 
                 foreach (var item in resList)

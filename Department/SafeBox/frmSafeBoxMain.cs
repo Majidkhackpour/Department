@@ -97,8 +97,9 @@ namespace Department.SafeBox
 
                 cls.Name = txtName.Text.Trim();
                 cls.Type = rbtnBank.Checked ? EnSafeBox.Bank : EnSafeBox.Sandouq;
+                cls.Status = true;
 
-                var res = await cls.SaveAsync();
+                var res = await SafeBoxBussines.SaveAsync(cls);
                 if (res.HasError)
                 {
                     frmNotification.PublicInfo.ShowMessage(res.ErrorMessage);

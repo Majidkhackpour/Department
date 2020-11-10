@@ -2,6 +2,8 @@
 using Servicess.Interfaces.Department;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace DepartmentDal.Classes
@@ -9,6 +11,8 @@ namespace DepartmentDal.Classes
     public class CustomerLogBussines : ICustomerLog
     {
         public DateTime Date { get; set; }
+        public string DateSh => Calendar.MiladiToShamsi(Date);
+        public string Time => Date.ToShortTimeString();
         public Guid CustomerGuid { get; set; }
         public string SideName { get; set; }
         public string Description { get; set; }
@@ -18,15 +22,40 @@ namespace DepartmentDal.Classes
 
         public static async Task<List<CustomerLogBussines>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var res = await client.GetStringAsync(Utilities.WebApi + "/CustomerLog_GetAll");
+                    var user = res.FromJson<List<CustomerLogBussines>>();
+                    return user;
+                }
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+                return null;
+            }
         }
-        public static async Task<List<CustomerLogBussines>> GetAllAsync(Guid cusGuid)
+        public static async Task<ReturnedSaveFuncInfo> SaveAsync(CustomerLogBussines cls)
         {
-            throw new NotImplementedException();
-        }
-        public async Task<ReturnedSaveFuncInfo> SaveAsync()
-        {
-            throw new NotImplementedException();
+            var res = new ReturnedSaveFuncInfo();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var json = Json.ToStringJson(cls);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+                    var result = await client.PostAsync(Utilities.WebApi + "/api/CustomerLog/SaveAsync", content);
+                }
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+                res.AddReturnedValue(ex);
+            }
+
+            return res;
         }
     }
 }

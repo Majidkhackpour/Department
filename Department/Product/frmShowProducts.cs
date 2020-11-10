@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,12 +13,42 @@ namespace Department.Product
     public partial class frmShowProducts : MetroForm
     {
         private bool _st = true;
+        private List<ProductBussines> list;
+        private void Search(string search, bool status)
+        {
+            try
+            {
+                var res = list;
+                if (string.IsNullOrEmpty(search)) search = "";
+                var searchItems = search.SplitString();
+                if (searchItems?.Count > 0)
+                    foreach (var item in searchItems)
+                    {
+                        if (!string.IsNullOrEmpty(item) && item.Trim() != "")
+                        {
+                            res = list.Where(x => x.Name.ToLower().Contains(item.ToLower()) ||
+                                                  x.Code.ToLower().Contains(item.ToLower()))
+                                ?.ToList();
+                        }
+                    }
+
+                res = res?.OrderBy(o => o.Name).ToList();
+                Invoke(new MethodInvoker(() =>
+                    prdBindingSource.DataSource =
+                        res?.Where(q => q.Status == status).ToList().ToSortableBindingList()));
+
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
         private async Task LoadDataAsync(bool status, string search = "")
         {
             try
             {
-                var list = await ProductBussines.GetAllAsync(search);
-                prdBindingSource.DataSource = list.Where(q => q.Status == status).ToList().ToSortableBindingList();
+                list = await ProductBussines.GetAllAsync();
+                Search(search, status);
             }
             catch (Exception ex)
             {
@@ -34,7 +65,7 @@ namespace Department.Product
                 if (_st)
                 {
                     mnuChangeStatus.Text = "مشاهده غیرفعال ها";
-                    Task.Run(()=> LoadDataAsync(ST, txtSearch.Text));
+                    Task.Run(() => LoadDataAsync(ST, txtSearch.Text));
                     mnuDelete.Text = "حذف کالای جاری";
                 }
                 else
@@ -76,7 +107,8 @@ namespace Department.Product
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question) == DialogResult.No) return;
                     var prd = await ProductBussines.GetAsync(guid);
-                    var res = await prd.ChangeStatusAsync(false);
+                    prd.Status = false;
+                    var res = await ProductBussines.SaveAsync(prd);
                     if (res.HasError)
                     {
                         frmNotification.PublicInfo.ShowMessage(res.ErrorMessage);
@@ -90,7 +122,8 @@ namespace Department.Product
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question) == DialogResult.No) return;
                     var prd = await ProductBussines.GetAsync(guid);
-                    var res = await prd.ChangeStatusAsync(true);
+                    prd.Status = true;
+                    var res = await ProductBussines.SaveAsync(prd);
                     if (res.HasError)
                     {
                         frmNotification.PublicInfo.ShowMessage(res.ErrorMessage);

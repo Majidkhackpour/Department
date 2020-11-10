@@ -147,7 +147,7 @@
             // 
             // panelBindingSource
             // 
-            this.panelBindingSource.DataSource = typeof(EntityCache.Bussines.SmsPanelBussines);
+            this.panelBindingSource.DataSource = typeof(DepartmentDal.Classes.SmsPanelBussines);
             // 
             // DGrid
             // 

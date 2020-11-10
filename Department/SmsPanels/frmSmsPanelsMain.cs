@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using EntityCache.Bussines;
+using DepartmentDal.Classes;
 using MetroFramework.Forms;
 using Notification;
 using Services;
@@ -16,8 +16,8 @@ namespace Department.SmsPanels
             try
             {
                 txtName.Text = cls?.Name;
-                txtApi.Text = cls?.Api;
-                txtLineNumber.Text = cls?.LineNumber;
+                txtApi.Text = cls?.API;
+                txtLineNumber.Text = cls?.Sender;
             }
             catch (Exception ex)
             {
@@ -109,10 +109,12 @@ namespace Department.SmsPanels
 
 
                 cls.Name = txtName.Text.Trim();
-                cls.LineNumber = txtLineNumber.Text.Trim();
-                cls.Api = txtApi.Text.Trim();
+                cls.Sender = txtLineNumber.Text.Trim();
+                cls.API = txtApi.Text.Trim();
+                cls.IsCurrent = false;
+                cls.Status = true;
 
-                var res = await cls.SaveAsync();
+                var res = await SmsPanelBussines.SaveAsync(cls);
                 if (res.HasError)
                 {
                     frmNotification.PublicInfo.ShowMessage(res.ErrorMessage);

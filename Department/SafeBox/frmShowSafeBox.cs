@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,12 +13,41 @@ namespace Department.SafeBox
     public partial class frmShowSafeBox : MetroForm
     {
         private bool _st = true;
-        private async Task LoadDataAsync(bool status, string search = "")
+        private List<SafeBoxBussines> list;
+        private void Search(string search, bool status)
         {
             try
             {
-                var list = await SafeBoxBussines.GetAllAsync(search);
-                safeBindingSource.DataSource = list.Where(q => q.Status == status).ToList().ToSortableBindingList();
+                var res = list;
+                if (string.IsNullOrEmpty(search)) search = "";
+                var searchItems = search.SplitString();
+                if (searchItems?.Count > 0)
+                    foreach (var item in searchItems)
+                    {
+                        if (!string.IsNullOrEmpty(item) && item.Trim() != "")
+                        {
+                            res = list.Where(x => x.Name.ToLower().Contains(item.ToLower()))
+                                ?.ToList();
+                        }
+                    }
+
+                res = res?.OrderBy(o => o.Name).ToList();
+                Invoke(new MethodInvoker(() =>
+                    safeBindingSource.DataSource =
+                        res?.Where(q => q.Status == status).ToList().ToSortableBindingList()));
+
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
+        private async Task LoadDataAsync(bool status, string search = "")
+        {
+            try
+            { 
+                list = await SafeBoxBussines.GetAllAsync();
+                Search(search, status);
             }
             catch (Exception ex)
             {
@@ -76,7 +106,8 @@ namespace Department.SafeBox
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question) == DialogResult.No) return;
                     var prd = await SafeBoxBussines.GetAsync(guid);
-                    var res = await prd.ChangeStatusAsync(false);
+                    prd.Status = false;
+                    var res = await SafeBoxBussines.ChangeStatusAsync(prd);
                     if (res.HasError)
                     {
                         frmNotification.PublicInfo.ShowMessage(res.ErrorMessage);
@@ -90,7 +121,8 @@ namespace Department.SafeBox
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question) == DialogResult.No) return;
                     var prd = await SafeBoxBussines.GetAsync(guid);
-                    var res = await prd.ChangeStatusAsync(true);
+                    prd.Status = true;
+                    var res = await SafeBoxBussines.ChangeStatusAsync(prd);
                     if (res.HasError)
                     {
                         frmNotification.PublicInfo.ShowMessage(res.ErrorMessage);

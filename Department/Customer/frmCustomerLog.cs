@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -11,12 +12,15 @@ namespace Department.Customer
     public partial class frmCustomerLog : MetroForm
     {
         private Guid CusGuid;
+        private List<CustomerLogBussines> list;
         private async Task LoadDataAsync()
         {
             try
             {
-                var list = await CustomerLogBussines.GetAllAsync(CusGuid);
-                logBindingSource.DataSource = list.OrderByDescending(q => q.Date).ToList();
+                list = await CustomerLogBussines.GetAllAsync();
+                Invoke(new MethodInvoker(() =>
+                    logBindingSource.DataSource =
+                        list.Where(q => q.CustomerGuid == CusGuid).ToList().ToSortableBindingList()));
             }
             catch (Exception ex)
             {

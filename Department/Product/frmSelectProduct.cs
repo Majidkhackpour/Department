@@ -12,13 +12,43 @@ namespace Department.Product
     public partial class frmSelectProduct : MetroForm
     {
         public List<ProductBussines> PrdList { get; set; }
+        private List<ProductBussines> list;
         private string serial;
+        private void Search(string search, bool status)
+        {
+            try
+            {
+                var res = list;
+                if (string.IsNullOrEmpty(search)) search = "";
+                var searchItems = search.SplitString();
+                if (searchItems?.Count > 0)
+                    foreach (var item in searchItems)
+                    {
+                        if (!string.IsNullOrEmpty(item) && item.Trim() != "")
+                        {
+                            res = list.Where(x => x.Name.ToLower().Contains(item.ToLower()) ||
+                                                  x.Code.ToLower().Contains(item.ToLower()))
+                                ?.ToList();
+                        }
+                    }
+
+                res = res?.OrderBy(o => o.Name).ToList();
+                Invoke(new MethodInvoker(() =>
+                    prdBindingSource.DataSource =
+                        res?.Where(q => q.Status == status).ToList().ToSortableBindingList()));
+
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
         private async Task LoadDataAsync(string search = "")
         {
             try
             {
-                var list = await ProductBussines.GetAllAsync(search);
-                prdBindingSource.DataSource = list.Where(q => q.Status).ToList().ToSortableBindingList();
+                list = await ProductBussines.GetAllAsync();
+                Search(search, true);
 
 
                 if (string.IsNullOrEmpty(serial)) return;

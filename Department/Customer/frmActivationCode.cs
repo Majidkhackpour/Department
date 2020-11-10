@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using Department.Users;
 using DepartmentDal.Classes;
@@ -22,6 +21,7 @@ namespace Department.Customer
                 lblAppSerial.Text = cls?.AppSerial;
                 lblExpDate.Text = cls?.ExpireDateSh;
                 txtTerm.Text = "12";
+                txtFanni.Text = cls?.HardSerial;
             }
             catch (Exception ex)
             {
@@ -102,8 +102,9 @@ namespace Department.Customer
 
 
                 cls.ExpireDate = DateTime.Now.AddMonths(txtTerm.Value.ToString().ParseToInt());
+                cls.HardSerial = txtFanni.Text;
 
-                var res = await cls.SaveAsync();
+                var res = await CustomerBussines.SaveAsync(cls);
                 if (res.HasError)
                 {
                     frmNotification.PublicInfo.ShowMessage(res.ErrorMessage);
@@ -115,10 +116,11 @@ namespace Department.Customer
                     Guid = Guid.NewGuid(),
                     CustomerGuid = cls.Guid,
                     Description = txtDesc.Text,
-                    SideName = string.IsNullOrEmpty(side) ? "تلفن" : side
+                    SideName = string.IsNullOrEmpty(side) ? "تلفن" : side,
+                    Status = true
                 };
 
-                var res_ = await log.SaveAsync();
+                var res_ = await CustomerLogBussines.SaveAsync(log);
                 if (res_.HasError)
                 {
                     frmNotification.PublicInfo.ShowMessage(res_.ErrorMessage);
@@ -243,11 +245,11 @@ namespace Department.Customer
                            $"گروه مهندسی آراد \r\n";
 
 
-                var panel = SmsPanelBussines.GetCurrent();
+                var panel = await SmsPanelBussines.GetCurrentAsync();
                 if (panel == null) return;
-                var sApi = new Sms.Api(panel.Api.Trim());
+                var sApi = new Sms.Api(panel.API.Trim());
 
-                var res = sApi.Send(panel.LineNumber, cls.Tell1, body);
+                var res = sApi.Send(panel.Sender, cls.Tell1, body);
 
                 var smsLog = new SmsLogBussines()
                 {

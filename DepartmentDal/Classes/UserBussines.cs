@@ -84,7 +84,7 @@ namespace DepartmentDal.Classes
                 {
                     var json = Json.ToStringJson(cls);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
-                    var result = client.PostAsync(Utilities.WebApi + "/api/User/PostData", content).Result;
+                    var result = await client.PostAsync(Utilities.WebApi + "/api/User/SaveAsync", content);
                 }
             }
             catch (Exception ex)
@@ -104,7 +104,7 @@ namespace DepartmentDal.Classes
                 {
                     var json = Json.ToStringJson(cls);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
-                    var result = client.PostAsync(Utilities.WebApi + "/api/User/PostData", content).Result;
+                    var result = await client.PostAsync(Utilities.WebApi + "/api/User/SaveAsync", content);
                 }
             }
             catch (Exception ex)

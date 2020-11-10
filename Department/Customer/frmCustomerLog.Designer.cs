@@ -37,11 +37,11 @@ namespace Department.Customer
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCustomerLog));
-            this.logBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DGrid = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.logBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Radif = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateShDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.timeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateSh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sideNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.guidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,13 +49,9 @@ namespace Department.Customer
             this.statusDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerGuidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.logBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // logBindingSource
-            // 
-            this.logBindingSource.DataSource = typeof(CustomerLogBussines);
             // 
             // DGrid
             // 
@@ -85,8 +81,8 @@ namespace Department.Customer
             this.DGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Radif,
-            this.dateShDataGridViewTextBoxColumn,
-            this.timeDataGridViewTextBoxColumn,
+            this.DateSh,
+            this.Time,
             this.sideNameDataGridViewTextBoxColumn,
             this.descriptionDataGridViewTextBoxColumn,
             this.guidDataGridViewTextBoxColumn,
@@ -131,6 +127,10 @@ namespace Department.Customer
             this.DGrid.TabIndex = 55719;
             this.DGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DGrid_CellFormatting);
             // 
+            // logBindingSource
+            // 
+            this.logBindingSource.DataSource = typeof(DepartmentDal.Classes.CustomerLogBussines);
+            // 
             // Radif
             // 
             this.Radif.HeaderText = "ردیف";
@@ -138,19 +138,19 @@ namespace Department.Customer
             this.Radif.ReadOnly = true;
             this.Radif.Width = 50;
             // 
-            // dateShDataGridViewTextBoxColumn
+            // DateSh
             // 
-            this.dateShDataGridViewTextBoxColumn.DataPropertyName = "DateSh";
-            this.dateShDataGridViewTextBoxColumn.HeaderText = "تاریخ";
-            this.dateShDataGridViewTextBoxColumn.Name = "dateShDataGridViewTextBoxColumn";
-            this.dateShDataGridViewTextBoxColumn.ReadOnly = true;
+            this.DateSh.DataPropertyName = "DateSh";
+            this.DateSh.HeaderText = "تاریخ";
+            this.DateSh.Name = "DateSh";
+            this.DateSh.ReadOnly = true;
             // 
-            // timeDataGridViewTextBoxColumn
+            // Time
             // 
-            this.timeDataGridViewTextBoxColumn.DataPropertyName = "Time";
-            this.timeDataGridViewTextBoxColumn.HeaderText = "زمان";
-            this.timeDataGridViewTextBoxColumn.Name = "timeDataGridViewTextBoxColumn";
-            this.timeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.Time.DataPropertyName = "Time";
+            this.Time.HeaderText = "زمان";
+            this.Time.Name = "Time";
+            this.Time.ReadOnly = true;
             // 
             // sideNameDataGridViewTextBoxColumn
             // 
@@ -225,8 +225,8 @@ namespace Department.Customer
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmCustomerLog_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCustomerLog_KeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.logBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -235,9 +235,11 @@ namespace Department.Customer
 
         private System.Windows.Forms.BindingSource logBindingSource;
         private DevComponents.DotNetBar.Controls.DataGridViewX DGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Radif;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateShDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn timeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Radif;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateSh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Time;
         private System.Windows.Forms.DataGridViewTextBoxColumn sideNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn guidDataGridViewTextBoxColumn;

@@ -211,7 +211,7 @@ namespace Department.Customer
                 cls.Description = txtDesc.Text;
 
 
-                var res = await cls.SaveAsync();
+                var res = await CustomerBussines.SaveAsync(cls);
                 if (res.HasError)
                 {
                     frmNotification.PublicInfo.ShowMessage(res.ErrorMessage);

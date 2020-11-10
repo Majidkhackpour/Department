@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using DepartmentDal.Classes;
 using MetroFramework.Forms;
@@ -11,7 +12,7 @@ namespace Department.Product
     {
         private ProductBussines cls;
 
-        private void SetData()
+        private async Task SetDataAsync()
         {
             try
             {
@@ -20,7 +21,7 @@ namespace Department.Product
                 txtPrice.Text = cls?.Price.ToString();
                 txtBackUp.Text = cls?.BckUpPrice.ToString();
                 if (cls?.Guid == Guid.Empty)
-                    txtCode.Text = NextCode();
+                    txtCode.Text = await NextCodeAsync();
             }
             catch (Exception ex)
             {
@@ -28,11 +29,11 @@ namespace Department.Product
             }
         }
 
-        private string NextCode()
+        private async Task<string> NextCodeAsync()
         {
             try
             {
-                return ProductBussines.NextCode();
+                return await ProductBussines.NextCodeAsync();
             }
             catch (Exception ex)
             {
@@ -52,10 +53,7 @@ namespace Department.Product
             txtCode.Enabled = false;
         }
 
-        private void frmProductMain_Load(object sender, EventArgs e)
-        {
-            SetData();
-        }
+        private async void frmProductMain_Load(object sender, EventArgs e) => await SetDataAsync();
 
 
         #region TXtSetter
@@ -162,8 +160,9 @@ namespace Department.Product
                 cls.Code = txtCode.Text.Trim();
                 cls.Price = txtPrice.Text.ParseToDecimal();
                 cls.BckUpPrice = txtBackUp.Text.ParseToDecimal();
+                cls.Status = true;
 
-                var res = await cls.SaveAsync();
+                var res = await ProductBussines.SaveAsync(cls);
                 if (res.HasError)
                 {
                     frmNotification.PublicInfo.ShowMessage(res.ErrorMessage);
