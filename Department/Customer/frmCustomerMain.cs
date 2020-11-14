@@ -209,6 +209,7 @@ namespace Department.Customer
                 cls.Tell4 = txtTell4.Text;
                 cls.Email = txtEmail.Text;
                 cls.Description = txtDesc.Text;
+                cls.Status = true;
 
 
                 var res = await CustomerBussines.SaveAsync(cls);

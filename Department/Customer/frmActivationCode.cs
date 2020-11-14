@@ -11,7 +11,7 @@ namespace Department.Customer
     public partial class frmActivationCode : MetroForm
     {
         private CustomerBussines cls;
-        private string side = "";
+        private EnCustomerLogType side = EnCustomerLogType.Tell;
         private void SetData()
         {
             try
@@ -116,7 +116,7 @@ namespace Department.Customer
                     Guid = Guid.NewGuid(),
                     CustomerGuid = cls.Guid,
                     Description = txtDesc.Text,
-                    SideName = string.IsNullOrEmpty(side) ? "تلفن" : side,
+                    Side = side,
                     Status = true
                 };
 
@@ -177,47 +177,47 @@ namespace Department.Customer
 
         private void picEmail_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (string.IsNullOrWhiteSpace(txtFanni.Text))
-                {
-                    frmNotification.PublicInfo.ShowMessage("مشخصه فنی مشتری نمی تواند خالی باشد");
-                    txtFanni.Focus();
-                    return;
-                }
-                if (string.IsNullOrWhiteSpace(lblAppSerial.Text))
-                {
-                    frmNotification.PublicInfo.ShowMessage("کد فعالسازی را تولید نکرده اید");
-                    return;
-                }
-                if (string.IsNullOrEmpty(cls.Email))
-                {
-                    frmNotification.PublicInfo.ShowMessage("ایمیل مشتری جاری معتبر نمی باشد");
-                    return;
-                }
+            //try
+            //{
+            //    if (string.IsNullOrWhiteSpace(txtFanni.Text))
+            //    {
+            //        frmNotification.PublicInfo.ShowMessage("مشخصه فنی مشتری نمی تواند خالی باشد");
+            //        txtFanni.Focus();
+            //        return;
+            //    }
+            //    if (string.IsNullOrWhiteSpace(lblAppSerial.Text))
+            //    {
+            //        frmNotification.PublicInfo.ShowMessage("کد فعالسازی را تولید نکرده اید");
+            //        return;
+            //    }
+            //    if (string.IsNullOrEmpty(cls.Email))
+            //    {
+            //        frmNotification.PublicInfo.ShowMessage("ایمیل مشتری جاری معتبر نمی باشد");
+            //        return;
+            //    }
 
-                var subject = "کد ورود به برنامه";
-                var body = $"{cls.Name} عزیز \r\n" +
-                           $"مدیریت مجموعه {cls.CompanyName} \r\n" +
-                           $"سریال نرم افزار شما {lblAppSerial.Text} \r\n" +
-                           $"کد فعالسازی نرم افزار شما {lblActivationCode.Text} \r\n" +
-                           $"تاریخ اتمام پشتیبانی شما {Calendar.MiladiToShamsi(DateTime.Now.AddMonths((int)txtTerm.Value))} \r\n" +
-                           $"با سپاس ار انتخاب شما \r\n " +
-                           $"گروه مهندسی آراد \r\n" +
-                           $"تاریخ ارسال: {Calendar.MiladiToShamsi(DateTime.Now)}  {DateTime.Now.ToShortTimeString()}";
+            //    var subject = "کد ورود به برنامه";
+            //    var body = $"{cls.Name} عزیز \r\n" +
+            //               $"مدیریت مجموعه {cls.CompanyName} \r\n" +
+            //               $"سریال نرم افزار شما {lblAppSerial.Text} \r\n" +
+            //               $"کد فعالسازی نرم افزار شما {lblActivationCode.Text} \r\n" +
+            //               $"تاریخ اتمام پشتیبانی شما {Calendar.MiladiToShamsi(DateTime.Now.AddMonths((int)txtTerm.Value))} \r\n" +
+            //               $"با سپاس ار انتخاب شما \r\n " +
+            //               $"گروه مهندسی آراد \r\n" +
+            //               $"تاریخ ارسال: {Calendar.MiladiToShamsi(DateTime.Now)}  {DateTime.Now.ToShortTimeString()}";
 
-                var send = SendEmail.Send(cls.Email, subject, body);
+            //    var send = SendEmail.Send(cls.Email, subject, body);
 
-                frmNotification.PublicInfo.ShowMessage(send
-                    ? "ایمیل کدفعالسازی با موفقیت ارسال شد"
-                    : "خطا در ارسال کدفعالسازی از طریق ایمیل");
+            //    frmNotification.PublicInfo.ShowMessage(send
+            //        ? "ایمیل کدفعالسازی با موفقیت ارسال شد"
+            //        : "خطا در ارسال کدفعالسازی از طریق ایمیل");
 
-                side = "ارسال ایمیل";
-            }
-            catch (Exception ex)
-            {
-                WebErrorLog.ErrorInstence.StartErrorLog(ex);
-            }
+            //    side = "ارسال ایمیل";
+            //}
+            //catch (Exception ex)
+            //{
+            //    WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            //}
         }
 
         private async void picSms_Click(object sender, EventArgs e)
@@ -272,7 +272,7 @@ namespace Department.Customer
 
                 frmNotification.PublicInfo.ShowMessage("ارسال پیامک با موفقیت انجام شد");
 
-                side = "ارسال پیامک";
+                side = EnCustomerLogType.Sms;
             }
             catch (Exception ex)
             {

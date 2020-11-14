@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -58,6 +59,7 @@ namespace Department.Customer
         {
             try
             {
+                lblAccount.Text = lblAccount_.Text = "";
                 if (InvokeRequired)
                     Invoke(new MethodInvoker(() =>
                     {
@@ -332,6 +334,38 @@ namespace Department.Customer
                 if (cus == null) return;
                 var frm = new frmCustomerLogMain(cus);
                 frm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
+
+        private void DGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (DGrid.RowCount <= 0) return;
+                if (DGrid.CurrentRow == null) return;
+                var guid = (Guid)DGrid[dgGuid.Index, DGrid.CurrentRow.Index].Value;
+                var cus = CustomerBussines.Get(guid);
+                if (cus == null) return;
+                lblAccount.Text = Math.Abs(cus.Account).ToString("N0");
+                if (cus.Account == 0)
+                {
+                    lblAccount_.Text = "بی حساب";
+                    lblAccount_.ForeColor = Color.Black;
+                }
+                else if (cus.Account > 0)
+                {
+                    lblAccount_.Text = "بدهکار";
+                    lblAccount_.ForeColor = Color.Red;
+                }
+                else if (cus.Account < 0)
+                {
+                    lblAccount_.Text = "بستانکار";
+                    lblAccount_.ForeColor = Color.Green;
+                }
             }
             catch (Exception ex)
             {

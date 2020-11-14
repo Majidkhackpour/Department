@@ -182,6 +182,7 @@
             this.pnlReception.Style.GradientAngle = 90;
             this.pnlReception.TabIndex = 11;
             this.pnlReception.Text = "دریافت های من";
+            this.pnlReception.Click += new System.EventHandler(this.pnlReception_Click);
             // 
             // pnlCustomers
             // 
@@ -311,6 +312,7 @@
             this.pnlPardakht.Style.GradientAngle = 90;
             this.pnlPardakht.TabIndex = 11;
             this.pnlPardakht.Text = "پرداخت های من";
+            this.pnlPardakht.Click += new System.EventHandler(this.pnlPardakht_Click);
             // 
             // pnlDashbord
             // 

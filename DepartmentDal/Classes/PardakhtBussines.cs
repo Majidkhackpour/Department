@@ -9,20 +9,20 @@ using Servicess.Interfaces.Building;
 
 namespace DepartmentDal.Classes
 {
-    public class ReceptionBussines : IReception
+    public class PardakhtBussines:IPardakht
     {
         public Guid Guid { get; set; }
         public DateTime Modified { get; set; } = DateTime.Now;
-        public string DateSh => Calendar.MiladiToShamsi(CreateDate);
         public bool Status { get; set; } = true;
-        public Guid Receptor { get; set; }
-        public string ReceptorName => CustomerBussines.Get(Receptor)?.Name;
+        public Guid Payer { get; set; }
+        public string PayerName => CustomerBussines.Get(Payer)?.Name;
         public DateTime CreateDate { get; set; } = DateTime.Now;
+        public string DateSh => Calendar.MiladiToShamsi(CreateDate);
         public string Description { get; set; }
         public decimal NaqdPrice { get; set; }
         public Guid NaqdSafeBoxGuid { get; set; }
-        public decimal BankPrice { get; set; }
         public Guid BankSafeBoxGuid { get; set; }
+        public decimal BankPrice { get; set; }
         public string FishNo { get; set; }
         public decimal Check { get; set; }
         public string CheckNo { get; set; }
@@ -33,7 +33,7 @@ namespace DepartmentDal.Classes
 
 
 
-        public static async Task<ReturnedSaveFuncInfo> SaveAsync(ReceptionBussines cls)
+        public static async Task<ReturnedSaveFuncInfo> SaveAsync(PardakhtBussines cls)
         {
             var res = new ReturnedSaveFuncInfo();
             try
@@ -42,7 +42,7 @@ namespace DepartmentDal.Classes
                 {
                     var json = Json.ToStringJson(cls);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
-                    var result = await client.PostAsync(Utilities.WebApi + "/api/Reception/SaveAsync", content);
+                    var result = await client.PostAsync(Utilities.WebApi + "/api/Pardakht/SaveAsync", content);
                 }
             }
             catch (Exception ex)
@@ -53,14 +53,14 @@ namespace DepartmentDal.Classes
 
             return res;
         }
-        public static async Task<ReceptionBussines> GetAsync(Guid guid)
+        public static async Task<PardakhtBussines> GetAsync(Guid guid)
         {
             try
             {
                 using (var client = new HttpClient())
                 {
-                    var res = await client.GetStringAsync(Utilities.WebApi + "/Reception_Get/" + guid);
-                    var user = res.FromJson<ReceptionBussines>();
+                    var res = await client.GetStringAsync(Utilities.WebApi + "/Pardakht_Get/" + guid);
+                    var user = res.FromJson<PardakhtBussines>();
                     return user;
                 }
             }
@@ -70,14 +70,14 @@ namespace DepartmentDal.Classes
                 return null;
             }
         }
-        public static async Task<List<ReceptionBussines>> GetAllAsync()
+        public static async Task<List<PardakhtBussines>> GetAllAsync()
         {
             try
             {
                 using (var client = new HttpClient())
                 {
-                    var res = await client.GetStringAsync(Utilities.WebApi + "/Reception_GetAll");
-                    var user = res.FromJson<List<ReceptionBussines>>();
+                    var res = await client.GetStringAsync(Utilities.WebApi + "/Pardakht_GetAll");
+                    var user = res.FromJson<List<PardakhtBussines>>();
                     return user;
                 }
             }
@@ -87,8 +87,8 @@ namespace DepartmentDal.Classes
                 return null;
             }
         }
-        public static ReceptionBussines Get(Guid guid) => AsyncContext.Run(() => GetAsync(guid));
-        public static async Task<ReturnedSaveFuncInfo> RemoveAsync(ReceptionBussines cls)
+        public static PardakhtBussines Get(Guid guid) => AsyncContext.Run(() => GetAsync(guid));
+        public static async Task<ReturnedSaveFuncInfo> RemoveAsync(PardakhtBussines cls)
         {
             var res = new ReturnedSaveFuncInfo();
             try
@@ -97,7 +97,7 @@ namespace DepartmentDal.Classes
                 {
                     var json = Json.ToStringJson(cls);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
-                    var result = await client.PostAsync(Utilities.WebApi + "/api/Reception/SaveAsync", content);
+                    var result = await client.PostAsync(Utilities.WebApi + "/api/Pardakht/SaveAsync", content);
                 }
             }
             catch (Exception ex)

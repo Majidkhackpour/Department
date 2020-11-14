@@ -14,8 +14,10 @@ namespace DepartmentDal.Classes
         public string DateSh => Calendar.MiladiToShamsi(Date);
         public string Time => Date.ToShortTimeString();
         public Guid CustomerGuid { get; set; }
-        public string SideName { get; set; }
+        public EnCustomerLogType Side { get; set; }
+        public string SideName => Side.GetDisplay();
         public string Description { get; set; }
+        public Guid Parent { get; set; }
         public Guid Guid { get; set; }
         public DateTime Modified { get; set; }
         public bool Status { get; set; }
@@ -56,6 +58,23 @@ namespace DepartmentDal.Classes
             }
 
             return res;
+        }
+        public static async Task<CustomerLogBussines> GetLogAsync(Guid parentGuid)
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var res = await client.GetStringAsync(Utilities.WebApi + "/CustomerLog_GetLog/" + parentGuid);
+                    var user = res.FromJson<CustomerLogBussines>();
+                    return user;
+                }
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+                return null;
+            }
         }
     }
 }

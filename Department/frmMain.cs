@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
 using Department.Customer;
+using Department.Pardakht;
 using Department.Product;
+using Department.Reception;
 using Department.SafeBox;
 using Department.SmsPanels;
 using Department.Users;
@@ -183,6 +185,30 @@ namespace Department
             try
             {
                 clsLoadNewForm.LoadNewForm(new frmShowCustomers(), pnlContent);
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
+
+        private void pnlReception_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                clsLoadNewForm.LoadNewForm(new frmShowReception(), pnlContent);
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
+
+        private void pnlPardakht_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                clsLoadNewForm.LoadNewForm(new frmShowPardakht(), pnlContent);
             }
             catch (Exception ex)
             {

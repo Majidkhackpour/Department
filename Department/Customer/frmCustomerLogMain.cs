@@ -68,7 +68,7 @@ namespace Department.Customer
                     Guid = Guid.NewGuid(),
                     CustomerGuid = cls.Guid,
                     Description = txtDesc.Text,
-                    SideName =  "تلفن" ,
+                    Side = EnCustomerLogType.Tell ,
                     Status = true
                 };
 

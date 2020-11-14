@@ -72,9 +72,12 @@ namespace Department.Customer
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuActivationCode = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuInsLog = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLog = new System.Windows.Forms.ToolStripMenuItem();
             this.txtSearch = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.mnuInsLog = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblAccount = new System.Windows.Forms.Label();
+            this.lblAccount_ = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cusBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGrid)).BeginInit();
@@ -194,8 +197,9 @@ namespace Department.Customer
             this.DGrid.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.DGrid.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.DGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGrid.Size = new System.Drawing.Size(795, 530);
+            this.DGrid.Size = new System.Drawing.Size(795, 488);
             this.DGrid.TabIndex = 55718;
+            this.DGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGrid_CellClick);
             this.DGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DGrid_CellFormatting);
             // 
             // Radif
@@ -374,7 +378,7 @@ namespace Department.Customer
             this.mnuLog});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(209, 316);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(209, 294);
             // 
             // mnuIns
             // 
@@ -434,6 +438,13 @@ namespace Department.Customer
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.Size = new System.Drawing.Size(205, 6);
             // 
+            // mnuInsLog
+            // 
+            this.mnuInsLog.Name = "mnuInsLog";
+            this.mnuInsLog.Size = new System.Drawing.Size(208, 34);
+            this.mnuInsLog.Text = "افزودن لاگ جدید";
+            this.mnuInsLog.Click += new System.EventHandler(this.mnuInsLog_Click);
+            // 
             // mnuLog
             // 
             this.mnuLog.Name = "mnuLog";
@@ -460,18 +471,45 @@ namespace Department.Customer
             this.txtSearch.WatermarkText = "مورد جستجو را وارد نمایید ...";
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
-            // mnuInsLog
+            // label1
             // 
-            this.mnuInsLog.Name = "mnuInsLog";
-            this.mnuInsLog.Size = new System.Drawing.Size(208, 34);
-            this.mnuInsLog.Text = "افزودن لاگ جدید";
-            this.mnuInsLog.Click += new System.EventHandler(this.mnuInsLog_Click);
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(615, 563);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 20);
+            this.label1.TabIndex = 55726;
+            this.label1.Text = "مانده حساب:";
+            // 
+            // lblAccount
+            // 
+            this.lblAccount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblAccount.Font = new System.Drawing.Font("B Yekan", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblAccount.Location = new System.Drawing.Point(446, 558);
+            this.lblAccount.Name = "lblAccount";
+            this.lblAccount.Size = new System.Drawing.Size(163, 36);
+            this.lblAccount.TabIndex = 55726;
+            this.lblAccount.Text = "مانده حساب:";
+            this.lblAccount.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblAccount_
+            // 
+            this.lblAccount_.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblAccount_.AutoSize = true;
+            this.lblAccount_.Location = new System.Drawing.Point(370, 563);
+            this.lblAccount_.Name = "lblAccount_";
+            this.lblAccount_.Size = new System.Drawing.Size(70, 20);
+            this.lblAccount_.TabIndex = 55726;
+            this.lblAccount_.Text = "مانده حساب:";
             // 
             // frmShowCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.lblAccount_);
+            this.Controls.Add(this.lblAccount);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbUsers);
             this.Controls.Add(this.lblUsers);
             this.Controls.Add(this.DGrid);
@@ -537,5 +575,8 @@ namespace Department.Customer
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem mnuLog;
         private System.Windows.Forms.ToolStripMenuItem mnuInsLog;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblAccount;
+        private System.Windows.Forms.Label lblAccount_;
     }
 }

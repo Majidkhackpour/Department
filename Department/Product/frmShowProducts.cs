@@ -35,7 +35,7 @@ namespace Department.Product
                 res = res?.OrderBy(o => o.Name).ToList();
                 Invoke(new MethodInvoker(() =>
                     prdBindingSource.DataSource =
-                        res?.Where(q => q.Status == status).ToList().ToSortableBindingList()));
+                        res?.Where(q => q.Status == status).ToSortableBindingList()));
 
             }
             catch (Exception ex)

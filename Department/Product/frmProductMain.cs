@@ -18,8 +18,8 @@ namespace Department.Product
             {
                 txtName.Text = cls?.Name;
                 txtCode.Text = cls?.Code;
-                txtPrice.Text = cls?.Price.ToString();
-                txtBackUp.Text = cls?.BckUpPrice.ToString();
+                txtPrice.Text = cls?.Price.ToString("N0");
+                txtBackUp.Text = cls?.BckUpPrice.ToString("N0");
                 if (cls?.Guid == Guid.Empty)
                     txtCode.Text = await NextCodeAsync();
             }
