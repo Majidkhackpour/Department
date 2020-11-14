@@ -240,16 +240,19 @@ namespace Department.Pardakht
         private void txtNaqdPrice_TextChanged(object sender, EventArgs e)
         {
             SetTotal();
+            txtSetter.Three_Ziro(txtNaqdPrice);
         }
 
         private void txtBankPrice_TextChanged(object sender, EventArgs e)
         {
             SetTotal();
+            txtSetter.Three_Ziro(txtBankPrice);
         }
 
         private void txtCheckPrice_TextChanged(object sender, EventArgs e)
         {
             SetTotal();
+            txtSetter.Three_Ziro(txtCheckPrice);
         }
 
         private void txtNaqdPrice_Enter(object sender, EventArgs e)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,12 +12,21 @@ namespace DepartmentDal.Classes
 {
     public class ReceptionBussines : IReception
     {
+        private List<CustomerBussines> listCust;
+
         public Guid Guid { get; set; }
         public DateTime Modified { get; set; } = DateTime.Now;
         public string DateSh => Calendar.MiladiToShamsi(CreateDate);
         public bool Status { get; set; } = true;
         public Guid Receptor { get; set; }
-        public string ReceptorName => CustomerBussines.Get(Receptor)?.Name;
+        public string ReceptorName
+        {
+            get
+            {
+                if (listCust == null) listCust = AsyncContext.Run(CustomerBussines.GetAllAsync);
+                return listCust.FirstOrDefault(q => q.Guid == Receptor)?.Name;
+            }
+        }
         public DateTime CreateDate { get; set; } = DateTime.Now;
         public string Description { get; set; }
         public decimal NaqdPrice { get; set; }
@@ -29,6 +39,7 @@ namespace DepartmentDal.Classes
         public string SarResid { get; set; }
         public string BankName { get; set; }
         public decimal TotalPrice => NaqdPrice + BankPrice + Check;
+        public Guid UserGuid { get; set; }
 
 
 

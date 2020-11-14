@@ -30,16 +30,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProductMain));
             this.grp = new DevComponents.DotNetBar.PanelEx();
+            this.txtBackUp = new System.Windows.Forms.TextBox();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtCode = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnFinish = new DevComponents.DotNetBar.ButtonX();
             this.btnCancel = new DevComponents.DotNetBar.ButtonX();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtBackUp = new System.Windows.Forms.TextBox();
             this.grp.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,12 +70,23 @@
             this.grp.Style.GradientAngle = 90;
             this.grp.TabIndex = 0;
             // 
+            // txtBackUp
+            // 
+            this.txtBackUp.Location = new System.Drawing.Point(22, 147);
+            this.txtBackUp.Name = "txtBackUp";
+            this.txtBackUp.Size = new System.Drawing.Size(330, 27);
+            this.txtBackUp.TabIndex = 3;
+            this.txtBackUp.TextChanged += new System.EventHandler(this.txtBackUp_TextChanged);
+            this.txtBackUp.Enter += new System.EventHandler(this.txtBackUp_Enter);
+            this.txtBackUp.Leave += new System.EventHandler(this.txtBackUp_Leave);
+            // 
             // txtPrice
             // 
             this.txtPrice.Location = new System.Drawing.Point(22, 107);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(330, 27);
             this.txtPrice.TabIndex = 2;
+            this.txtPrice.TextChanged += new System.EventHandler(this.txtPrice_TextChanged);
             this.txtPrice.Enter += new System.EventHandler(this.txtPrice_Enter);
             this.txtPrice.Leave += new System.EventHandler(this.txtPrice_Leave);
             // 
@@ -96,6 +107,16 @@
             this.txtCode.TabIndex = 0;
             this.txtCode.Enter += new System.EventHandler(this.txtCode_Enter);
             this.txtCode.Leave += new System.EventHandler(this.txtCode_Leave);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Location = new System.Drawing.Point(376, 150);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(75, 20);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "مبلغ پشتیبانی";
             // 
             // label3
             // 
@@ -163,25 +184,6 @@
             this.btnCancel.Text = "انصراف (Esc)";
             this.btnCancel.TextColor = System.Drawing.Color.Black;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Location = new System.Drawing.Point(376, 150);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(75, 20);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "مبلغ پشتیبانی";
-            // 
-            // txtBackUp
-            // 
-            this.txtBackUp.Location = new System.Drawing.Point(22, 147);
-            this.txtBackUp.Name = "txtBackUp";
-            this.txtBackUp.Size = new System.Drawing.Size(330, 27);
-            this.txtBackUp.TabIndex = 3;
-            this.txtBackUp.Enter += new System.EventHandler(this.txtBackUp_Enter);
-            this.txtBackUp.Leave += new System.EventHandler(this.txtBackUp_Leave);
             // 
             // frmProductMain
             // 

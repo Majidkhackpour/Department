@@ -177,5 +177,14 @@ namespace Department.Product
             }
         }
 
+        private void txtPrice_TextChanged(object sender, EventArgs e)
+        {
+            txtSetter.Three_Ziro(txtPrice);
+        }
+
+        private void txtBackUp_TextChanged(object sender, EventArgs e)
+        {
+            txtSetter.Three_Ziro(txtBackUp);
+        }
     }
 }
