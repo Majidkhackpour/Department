@@ -178,6 +178,18 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Order\frmOrderMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Order\frmOrderMain.Designer.cs">
+      <DependentUpon>frmOrderMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Order\frmShowOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Order\frmShowOrders.Designer.cs">
+      <DependentUpon>frmShowOrders.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pardakht\frmPardakhtMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -295,6 +307,12 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Order\frmOrderMain.resx">
+      <DependentUpon>frmOrderMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Order\frmShowOrders.resx">
+      <DependentUpon>frmShowOrders.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pardakht\frmPardakhtMain.resx">
       <DependentUpon>frmPardakhtMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -352,6 +370,8 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\DepartmentDal.Classes.CustomerBussines.datasource" />
+    <None Include="Properties\DataSources\DepartmentDal.Classes.OrderBussines.datasource" />
+    <None Include="Properties\DataSources\DepartmentDal.Classes.OrderDetailBussines.datasource" />
     <None Include="Properties\DataSources\DepartmentDal.Classes.PardakhtBussines.datasource" />
     <None Include="Properties\DataSources\DepartmentDal.Classes.ReceptionBussines.datasource" />
     <None Include="Properties\DataSources\DepartmentDal.Classes.SafeBoxBussines.datasource" />

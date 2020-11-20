@@ -188,39 +188,6 @@ namespace Department.Pardakht
 
                 cls.Check = txtCheckPrice.Text.ParseToDecimal();
 
-
-
-                var pe = await CustomerBussines.GetAsync(cls.Payer);
-                if (pe != null)
-                {
-                    pe.Account -= fPrice;
-                    pe.Account += cls.TotalPrice;
-                    await CustomerBussines.SaveAsync(pe);
-                }
-
-                var log = await CustomerLogBussines.GetLogAsync(cls.Guid);
-                var desc = $"پرداخت مبلغ {lblTotalPrice.Text} ریال در تاریخ {lblDateNow.Text} {txtDesc.Text}";
-                if (log == null)
-                {
-                    log = new CustomerLogBussines()
-                    {
-                        Guid = Guid.NewGuid(),
-                        Modified = DateTime.Now,
-                        Status = true,
-                        Date = DateTime.Now,
-                        Side = EnCustomerLogType.Pardakht,
-                        CustomerGuid = cls.Payer,
-                        Description = desc,
-                        Parent = cls.Guid
-                    };
-
-                }
-                else log.Description = desc;
-
-                await CustomerLogBussines.SaveAsync(log);
-
-
-
                 var res = await PardakhtBussines.SaveAsync(cls);
                 if (res.HasError)
                 {

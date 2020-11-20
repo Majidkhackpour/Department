@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Department.Customer;
+using Department.Order;
 using Department.Pardakht;
 using Department.Product;
 using Department.Reception;
@@ -209,6 +210,18 @@ namespace Department
             try
             {
                 clsLoadNewForm.LoadNewForm(new frmShowPardakht(), pnlContent);
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
+
+        private void pnlContract_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                clsLoadNewForm.LoadNewForm(new frmShowOrders(), pnlContent);
             }
             catch (Exception ex)
             {

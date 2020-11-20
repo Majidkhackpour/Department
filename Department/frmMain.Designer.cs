@@ -269,6 +269,7 @@
             this.pnlContract.Style.GradientAngle = 90;
             this.pnlContract.TabIndex = 11;
             this.pnlContract.Text = "قراردادهای من";
+            this.pnlContract.Click += new System.EventHandler(this.pnlContract_Click);
             // 
             // pnlSmsPanels
             // 
