@@ -2,6 +2,7 @@
 using Servicess.Interfaces.Department;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace DepartmentDal.Classes
 {
     public class CustomerBussines : ICustomers
     {
+        private List<UserBussines> listUsers;
         public DateTime CreateDate { get; set; } = DateTime.Now;
         public string Name { get; set; }
         public string CompanyName { get; set; }
@@ -28,6 +30,14 @@ namespace DepartmentDal.Classes
         public string ExpireDateSh => Calendar.MiladiToShamsi(ExpireDate);
         public Guid UserGuid { get; set; }
         public decimal Account { get; set; }
+        public string UserName_
+        {
+            get
+            {
+                if (listUsers == null) listUsers = AsyncContext.Run(UserBussines.GetAllAsync);
+                return listUsers.FirstOrDefault(q => q.Guid == UserGuid)?.Name;
+            }
+        }
         public string UserName { get; set; }
         public string Password { get; set; }
         public string SiteUrl { get; set; }

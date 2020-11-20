@@ -277,6 +277,18 @@
     <Compile Include="Users\frmShowUsers.Designer.cs">
       <DependentUpon>frmShowUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Users\frmUserLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\frmUserLog.Designer.cs">
+      <DependentUpon>frmUserLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\frmUserLogFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\frmUserLogFilter.Designer.cs">
+      <DependentUpon>frmUserLogFilter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\frmUserMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -365,6 +377,12 @@
     <EmbeddedResource Include="Users\frmShowUsers.resx">
       <DependentUpon>frmShowUsers.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Users\frmUserLog.resx">
+      <DependentUpon>frmUserLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\frmUserLogFilter.resx">
+      <DependentUpon>frmUserLogFilter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Users\frmUserMain.resx">
       <DependentUpon>frmUserMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -375,6 +393,8 @@
     <None Include="Properties\DataSources\DepartmentDal.Classes.PardakhtBussines.datasource" />
     <None Include="Properties\DataSources\DepartmentDal.Classes.ReceptionBussines.datasource" />
     <None Include="Properties\DataSources\DepartmentDal.Classes.SafeBoxBussines.datasource" />
+    <None Include="Properties\DataSources\DepartmentDal.Classes.UserBussines.datasource" />
+    <None Include="Properties\DataSources\DepartmentDal.Classes.UserLogBussines.datasource" />
     <None Include="Properties\DataSources\EntityCache.Bussines.CustomerBussines.datasource" />
     <None Include="Properties\DataSources\EntityCache.Bussines.CustomerLogBussines.datasource" />
     <None Include="Properties\DataSources\EntityCache.Bussines.NoteBussines.datasource" />

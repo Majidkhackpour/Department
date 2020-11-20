@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Department.Users;
 using DepartmentDal.Classes;
 using MetroFramework.Forms;
 using Notification;
@@ -18,6 +19,7 @@ namespace Department.Order
             try
             {
                 var res = list;
+                if (res == null) return;
                 if (string.IsNullOrEmpty(search)) search = "";
                 var searchItems = search.SplitString();
                 if (searchItems?.Count > 0)
@@ -36,9 +38,12 @@ namespace Department.Order
 
                 res = res?.OrderByDescending(o => o.Modified).ToList();
                 Invoke(new MethodInvoker(() =>
+                {
+                    if (cmbUsers.SelectedValue != null && (Guid)cmbUsers.SelectedValue != Guid.Empty)
+                        res = res?.Where(q => q.UserGuid == (Guid)cmbUsers.SelectedValue).ToList();
                     orderBindingSource.DataSource =
-                        res?.ToSortableBindingList()));
-
+                        res?.ToSortableBindingList();
+                }));
             }
             catch (Exception ex)
             {
@@ -49,8 +54,33 @@ namespace Department.Order
         {
             try
             {
+                if (InvokeRequired)
+                    Invoke(new MethodInvoker(() =>
+                    {
+                        if (cmbUsers.SelectedValue == null) return;
+                    }));
+                else if (cmbUsers.SelectedValue == null) return;
                 list = await OrderBussines.GetAllAsync();
                 Search(search);
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
+        private async Task FillCmbAsync()
+        {
+            try
+            {
+
+                var list = await UserBussines.GetAllAsync();
+                list.Add(new UserBussines()
+                {
+                    Guid = Guid.Empty,
+                    Name = "[کلیه کاربران]"
+                });
+                userBindingSource.DataSource = list.OrderBy(q => q.Name);
+                cmbUsers.SelectedValue = CurentUser.CurrentUser.Guid;
             }
             catch (Exception ex)
             {
@@ -60,9 +90,21 @@ namespace Department.Order
         public frmShowOrders()
         {
             InitializeComponent();
+            if (CurentUser.CurrentUser.Type == EnUserType.Manager)
+            {
+                cmbUsers.Visible = true;
+                lblUsers.Visible = true;
+                DGrid.Columns[dgUserName.Index].Visible = true;
+            }
+            else
+            {
+                cmbUsers.Visible = false;
+                lblUsers.Visible = false;
+                DGrid.Columns[dgUserName.Index].Visible = false;
+            }
         }
 
-        private async void frmShowOrders_Load(object sender, EventArgs e) => await LoadDataAsync();
+        private async void frmShowOrders_Load(object sender, EventArgs e) => await FillCmbAsync();
 
         private void DGrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -181,6 +223,18 @@ namespace Department.Order
                 if (reception == null) return;
 
                 lblClient.Text = reception.LearningCount.ToString();
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
+
+        private async void cmbUsers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                await LoadDataAsync(txtSearch.Text);
             }
             catch (Exception ex)
             {

@@ -226,6 +226,7 @@
             this.pnlLog.Style.GradientAngle = 90;
             this.pnlLog.TabIndex = 11;
             this.pnlLog.Text = "گزارش عملکرد کاربران";
+            this.pnlLog.Click += new System.EventHandler(this.pnlLog_Click);
             // 
             // pnlUsers
             // 

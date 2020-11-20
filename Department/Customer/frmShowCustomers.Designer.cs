@@ -42,6 +42,22 @@ namespace Department.Customer
             this.lblUsers = new System.Windows.Forms.Label();
             this.cusBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DGrid = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuIns = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuView = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuChangeStatus = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuActivationCode = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuInsLog = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLog = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtSearch = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblAccount = new System.Windows.Forms.Label();
+            this.lblAccount_ = new System.Windows.Forms.Label();
             this.Radif = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.companyNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,22 +78,6 @@ namespace Department.Customer
             this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.expireDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mnuIns = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuView = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuChangeStatus = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuActivationCode = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuInsLog = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuLog = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtSearch = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblAccount = new System.Windows.Forms.Label();
-            this.lblAccount_ = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cusBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGrid)).BeginInit();
@@ -201,165 +201,6 @@ namespace Department.Customer
             this.DGrid.TabIndex = 55718;
             this.DGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGrid_CellClick);
             this.DGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DGrid_CellFormatting);
-            // 
-            // Radif
-            // 
-            this.Radif.HeaderText = "ردیف";
-            this.Radif.Name = "Radif";
-            this.Radif.ReadOnly = true;
-            this.Radif.Width = 50;
-            // 
-            // dgName
-            // 
-            this.dgName.DataPropertyName = "Name";
-            this.dgName.HeaderText = "عنوان";
-            this.dgName.Name = "dgName";
-            this.dgName.ReadOnly = true;
-            this.dgName.Width = 200;
-            // 
-            // companyNameDataGridViewTextBoxColumn
-            // 
-            this.companyNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.companyNameDataGridViewTextBoxColumn.DataPropertyName = "CompanyName";
-            this.companyNameDataGridViewTextBoxColumn.HeaderText = "عنوان مجموعه";
-            this.companyNameDataGridViewTextBoxColumn.Name = "companyNameDataGridViewTextBoxColumn";
-            this.companyNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // appSerialDataGridViewTextBoxColumn
-            // 
-            this.appSerialDataGridViewTextBoxColumn.DataPropertyName = "AppSerial";
-            this.appSerialDataGridViewTextBoxColumn.HeaderText = "سریال نرم افزار";
-            this.appSerialDataGridViewTextBoxColumn.Name = "appSerialDataGridViewTextBoxColumn";
-            this.appSerialDataGridViewTextBoxColumn.ReadOnly = true;
-            this.appSerialDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // tell1DataGridViewTextBoxColumn
-            // 
-            this.tell1DataGridViewTextBoxColumn.DataPropertyName = "Tell1";
-            this.tell1DataGridViewTextBoxColumn.HeaderText = "تلفن1";
-            this.tell1DataGridViewTextBoxColumn.Name = "tell1DataGridViewTextBoxColumn";
-            this.tell1DataGridViewTextBoxColumn.ReadOnly = true;
-            this.tell1DataGridViewTextBoxColumn.Width = 120;
-            // 
-            // tell2DataGridViewTextBoxColumn
-            // 
-            this.tell2DataGridViewTextBoxColumn.DataPropertyName = "Tell2";
-            this.tell2DataGridViewTextBoxColumn.HeaderText = "تلفن2";
-            this.tell2DataGridViewTextBoxColumn.Name = "tell2DataGridViewTextBoxColumn";
-            this.tell2DataGridViewTextBoxColumn.ReadOnly = true;
-            this.tell2DataGridViewTextBoxColumn.Width = 120;
-            // 
-            // ExpireDateSh
-            // 
-            this.ExpireDateSh.DataPropertyName = "ExpireDateSh";
-            this.ExpireDateSh.HeaderText = "انقضای پشتیبانی";
-            this.ExpireDateSh.Name = "ExpireDateSh";
-            this.ExpireDateSh.ReadOnly = true;
-            this.ExpireDateSh.Width = 150;
-            // 
-            // dgUserName
-            // 
-            this.dgUserName.DataPropertyName = "UserName";
-            this.dgUserName.HeaderText = "کاربر";
-            this.dgUserName.Name = "dgUserName";
-            this.dgUserName.ReadOnly = true;
-            // 
-            // addressDataGridViewTextBoxColumn
-            // 
-            this.addressDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
-            this.addressDataGridViewTextBoxColumn.HeaderText = "آدرس";
-            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
-            this.addressDataGridViewTextBoxColumn.ReadOnly = true;
-            this.addressDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // dgGuid
-            // 
-            this.dgGuid.DataPropertyName = "Guid";
-            this.dgGuid.HeaderText = "Guid";
-            this.dgGuid.Name = "dgGuid";
-            this.dgGuid.ReadOnly = true;
-            this.dgGuid.Visible = false;
-            // 
-            // modifiedDataGridViewTextBoxColumn
-            // 
-            this.modifiedDataGridViewTextBoxColumn.DataPropertyName = "Modified";
-            this.modifiedDataGridViewTextBoxColumn.HeaderText = "Modified";
-            this.modifiedDataGridViewTextBoxColumn.Name = "modifiedDataGridViewTextBoxColumn";
-            this.modifiedDataGridViewTextBoxColumn.ReadOnly = true;
-            this.modifiedDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // statusDataGridViewCheckBoxColumn
-            // 
-            this.statusDataGridViewCheckBoxColumn.DataPropertyName = "Status";
-            this.statusDataGridViewCheckBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewCheckBoxColumn.Name = "statusDataGridViewCheckBoxColumn";
-            this.statusDataGridViewCheckBoxColumn.ReadOnly = true;
-            this.statusDataGridViewCheckBoxColumn.Visible = false;
-            // 
-            // createDateDataGridViewTextBoxColumn
-            // 
-            this.createDateDataGridViewTextBoxColumn.DataPropertyName = "CreateDate";
-            this.createDateDataGridViewTextBoxColumn.HeaderText = "CreateDate";
-            this.createDateDataGridViewTextBoxColumn.Name = "createDateDataGridViewTextBoxColumn";
-            this.createDateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.createDateDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // nationalCodeDataGridViewTextBoxColumn
-            // 
-            this.nationalCodeDataGridViewTextBoxColumn.DataPropertyName = "NationalCode";
-            this.nationalCodeDataGridViewTextBoxColumn.HeaderText = "NationalCode";
-            this.nationalCodeDataGridViewTextBoxColumn.Name = "nationalCodeDataGridViewTextBoxColumn";
-            this.nationalCodeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nationalCodeDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // postalCodeDataGridViewTextBoxColumn
-            // 
-            this.postalCodeDataGridViewTextBoxColumn.DataPropertyName = "PostalCode";
-            this.postalCodeDataGridViewTextBoxColumn.HeaderText = "PostalCode";
-            this.postalCodeDataGridViewTextBoxColumn.Name = "postalCodeDataGridViewTextBoxColumn";
-            this.postalCodeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.postalCodeDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // tell3DataGridViewTextBoxColumn
-            // 
-            this.tell3DataGridViewTextBoxColumn.DataPropertyName = "Tell3";
-            this.tell3DataGridViewTextBoxColumn.HeaderText = "Tell3";
-            this.tell3DataGridViewTextBoxColumn.Name = "tell3DataGridViewTextBoxColumn";
-            this.tell3DataGridViewTextBoxColumn.ReadOnly = true;
-            this.tell3DataGridViewTextBoxColumn.Visible = false;
-            // 
-            // tell4DataGridViewTextBoxColumn
-            // 
-            this.tell4DataGridViewTextBoxColumn.DataPropertyName = "Tell4";
-            this.tell4DataGridViewTextBoxColumn.HeaderText = "Tell4";
-            this.tell4DataGridViewTextBoxColumn.Name = "tell4DataGridViewTextBoxColumn";
-            this.tell4DataGridViewTextBoxColumn.ReadOnly = true;
-            this.tell4DataGridViewTextBoxColumn.Visible = false;
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
-            this.emailDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.descriptionDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // expireDateDataGridViewTextBoxColumn
-            // 
-            this.expireDateDataGridViewTextBoxColumn.DataPropertyName = "ExpireDate";
-            this.expireDateDataGridViewTextBoxColumn.HeaderText = "ExpireDate";
-            this.expireDateDataGridViewTextBoxColumn.Name = "expireDateDataGridViewTextBoxColumn";
-            this.expireDateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.expireDateDataGridViewTextBoxColumn.Visible = false;
             // 
             // contextMenuStrip1
             // 
@@ -502,6 +343,165 @@ namespace Department.Customer
             this.lblAccount_.TabIndex = 55726;
             this.lblAccount_.Text = "مانده حساب:";
             // 
+            // Radif
+            // 
+            this.Radif.HeaderText = "ردیف";
+            this.Radif.Name = "Radif";
+            this.Radif.ReadOnly = true;
+            this.Radif.Width = 50;
+            // 
+            // dgName
+            // 
+            this.dgName.DataPropertyName = "Name";
+            this.dgName.HeaderText = "عنوان";
+            this.dgName.Name = "dgName";
+            this.dgName.ReadOnly = true;
+            this.dgName.Width = 200;
+            // 
+            // companyNameDataGridViewTextBoxColumn
+            // 
+            this.companyNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.companyNameDataGridViewTextBoxColumn.DataPropertyName = "CompanyName";
+            this.companyNameDataGridViewTextBoxColumn.HeaderText = "عنوان مجموعه";
+            this.companyNameDataGridViewTextBoxColumn.Name = "companyNameDataGridViewTextBoxColumn";
+            this.companyNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // appSerialDataGridViewTextBoxColumn
+            // 
+            this.appSerialDataGridViewTextBoxColumn.DataPropertyName = "AppSerial";
+            this.appSerialDataGridViewTextBoxColumn.HeaderText = "سریال نرم افزار";
+            this.appSerialDataGridViewTextBoxColumn.Name = "appSerialDataGridViewTextBoxColumn";
+            this.appSerialDataGridViewTextBoxColumn.ReadOnly = true;
+            this.appSerialDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // tell1DataGridViewTextBoxColumn
+            // 
+            this.tell1DataGridViewTextBoxColumn.DataPropertyName = "Tell1";
+            this.tell1DataGridViewTextBoxColumn.HeaderText = "تلفن1";
+            this.tell1DataGridViewTextBoxColumn.Name = "tell1DataGridViewTextBoxColumn";
+            this.tell1DataGridViewTextBoxColumn.ReadOnly = true;
+            this.tell1DataGridViewTextBoxColumn.Width = 120;
+            // 
+            // tell2DataGridViewTextBoxColumn
+            // 
+            this.tell2DataGridViewTextBoxColumn.DataPropertyName = "Tell2";
+            this.tell2DataGridViewTextBoxColumn.HeaderText = "تلفن2";
+            this.tell2DataGridViewTextBoxColumn.Name = "tell2DataGridViewTextBoxColumn";
+            this.tell2DataGridViewTextBoxColumn.ReadOnly = true;
+            this.tell2DataGridViewTextBoxColumn.Width = 120;
+            // 
+            // ExpireDateSh
+            // 
+            this.ExpireDateSh.DataPropertyName = "ExpireDateSh";
+            this.ExpireDateSh.HeaderText = "انقضای پشتیبانی";
+            this.ExpireDateSh.Name = "ExpireDateSh";
+            this.ExpireDateSh.ReadOnly = true;
+            this.ExpireDateSh.Width = 150;
+            // 
+            // dgUserName
+            // 
+            this.dgUserName.DataPropertyName = "UserName_";
+            this.dgUserName.HeaderText = "کاربر";
+            this.dgUserName.Name = "dgUserName";
+            this.dgUserName.ReadOnly = true;
+            // 
+            // addressDataGridViewTextBoxColumn
+            // 
+            this.addressDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
+            this.addressDataGridViewTextBoxColumn.HeaderText = "آدرس";
+            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
+            this.addressDataGridViewTextBoxColumn.ReadOnly = true;
+            this.addressDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // dgGuid
+            // 
+            this.dgGuid.DataPropertyName = "Guid";
+            this.dgGuid.HeaderText = "Guid";
+            this.dgGuid.Name = "dgGuid";
+            this.dgGuid.ReadOnly = true;
+            this.dgGuid.Visible = false;
+            // 
+            // modifiedDataGridViewTextBoxColumn
+            // 
+            this.modifiedDataGridViewTextBoxColumn.DataPropertyName = "Modified";
+            this.modifiedDataGridViewTextBoxColumn.HeaderText = "Modified";
+            this.modifiedDataGridViewTextBoxColumn.Name = "modifiedDataGridViewTextBoxColumn";
+            this.modifiedDataGridViewTextBoxColumn.ReadOnly = true;
+            this.modifiedDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // statusDataGridViewCheckBoxColumn
+            // 
+            this.statusDataGridViewCheckBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewCheckBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewCheckBoxColumn.Name = "statusDataGridViewCheckBoxColumn";
+            this.statusDataGridViewCheckBoxColumn.ReadOnly = true;
+            this.statusDataGridViewCheckBoxColumn.Visible = false;
+            // 
+            // createDateDataGridViewTextBoxColumn
+            // 
+            this.createDateDataGridViewTextBoxColumn.DataPropertyName = "CreateDate";
+            this.createDateDataGridViewTextBoxColumn.HeaderText = "CreateDate";
+            this.createDateDataGridViewTextBoxColumn.Name = "createDateDataGridViewTextBoxColumn";
+            this.createDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.createDateDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nationalCodeDataGridViewTextBoxColumn
+            // 
+            this.nationalCodeDataGridViewTextBoxColumn.DataPropertyName = "NationalCode";
+            this.nationalCodeDataGridViewTextBoxColumn.HeaderText = "NationalCode";
+            this.nationalCodeDataGridViewTextBoxColumn.Name = "nationalCodeDataGridViewTextBoxColumn";
+            this.nationalCodeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nationalCodeDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // postalCodeDataGridViewTextBoxColumn
+            // 
+            this.postalCodeDataGridViewTextBoxColumn.DataPropertyName = "PostalCode";
+            this.postalCodeDataGridViewTextBoxColumn.HeaderText = "PostalCode";
+            this.postalCodeDataGridViewTextBoxColumn.Name = "postalCodeDataGridViewTextBoxColumn";
+            this.postalCodeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.postalCodeDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // tell3DataGridViewTextBoxColumn
+            // 
+            this.tell3DataGridViewTextBoxColumn.DataPropertyName = "Tell3";
+            this.tell3DataGridViewTextBoxColumn.HeaderText = "Tell3";
+            this.tell3DataGridViewTextBoxColumn.Name = "tell3DataGridViewTextBoxColumn";
+            this.tell3DataGridViewTextBoxColumn.ReadOnly = true;
+            this.tell3DataGridViewTextBoxColumn.Visible = false;
+            // 
+            // tell4DataGridViewTextBoxColumn
+            // 
+            this.tell4DataGridViewTextBoxColumn.DataPropertyName = "Tell4";
+            this.tell4DataGridViewTextBoxColumn.HeaderText = "Tell4";
+            this.tell4DataGridViewTextBoxColumn.Name = "tell4DataGridViewTextBoxColumn";
+            this.tell4DataGridViewTextBoxColumn.ReadOnly = true;
+            this.tell4DataGridViewTextBoxColumn.Visible = false;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
+            this.emailDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.descriptionDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // expireDateDataGridViewTextBoxColumn
+            // 
+            this.expireDateDataGridViewTextBoxColumn.DataPropertyName = "ExpireDate";
+            this.expireDateDataGridViewTextBoxColumn.HeaderText = "ExpireDate";
+            this.expireDateDataGridViewTextBoxColumn.Name = "expireDateDataGridViewTextBoxColumn";
+            this.expireDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.expireDateDataGridViewTextBoxColumn.Visible = false;
+            // 
             // frmShowCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -552,6 +552,12 @@ namespace Department.Customer
         private System.Windows.Forms.ToolStripMenuItem mnuView;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem mnuChangeStatus;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem mnuLog;
+        private System.Windows.Forms.ToolStripMenuItem mnuInsLog;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblAccount;
+        private System.Windows.Forms.Label lblAccount_;
         private System.Windows.Forms.DataGridViewTextBoxColumn Radif;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgName;
         private System.Windows.Forms.DataGridViewTextBoxColumn companyNameDataGridViewTextBoxColumn;
@@ -572,11 +578,5 @@ namespace Department.Customer
         private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn expireDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem mnuLog;
-        private System.Windows.Forms.ToolStripMenuItem mnuInsLog;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblAccount;
-        private System.Windows.Forms.Label lblAccount_;
     }
 }

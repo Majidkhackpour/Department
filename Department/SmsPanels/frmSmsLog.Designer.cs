@@ -44,11 +44,17 @@ namespace Department.SmsPanels
             this.lblUsers = new System.Windows.Forms.Label();
             this.logBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DGrid = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuUpSingle = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuUpAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtMessage = new System.Windows.Forms.TextBox();
             this.Radif = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.senderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.reciverDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.costDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusTextDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgGuid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modifiedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -56,11 +62,6 @@ namespace Department.SmsPanels
             this.userGuidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.messageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.messageIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mnuUpSingle = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuUpAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtMessage = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGrid)).BeginInit();
@@ -150,6 +151,7 @@ namespace Department.SmsPanels
             this.reciverDataGridViewTextBoxColumn,
             this.costDataGridViewTextBoxColumn,
             this.statusTextDataGridViewTextBoxColumn,
+            this.dgUserName,
             this.dgGuid,
             this.modifiedDataGridViewTextBoxColumn,
             this.statusDataGridViewCheckBoxColumn,
@@ -196,6 +198,54 @@ namespace Department.SmsPanels
             this.DGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGrid_CellClick);
             this.DGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DGrid_CellFormatting);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Font = new System.Drawing.Font("B Yekan", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuUpSingle,
+            this.mnuUpAll});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.contextMenuStrip1.Size = new System.Drawing.Size(238, 52);
+            // 
+            // mnuUpSingle
+            // 
+            this.mnuUpSingle.Name = "mnuUpSingle";
+            this.mnuUpSingle.Size = new System.Drawing.Size(237, 24);
+            this.mnuUpSingle.Text = "بروزرسانی وضعیت پیامک جاری";
+            this.mnuUpSingle.Click += new System.EventHandler(this.mnuUpSingle_Click);
+            // 
+            // mnuUpAll
+            // 
+            this.mnuUpAll.Name = "mnuUpAll";
+            this.mnuUpAll.Size = new System.Drawing.Size(237, 24);
+            this.mnuUpAll.Text = "بروزرسانی وضعیت همه پیامک ها";
+            this.mnuUpAll.Click += new System.EventHandler(this.mnuUpAll_Click);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Location = new System.Drawing.Point(694, 511);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(108, 20);
+            this.label1.TabIndex = 55728;
+            this.label1.Text = "متن پیام ارسال شده";
+            // 
+            // txtMessage
+            // 
+            this.txtMessage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMessage.Enabled = false;
+            this.txtMessage.Location = new System.Drawing.Point(3, 508);
+            this.txtMessage.Multiline = true;
+            this.txtMessage.Name = "txtMessage";
+            this.txtMessage.ReadOnly = true;
+            this.txtMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtMessage.Size = new System.Drawing.Size(685, 82);
+            this.txtMessage.TabIndex = 55730;
+            // 
             // Radif
             // 
             this.Radif.HeaderText = "ردیف";
@@ -236,6 +286,13 @@ namespace Department.SmsPanels
             this.statusTextDataGridViewTextBoxColumn.Name = "statusTextDataGridViewTextBoxColumn";
             this.statusTextDataGridViewTextBoxColumn.ReadOnly = true;
             this.statusTextDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // dgUserName
+            // 
+            this.dgUserName.DataPropertyName = "UserName";
+            this.dgUserName.HeaderText = "کاربر";
+            this.dgUserName.Name = "dgUserName";
+            this.dgUserName.ReadOnly = true;
             // 
             // dgGuid
             // 
@@ -293,54 +350,6 @@ namespace Department.SmsPanels
             this.messageIdDataGridViewTextBoxColumn.ReadOnly = true;
             this.messageIdDataGridViewTextBoxColumn.Visible = false;
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Font = new System.Drawing.Font("B Yekan", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuUpSingle,
-            this.mnuUpAll});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(238, 52);
-            // 
-            // mnuUpSingle
-            // 
-            this.mnuUpSingle.Name = "mnuUpSingle";
-            this.mnuUpSingle.Size = new System.Drawing.Size(237, 24);
-            this.mnuUpSingle.Text = "بروزرسانی وضعیت پیامک جاری";
-            this.mnuUpSingle.Click += new System.EventHandler(this.mnuUpSingle_Click);
-            // 
-            // mnuUpAll
-            // 
-            this.mnuUpAll.Name = "mnuUpAll";
-            this.mnuUpAll.Size = new System.Drawing.Size(237, 24);
-            this.mnuUpAll.Text = "بروزرسانی وضعیت همه پیامک ها";
-            this.mnuUpAll.Click += new System.EventHandler(this.mnuUpAll_Click);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(694, 511);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(108, 20);
-            this.label1.TabIndex = 55728;
-            this.label1.Text = "متن پیام ارسال شده";
-            // 
-            // txtMessage
-            // 
-            this.txtMessage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMessage.Enabled = false;
-            this.txtMessage.Location = new System.Drawing.Point(3, 508);
-            this.txtMessage.Multiline = true;
-            this.txtMessage.Name = "txtMessage";
-            this.txtMessage.ReadOnly = true;
-            this.txtMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtMessage.Size = new System.Drawing.Size(685, 82);
-            this.txtMessage.TabIndex = 55730;
-            // 
             // frmSmsLog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -384,8 +393,11 @@ namespace Department.SmsPanels
         private DevComponents.DotNetBar.Controls.DataGridViewX DGrid;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtMessage;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Radif;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateShDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem mnuUpSingle;
+        private System.Windows.Forms.ToolStripMenuItem mnuUpAll;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Radif;
         private System.Windows.Forms.DataGridViewTextBoxColumn senderDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn reciverDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn costDataGridViewTextBoxColumn;
@@ -398,8 +410,5 @@ namespace Department.SmsPanels
         private System.Windows.Forms.DataGridViewTextBoxColumn userGuidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn messageDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn messageIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem mnuUpSingle;
-        private System.Windows.Forms.ToolStripMenuItem mnuUpAll;
     }
 }

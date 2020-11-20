@@ -13,7 +13,7 @@ namespace DepartmentDal.Classes
     public class PardakhtBussines:IPardakht
     {
         private List<CustomerBussines> listCust;
-
+        private List<UserBussines> listUsers;
         public Guid Guid { get; set; }
         public DateTime Modified { get; set; } = DateTime.Now;
         public bool Status { get; set; } = true;
@@ -40,6 +40,14 @@ namespace DepartmentDal.Classes
         public string BankName { get; set; }
         public decimal TotalPrice => NaqdPrice + BankPrice + Check;
         public Guid UserGuid { get; set; }
+        public string UserName
+        {
+            get
+            {
+                if (listUsers == null) listUsers = AsyncContext.Run(UserBussines.GetAllAsync);
+                return listUsers.FirstOrDefault(q => q.Guid == UserGuid)?.Name;
+            }
+        }
 
 
 

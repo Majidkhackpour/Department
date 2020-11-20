@@ -42,20 +42,6 @@
             this.cmbUsers = new System.Windows.Forms.ComboBox();
             this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DGrid = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.dgRadif = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateSh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.discountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customerGuidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userGuidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.learningCountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgGuid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.modifiedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuIns = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,6 +50,21 @@
             this.lblUsers = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblClient = new System.Windows.Forms.Label();
+            this.dgRadif = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateSh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.discountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerGuidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userGuidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.learningCountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgGuid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.modifiedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGrid)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -101,6 +102,7 @@
             this.cmbUsers.Size = new System.Drawing.Size(133, 28);
             this.cmbUsers.TabIndex = 55766;
             this.cmbUsers.ValueMember = "Guid";
+            this.cmbUsers.SelectedIndexChanged += new System.EventHandler(this.cmbUsers_SelectedIndexChanged);
             // 
             // userBindingSource
             // 
@@ -140,6 +142,7 @@
             this.sumDataGridViewTextBoxColumn,
             this.discountDataGridViewTextBoxColumn,
             this.totalDataGridViewTextBoxColumn,
+            this.dgUserName,
             this.dateDataGridViewTextBoxColumn,
             this.customerGuidDataGridViewTextBoxColumn,
             this.userGuidDataGridViewTextBoxColumn,
@@ -185,122 +188,6 @@
             this.DGrid.TabIndex = 55763;
             this.DGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGrid_CellClick);
             this.DGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DGrid_CellFormatting);
-            // 
-            // dgRadif
-            // 
-            this.dgRadif.HeaderText = "ردیف";
-            this.dgRadif.Name = "dgRadif";
-            this.dgRadif.ReadOnly = true;
-            this.dgRadif.Width = 50;
-            // 
-            // DateSh
-            // 
-            this.DateSh.DataPropertyName = "DateSh";
-            this.DateSh.HeaderText = "تاریخ";
-            this.DateSh.Name = "DateSh";
-            this.DateSh.ReadOnly = true;
-            // 
-            // dgCode
-            // 
-            this.dgCode.DataPropertyName = "ContractCode";
-            this.dgCode.HeaderText = "شماره قرارداد";
-            this.dgCode.Name = "dgCode";
-            this.dgCode.ReadOnly = true;
-            this.dgCode.Width = 120;
-            // 
-            // customerNameDataGridViewTextBoxColumn
-            // 
-            this.customerNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.customerNameDataGridViewTextBoxColumn.DataPropertyName = "CustomerName";
-            this.customerNameDataGridViewTextBoxColumn.HeaderText = "طرف حساب";
-            this.customerNameDataGridViewTextBoxColumn.Name = "customerNameDataGridViewTextBoxColumn";
-            this.customerNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // sumDataGridViewTextBoxColumn
-            // 
-            this.sumDataGridViewTextBoxColumn.DataPropertyName = "Sum";
-            dataGridViewCellStyle3.Format = "N0";
-            dataGridViewCellStyle3.NullValue = null;
-            this.sumDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.sumDataGridViewTextBoxColumn.HeaderText = "جمع";
-            this.sumDataGridViewTextBoxColumn.Name = "sumDataGridViewTextBoxColumn";
-            this.sumDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // discountDataGridViewTextBoxColumn
-            // 
-            this.discountDataGridViewTextBoxColumn.DataPropertyName = "Discount";
-            dataGridViewCellStyle4.Format = "N0";
-            dataGridViewCellStyle4.NullValue = null;
-            this.discountDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
-            this.discountDataGridViewTextBoxColumn.HeaderText = "تخفیف";
-            this.discountDataGridViewTextBoxColumn.Name = "discountDataGridViewTextBoxColumn";
-            this.discountDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // totalDataGridViewTextBoxColumn
-            // 
-            this.totalDataGridViewTextBoxColumn.DataPropertyName = "Total";
-            dataGridViewCellStyle5.Format = "N0";
-            dataGridViewCellStyle5.NullValue = null;
-            this.totalDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
-            this.totalDataGridViewTextBoxColumn.HeaderText = "جمع کل";
-            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
-            this.totalDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dateDataGridViewTextBoxColumn
-            // 
-            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
-            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
-            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
-            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dateDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // customerGuidDataGridViewTextBoxColumn
-            // 
-            this.customerGuidDataGridViewTextBoxColumn.DataPropertyName = "CustomerGuid";
-            this.customerGuidDataGridViewTextBoxColumn.HeaderText = "CustomerGuid";
-            this.customerGuidDataGridViewTextBoxColumn.Name = "customerGuidDataGridViewTextBoxColumn";
-            this.customerGuidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.customerGuidDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // userGuidDataGridViewTextBoxColumn
-            // 
-            this.userGuidDataGridViewTextBoxColumn.DataPropertyName = "UserGuid";
-            this.userGuidDataGridViewTextBoxColumn.HeaderText = "UserGuid";
-            this.userGuidDataGridViewTextBoxColumn.Name = "userGuidDataGridViewTextBoxColumn";
-            this.userGuidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.userGuidDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // learningCountDataGridViewTextBoxColumn
-            // 
-            this.learningCountDataGridViewTextBoxColumn.DataPropertyName = "LearningCount";
-            this.learningCountDataGridViewTextBoxColumn.HeaderText = "LearningCount";
-            this.learningCountDataGridViewTextBoxColumn.Name = "learningCountDataGridViewTextBoxColumn";
-            this.learningCountDataGridViewTextBoxColumn.ReadOnly = true;
-            this.learningCountDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // dgGuid
-            // 
-            this.dgGuid.DataPropertyName = "Guid";
-            this.dgGuid.HeaderText = "Guid";
-            this.dgGuid.Name = "dgGuid";
-            this.dgGuid.ReadOnly = true;
-            this.dgGuid.Visible = false;
-            // 
-            // modifiedDataGridViewTextBoxColumn
-            // 
-            this.modifiedDataGridViewTextBoxColumn.DataPropertyName = "Modified";
-            this.modifiedDataGridViewTextBoxColumn.HeaderText = "Modified";
-            this.modifiedDataGridViewTextBoxColumn.Name = "modifiedDataGridViewTextBoxColumn";
-            this.modifiedDataGridViewTextBoxColumn.ReadOnly = true;
-            this.modifiedDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // statusDataGridViewCheckBoxColumn
-            // 
-            this.statusDataGridViewCheckBoxColumn.DataPropertyName = "Status";
-            this.statusDataGridViewCheckBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewCheckBoxColumn.Name = "statusDataGridViewCheckBoxColumn";
-            this.statusDataGridViewCheckBoxColumn.ReadOnly = true;
-            this.statusDataGridViewCheckBoxColumn.Visible = false;
             // 
             // contextMenuStrip1
             // 
@@ -368,6 +255,129 @@
             this.lblClient.TabIndex = 55768;
             this.lblClient.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // dgRadif
+            // 
+            this.dgRadif.HeaderText = "ردیف";
+            this.dgRadif.Name = "dgRadif";
+            this.dgRadif.ReadOnly = true;
+            this.dgRadif.Width = 50;
+            // 
+            // DateSh
+            // 
+            this.DateSh.DataPropertyName = "DateSh";
+            this.DateSh.HeaderText = "تاریخ";
+            this.DateSh.Name = "DateSh";
+            this.DateSh.ReadOnly = true;
+            // 
+            // dgCode
+            // 
+            this.dgCode.DataPropertyName = "ContractCode";
+            this.dgCode.HeaderText = "شماره قرارداد";
+            this.dgCode.Name = "dgCode";
+            this.dgCode.ReadOnly = true;
+            this.dgCode.Width = 120;
+            // 
+            // customerNameDataGridViewTextBoxColumn
+            // 
+            this.customerNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.customerNameDataGridViewTextBoxColumn.DataPropertyName = "CustomerName";
+            this.customerNameDataGridViewTextBoxColumn.HeaderText = "طرف حساب";
+            this.customerNameDataGridViewTextBoxColumn.Name = "customerNameDataGridViewTextBoxColumn";
+            this.customerNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // sumDataGridViewTextBoxColumn
+            // 
+            this.sumDataGridViewTextBoxColumn.DataPropertyName = "Sum";
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = null;
+            this.sumDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.sumDataGridViewTextBoxColumn.HeaderText = "جمع";
+            this.sumDataGridViewTextBoxColumn.Name = "sumDataGridViewTextBoxColumn";
+            this.sumDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // discountDataGridViewTextBoxColumn
+            // 
+            this.discountDataGridViewTextBoxColumn.DataPropertyName = "Discount";
+            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.NullValue = null;
+            this.discountDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            this.discountDataGridViewTextBoxColumn.HeaderText = "تخفیف";
+            this.discountDataGridViewTextBoxColumn.Name = "discountDataGridViewTextBoxColumn";
+            this.discountDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // totalDataGridViewTextBoxColumn
+            // 
+            this.totalDataGridViewTextBoxColumn.DataPropertyName = "Total";
+            dataGridViewCellStyle5.Format = "N0";
+            dataGridViewCellStyle5.NullValue = null;
+            this.totalDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            this.totalDataGridViewTextBoxColumn.HeaderText = "جمع کل";
+            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
+            this.totalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dgUserName
+            // 
+            this.dgUserName.DataPropertyName = "UserName";
+            this.dgUserName.HeaderText = "کاربر";
+            this.dgUserName.Name = "dgUserName";
+            this.dgUserName.ReadOnly = true;
+            // 
+            // dateDataGridViewTextBoxColumn
+            // 
+            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
+            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dateDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // customerGuidDataGridViewTextBoxColumn
+            // 
+            this.customerGuidDataGridViewTextBoxColumn.DataPropertyName = "CustomerGuid";
+            this.customerGuidDataGridViewTextBoxColumn.HeaderText = "CustomerGuid";
+            this.customerGuidDataGridViewTextBoxColumn.Name = "customerGuidDataGridViewTextBoxColumn";
+            this.customerGuidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.customerGuidDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // userGuidDataGridViewTextBoxColumn
+            // 
+            this.userGuidDataGridViewTextBoxColumn.DataPropertyName = "UserGuid";
+            this.userGuidDataGridViewTextBoxColumn.HeaderText = "UserGuid";
+            this.userGuidDataGridViewTextBoxColumn.Name = "userGuidDataGridViewTextBoxColumn";
+            this.userGuidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.userGuidDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // learningCountDataGridViewTextBoxColumn
+            // 
+            this.learningCountDataGridViewTextBoxColumn.DataPropertyName = "LearningCount";
+            this.learningCountDataGridViewTextBoxColumn.HeaderText = "LearningCount";
+            this.learningCountDataGridViewTextBoxColumn.Name = "learningCountDataGridViewTextBoxColumn";
+            this.learningCountDataGridViewTextBoxColumn.ReadOnly = true;
+            this.learningCountDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // dgGuid
+            // 
+            this.dgGuid.DataPropertyName = "Guid";
+            this.dgGuid.HeaderText = "Guid";
+            this.dgGuid.Name = "dgGuid";
+            this.dgGuid.ReadOnly = true;
+            this.dgGuid.Visible = false;
+            // 
+            // modifiedDataGridViewTextBoxColumn
+            // 
+            this.modifiedDataGridViewTextBoxColumn.DataPropertyName = "Modified";
+            this.modifiedDataGridViewTextBoxColumn.HeaderText = "Modified";
+            this.modifiedDataGridViewTextBoxColumn.Name = "modifiedDataGridViewTextBoxColumn";
+            this.modifiedDataGridViewTextBoxColumn.ReadOnly = true;
+            this.modifiedDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // statusDataGridViewCheckBoxColumn
+            // 
+            this.statusDataGridViewCheckBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewCheckBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewCheckBoxColumn.Name = "statusDataGridViewCheckBoxColumn";
+            this.statusDataGridViewCheckBoxColumn.ReadOnly = true;
+            this.statusDataGridViewCheckBoxColumn.Visible = false;
+            // 
             // frmShowOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -424,6 +434,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn sumDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn discountDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn customerGuidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn userGuidDataGridViewTextBoxColumn;

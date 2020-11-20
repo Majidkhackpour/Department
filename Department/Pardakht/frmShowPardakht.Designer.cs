@@ -56,6 +56,7 @@
             this.bankPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.checkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgGuid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modifiedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -121,7 +122,7 @@
             this.mnuDelete});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(186, 98);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(186, 76);
             // 
             // cmbUsers
             // 
@@ -135,6 +136,7 @@
             this.cmbUsers.Size = new System.Drawing.Size(133, 28);
             this.cmbUsers.TabIndex = 55762;
             this.cmbUsers.ValueMember = "Guid";
+            this.cmbUsers.SelectedIndexChanged += new System.EventHandler(this.cmbUsers_SelectedIndexChanged);
             // 
             // DGrid
             // 
@@ -170,6 +172,7 @@
             this.bankPriceDataGridViewTextBoxColumn,
             this.checkDataGridViewTextBoxColumn,
             this.totalPriceDataGridViewTextBoxColumn,
+            this.dgUserName,
             this.descriptionDataGridViewTextBoxColumn,
             this.dgGuid,
             this.modifiedDataGridViewTextBoxColumn,
@@ -300,6 +303,13 @@
             this.totalPriceDataGridViewTextBoxColumn.Name = "totalPriceDataGridViewTextBoxColumn";
             this.totalPriceDataGridViewTextBoxColumn.ReadOnly = true;
             this.totalPriceDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // dgUserName
+            // 
+            this.dgUserName.DataPropertyName = "UserName";
+            this.dgUserName.HeaderText = "کاربر";
+            this.dgUserName.Name = "dgUserName";
+            this.dgUserName.ReadOnly = true;
             // 
             // descriptionDataGridViewTextBoxColumn
             // 
@@ -440,6 +450,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn bankPriceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn checkDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalPriceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgGuid;
         private System.Windows.Forms.DataGridViewTextBoxColumn modifiedDataGridViewTextBoxColumn;

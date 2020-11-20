@@ -2,6 +2,7 @@
 using Servicess.Interfaces.Department;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace DepartmentDal.Classes
 {
     public class SmsLogBussines : ISmsLog
     {
+        private List<UserBussines> listUsers;
         public DateTime Date { get; set; }
         public Guid UserGuid { get; set; }
         public string Sender { get; set; }
@@ -22,6 +24,14 @@ namespace DepartmentDal.Classes
         public Guid Guid { get; set; }
         public DateTime Modified { get; set; }
         public bool Status { get; set; }
+        public string UserName
+        {
+            get
+            {
+                if (listUsers == null) listUsers = AsyncContext.Run(UserBussines.GetAllAsync);
+                return listUsers.FirstOrDefault(q => q.Guid == UserGuid)?.Name;
+            }
+        }
 
         public static async Task<SmsLogBussines> GetAsync(Guid guid)
         {

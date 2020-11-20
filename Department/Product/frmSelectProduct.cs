@@ -19,6 +19,7 @@ namespace Department.Product
             try
             {
                 var res = list;
+                if (res == null) return;
                 if (string.IsNullOrEmpty(search)) search = "";
                 var searchItems = search.SplitString();
                 if (searchItems?.Count > 0)

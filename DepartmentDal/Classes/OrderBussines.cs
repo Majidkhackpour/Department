@@ -13,6 +13,7 @@ namespace DepartmentDal.Classes
     public class OrderBussines : IOrder
     {
         private List<CustomerBussines> listCust;
+        private List<UserBussines> listUsers;
         public DateTime Date { get; set; } = DateTime.Now;
         public string DateSh => Calendar.MiladiToShamsi(Date);
         public Guid CustomerGuid { get; set; }
@@ -33,6 +34,14 @@ namespace DepartmentDal.Classes
         public Guid Guid { get; set; }
         public DateTime Modified { get; set; } = DateTime.Now;
         public bool Status { get; set; }
+        public string UserName
+        {
+            get
+            {
+                if (listUsers == null) listUsers = AsyncContext.Run(UserBussines.GetAllAsync);
+                return listUsers.FirstOrDefault(q => q.Guid == UserGuid)?.Name;
+            }
+        }
         public List<OrderDetailBussines> DetList { get; set; }
 
 

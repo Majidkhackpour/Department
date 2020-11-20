@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Department.Users;
 using DepartmentDal.Classes;
 using MetroFramework.Forms;
 using Notification;
@@ -18,6 +19,7 @@ namespace Department.Reception
             try
             {
                 var res = list;
+                if (res == null) return;
                 if (string.IsNullOrEmpty(search)) search = "";
                 var searchItems = search.SplitString();
                 if (searchItems?.Count > 0)
@@ -25,16 +27,23 @@ namespace Department.Reception
                     {
                         if (!string.IsNullOrEmpty(item) && item.Trim() != "")
                         {
-                            res = list.Where(x => x.ReceptorName.ToLower().Contains(item.ToLower()))
+                            res = list.Where(x => x.ReceptorName.ToLower().Contains(item.ToLower()) ||
+                                                  x.NaqdPrice.ToString().ToLower().Contains(item.ToLower()) ||
+                                                  x.BankPrice.ToString().ToLower().Contains(item.ToLower()) ||
+                                                  x.Check.ToString().ToLower().Contains(item.ToLower()) ||
+                                                  x.TotalPrice.ToString().ToLower().Contains(item.ToLower()))
                                 ?.ToList();
                         }
                     }
 
                 res = res?.OrderByDescending(o => o.Modified).ToList();
                 Invoke(new MethodInvoker(() =>
+                {
+                    if (cmbUsers.SelectedValue != null && (Guid)cmbUsers.SelectedValue != Guid.Empty)
+                        res = res?.Where(q => q.UserGuid == (Guid)cmbUsers.SelectedValue).ToList();
                     receptionBindingSource.DataSource =
-                        res?.ToSortableBindingList()));
-
+                        res?.ToSortableBindingList();
+                }));
             }
             catch (Exception ex)
             {
@@ -45,6 +54,12 @@ namespace Department.Reception
         {
             try
             {
+                if (InvokeRequired)
+                    Invoke(new MethodInvoker(() =>
+                    {
+                        if (cmbUsers.SelectedValue == null) return;
+                    }));
+                else if (cmbUsers.SelectedValue == null) return;
                 list = await ReceptionBussines.GetAllAsync();
                 Search(search);
             }
@@ -56,6 +71,18 @@ namespace Department.Reception
         public frmShowReception()
         {
             InitializeComponent();
+            if (CurentUser.CurrentUser.Type == EnUserType.Manager)
+            {
+                cmbUsers.Visible = true;
+                lblUsers.Visible = true;
+                DGrid.Columns[dgUserName.Index].Visible = true;
+            }
+            else
+            {
+                cmbUsers.Visible = false;
+                lblUsers.Visible = false;
+                DGrid.Columns[dgUserName.Index].Visible = false;
+            }
         }
 
         private async void mnuIns_Click(object sender, System.EventArgs e)
@@ -70,8 +97,26 @@ namespace Department.Reception
                 WebErrorLog.ErrorInstence.StartErrorLog(ex);
             }
         }
+        private async Task FillCmbAsync()
+        {
+            try
+            {
 
-        private async void frmShowReception_Load(object sender, EventArgs e) => await LoadDataAsync();
+                var list = await UserBussines.GetAllAsync();
+                list.Add(new UserBussines()
+                {
+                    Guid = Guid.Empty,
+                    Name = "[کلیه کاربران]"
+                });
+                userBindingSource.DataSource = list.OrderBy(q => q.Name);
+                cmbUsers.SelectedValue = CurentUser.CurrentUser.Guid;
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
+        private async void frmShowReception_Load(object sender, EventArgs e) => await FillCmbAsync();
 
         private void DGrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -156,6 +201,18 @@ namespace Department.Reception
                 }
 
                 await LoadDataAsync();
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
+
+        private async void cmbUsers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                await LoadDataAsync(txtSearch.Text);
             }
             catch (Exception ex)
             {

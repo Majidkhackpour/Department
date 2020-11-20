@@ -58,7 +58,7 @@ namespace Department
                     Application.Exit();
                     return;
                 }
-                if(CurentUser.CurrentUser.IsBlock) Application.Exit();
+                if (CurentUser.CurrentUser.IsBlock) Application.Exit();
                 if (CurentUser.CurrentUser.Type == EnUserType.Manager)
                 {
                     pnlUsers.Visible = true;
@@ -222,6 +222,19 @@ namespace Department
             try
             {
                 clsLoadNewForm.LoadNewForm(new frmShowOrders(), pnlContent);
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
+
+        private void pnlLog_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var frm = new frmUserLogFilter();
+                frm.ShowDialog();
             }
             catch (Exception ex)
             {
