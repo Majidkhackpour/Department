@@ -187,6 +187,7 @@ namespace Department.Pardakht
                 else cls.BankSafeBoxGuid = Guid.Empty;
 
                 cls.Check = txtCheckPrice.Text.ParseToDecimal();
+                cls.UserGuid = Users.CurentUser.CurrentUser.Guid;
 
                 var res = await PardakhtBussines.SaveAsync(cls);
                 if (res.HasError)

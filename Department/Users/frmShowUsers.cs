@@ -10,7 +10,7 @@ using Services;
 
 namespace Department.Users
 {
-    public partial class frmShowUsers : MetroForm
+    public partial class frmShowUsers : Form
     {
         private bool _st = true;
         private List<UserBussines> list;

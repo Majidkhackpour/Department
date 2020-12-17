@@ -42,14 +42,6 @@
             this.cmbUsers = new System.Windows.Forms.ComboBox();
             this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DGrid = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mnuIns = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lblUsers = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblClient = new System.Windows.Forms.Label();
             this.dgRadif = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateSh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,6 +57,14 @@
             this.dgGuid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modifiedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuIns = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lblUsers = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblClient = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGrid)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -189,72 +189,6 @@
             this.DGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGrid_CellClick);
             this.DGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DGrid_CellFormatting);
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Font = new System.Drawing.Font("B Yekan", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuIns,
-            this.mnuEdit,
-            this.mnuDelete});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(186, 76);
-            // 
-            // mnuIns
-            // 
-            this.mnuIns.Name = "mnuIns";
-            this.mnuIns.Size = new System.Drawing.Size(185, 24);
-            this.mnuIns.Text = "افزودن قرارداد جدید";
-            this.mnuIns.Click += new System.EventHandler(this.mnuIns_Click);
-            // 
-            // mnuEdit
-            // 
-            this.mnuEdit.Name = "mnuEdit";
-            this.mnuEdit.Size = new System.Drawing.Size(185, 24);
-            this.mnuEdit.Text = "ویرایش قرارداد جاری";
-            this.mnuEdit.Click += new System.EventHandler(this.mnuEdit_Click);
-            // 
-            // mnuDelete
-            // 
-            this.mnuDelete.Name = "mnuDelete";
-            this.mnuDelete.Size = new System.Drawing.Size(185, 24);
-            this.mnuDelete.Text = "حذف قرارداد جاری";
-            this.mnuDelete.Click += new System.EventHandler(this.mnuDelete_Click);
-            // 
-            // orderBindingSource
-            // 
-            this.orderBindingSource.DataSource = typeof(DepartmentDal.Classes.OrderBussines);
-            // 
-            // lblUsers
-            // 
-            this.lblUsers.AutoSize = true;
-            this.lblUsers.BackColor = System.Drawing.Color.Transparent;
-            this.lblUsers.Location = new System.Drawing.Point(138, 18);
-            this.lblUsers.Name = "lblUsers";
-            this.lblUsers.Size = new System.Drawing.Size(33, 20);
-            this.lblUsers.TabIndex = 55765;
-            this.lblUsers.Text = "کاربر";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(709, 559);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 20);
-            this.label2.TabIndex = 55769;
-            this.label2.Text = "تعداد کلاینت:";
-            // 
-            // lblClient
-            // 
-            this.lblClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblClient.Font = new System.Drawing.Font("B Yekan", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblClient.Location = new System.Drawing.Point(639, 554);
-            this.lblClient.Name = "lblClient";
-            this.lblClient.Size = new System.Drawing.Size(64, 36);
-            this.lblClient.TabIndex = 55768;
-            this.lblClient.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // dgRadif
             // 
             this.dgRadif.HeaderText = "ردیف";
@@ -378,6 +312,72 @@
             this.statusDataGridViewCheckBoxColumn.ReadOnly = true;
             this.statusDataGridViewCheckBoxColumn.Visible = false;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Font = new System.Drawing.Font("B Yekan", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuIns,
+            this.mnuEdit,
+            this.mnuDelete});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.contextMenuStrip1.Size = new System.Drawing.Size(186, 76);
+            // 
+            // mnuIns
+            // 
+            this.mnuIns.Name = "mnuIns";
+            this.mnuIns.Size = new System.Drawing.Size(185, 24);
+            this.mnuIns.Text = "افزودن قرارداد جدید";
+            this.mnuIns.Click += new System.EventHandler(this.mnuIns_Click);
+            // 
+            // mnuEdit
+            // 
+            this.mnuEdit.Name = "mnuEdit";
+            this.mnuEdit.Size = new System.Drawing.Size(185, 24);
+            this.mnuEdit.Text = "ویرایش قرارداد جاری";
+            this.mnuEdit.Click += new System.EventHandler(this.mnuEdit_Click);
+            // 
+            // mnuDelete
+            // 
+            this.mnuDelete.Name = "mnuDelete";
+            this.mnuDelete.Size = new System.Drawing.Size(185, 24);
+            this.mnuDelete.Text = "حذف قرارداد جاری";
+            this.mnuDelete.Click += new System.EventHandler(this.mnuDelete_Click);
+            // 
+            // orderBindingSource
+            // 
+            this.orderBindingSource.DataSource = typeof(DepartmentDal.Classes.OrderBussines);
+            // 
+            // lblUsers
+            // 
+            this.lblUsers.AutoSize = true;
+            this.lblUsers.BackColor = System.Drawing.Color.Transparent;
+            this.lblUsers.Location = new System.Drawing.Point(138, 18);
+            this.lblUsers.Name = "lblUsers";
+            this.lblUsers.Size = new System.Drawing.Size(33, 20);
+            this.lblUsers.TabIndex = 55765;
+            this.lblUsers.Text = "کاربر";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(709, 559);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 20);
+            this.label2.TabIndex = 55769;
+            this.label2.Text = "تعداد کلاینت:";
+            // 
+            // lblClient
+            // 
+            this.lblClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblClient.Font = new System.Drawing.Font("B Yekan", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblClient.Location = new System.Drawing.Point(639, 554);
+            this.lblClient.Name = "lblClient";
+            this.lblClient.Size = new System.Drawing.Size(64, 36);
+            this.lblClient.TabIndex = 55768;
+            this.lblClient.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // frmShowOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -391,6 +391,7 @@
             this.Controls.Add(this.DGrid);
             this.Controls.Add(this.lblUsers);
             this.Font = new System.Drawing.Font("B Yekan", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -400,7 +401,6 @@
             this.Name = "frmShowOrders";
             this.Padding = new System.Windows.Forms.Padding(27, 92, 27, 31);
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Style = MetroFramework.MetroColorStyle.Silver;
             this.Load += new System.EventHandler(this.frmShowOrders_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmShowOrders_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();

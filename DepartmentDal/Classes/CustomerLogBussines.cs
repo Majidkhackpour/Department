@@ -2,9 +2,11 @@
 using Servicess.Interfaces.Department;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Nito.AsyncEx;
 
 namespace DepartmentDal.Classes
 {
@@ -40,6 +42,7 @@ namespace DepartmentDal.Classes
                 return null;
             }
         }
+        public static List<CustomerLogBussines> GetAll() => AsyncContext.Run(GetAllAsync);
         public static async Task<ReturnedSaveFuncInfo> SaveAsync(CustomerLogBussines cls)
         {
             var res = new ReturnedSaveFuncInfo();

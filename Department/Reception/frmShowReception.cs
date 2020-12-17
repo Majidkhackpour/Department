@@ -11,7 +11,7 @@ using Services;
 
 namespace Department.Reception
 {
-    public partial class frmShowReception : MetroForm
+    public partial class frmShowReception : Form
     {
         private List<ReceptionBussines> list;
         private void Search(string search)

@@ -186,6 +186,7 @@ namespace Department.Reception
                 else cls.BankSafeBoxGuid = Guid.Empty;
 
                 cls.Check = txtCheckPrice.Text.ParseToDecimal();
+                cls.UserGuid = Users.CurentUser.CurrentUser.Guid;
 
                 var res = await ReceptionBussines.SaveAsync(cls);
                 if (res.HasError)

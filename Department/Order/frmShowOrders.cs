@@ -11,7 +11,7 @@ using Services;
 
 namespace Department.Order
 {
-    public partial class frmShowOrders : MetroForm
+    public partial class frmShowOrders : Form
     {
         private List<OrderBussines> list;
         private void Search(string search)

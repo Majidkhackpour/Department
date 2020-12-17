@@ -45,7 +45,6 @@ namespace Department.SafeBox
             this.mnuIns = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.DGrid = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.safeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Radif = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +52,7 @@ namespace Department.SafeBox
             this.modifiedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.safeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.safeBindingSource)).BeginInit();
@@ -196,10 +196,6 @@ namespace Department.SafeBox
             this.DGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DGrid_CellFormatting);
             this.DGrid.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DGrid_KeyPress);
             // 
-            // safeBindingSource
-            // 
-            this.safeBindingSource.DataSource = typeof(DepartmentDal.Classes.SafeBoxBussines);
-            // 
             // Radif
             // 
             this.Radif.HeaderText = "ردیف";
@@ -254,6 +250,10 @@ namespace Department.SafeBox
             this.typeDataGridViewTextBoxColumn.ReadOnly = true;
             this.typeDataGridViewTextBoxColumn.Visible = false;
             // 
+            // safeBindingSource
+            // 
+            this.safeBindingSource.DataSource = typeof(DepartmentDal.Classes.SafeBoxBussines);
+            // 
             // frmShowSafeBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -262,6 +262,7 @@ namespace Department.SafeBox
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.DGrid);
             this.Font = new System.Drawing.Font("B Yekan", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -271,7 +272,6 @@ namespace Department.SafeBox
             this.Name = "frmShowSafeBox";
             this.Padding = new System.Windows.Forms.Padding(27, 92, 27, 31);
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Style = MetroFramework.MetroColorStyle.Silver;
             this.Load += new System.EventHandler(this.frmShowSafeBox_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmShowSafeBox_KeyDown);
             this.contextMenuStrip1.ResumeLayout(false);

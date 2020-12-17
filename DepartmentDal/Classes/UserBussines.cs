@@ -17,6 +17,7 @@ namespace DepartmentDal.Classes
         public string Mobile { get; set; }
         public string Email { get; set; }
         public bool IsBlock { get; set; }
+        public string StatusName => IsBlock ? "بله" : "خیر";
         public EnUserType Type { get; set; }
         public string TypeName => Type.GetDisplay();
         public Guid Guid { get; set; }
@@ -58,6 +59,7 @@ namespace DepartmentDal.Classes
             }
         }
         public static UserBussines Get(Guid guid) => AsyncContext.Run(() => GetAsync(guid));
+        public static UserBussines Get(string userName) => AsyncContext.Run(() => GetAsync(userName));
         public static async Task<List<UserBussines>> GetAllAsync()
         {
             try
@@ -95,6 +97,7 @@ namespace DepartmentDal.Classes
 
             return res;
         }
+        public static ReturnedSaveFuncInfo Save(UserBussines cls) => AsyncContext.Run(() => SaveAsync(cls));
         public static async Task<ReturnedSaveFuncInfo> ChangeStatusAsync(UserBussines cls)
         {
             var res = new ReturnedSaveFuncInfo();
@@ -133,5 +136,6 @@ namespace DepartmentDal.Classes
                 return false;
             }
         }
+        public static List<UserBussines> GetAll() => AsyncContext.Run(GetAllAsync);
     }
 }

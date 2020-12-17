@@ -42,22 +42,6 @@ namespace Department.Customer
             this.lblUsers = new System.Windows.Forms.Label();
             this.cusBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DGrid = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mnuIns = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuView = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuChangeStatus = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuActivationCode = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuInsLog = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuLog = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtSearch = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblAccount = new System.Windows.Forms.Label();
-            this.lblAccount_ = new System.Windows.Forms.Label();
             this.Radif = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.companyNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,6 +62,22 @@ namespace Department.Customer
             this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.expireDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuIns = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuView = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuChangeStatus = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuActivationCode = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuInsLog = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLog = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtSearch = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblAccount = new System.Windows.Forms.Label();
+            this.lblAccount_ = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cusBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGrid)).BeginInit();
@@ -201,147 +201,6 @@ namespace Department.Customer
             this.DGrid.TabIndex = 55718;
             this.DGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGrid_CellClick);
             this.DGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DGrid_CellFormatting);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Font = new System.Drawing.Font("B Yekan", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuIns,
-            this.mnuEdit,
-            this.mnuDelete,
-            this.toolStripMenuItem1,
-            this.mnuView,
-            this.mnuChangeStatus,
-            this.toolStripMenuItem2,
-            this.mnuActivationCode,
-            this.toolStripMenuItem3,
-            this.mnuInsLog,
-            this.mnuLog});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(209, 294);
-            // 
-            // mnuIns
-            // 
-            this.mnuIns.Name = "mnuIns";
-            this.mnuIns.Size = new System.Drawing.Size(208, 34);
-            this.mnuIns.Text = "افزودن مشتری جدید";
-            this.mnuIns.Click += new System.EventHandler(this.mnuIns_Click);
-            // 
-            // mnuEdit
-            // 
-            this.mnuEdit.Name = "mnuEdit";
-            this.mnuEdit.Size = new System.Drawing.Size(208, 34);
-            this.mnuEdit.Text = "ویرایش مشتری جاری جاری";
-            this.mnuEdit.Click += new System.EventHandler(this.mnuEdit_Click);
-            // 
-            // mnuDelete
-            // 
-            this.mnuDelete.Name = "mnuDelete";
-            this.mnuDelete.Size = new System.Drawing.Size(208, 34);
-            this.mnuDelete.Text = "حذف مشتری جاری";
-            this.mnuDelete.Click += new System.EventHandler(this.mnuDelete_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(205, 6);
-            // 
-            // mnuView
-            // 
-            this.mnuView.Name = "mnuView";
-            this.mnuView.Size = new System.Drawing.Size(208, 34);
-            this.mnuView.Text = "مشاهده";
-            this.mnuView.Click += new System.EventHandler(this.mnuView_Click);
-            // 
-            // mnuChangeStatus
-            // 
-            this.mnuChangeStatus.Name = "mnuChangeStatus";
-            this.mnuChangeStatus.Size = new System.Drawing.Size(208, 34);
-            this.mnuChangeStatus.Text = "مشاهده غیرفعال ها";
-            this.mnuChangeStatus.Click += new System.EventHandler(this.mnuChangeStatus_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(205, 6);
-            // 
-            // mnuActivationCode
-            // 
-            this.mnuActivationCode.Font = new System.Drawing.Font("B Yekan", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.mnuActivationCode.Name = "mnuActivationCode";
-            this.mnuActivationCode.Size = new System.Drawing.Size(208, 34);
-            this.mnuActivationCode.Text = "کد فعالسازی";
-            this.mnuActivationCode.Click += new System.EventHandler(this.mnuActivationCode_Click);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(205, 6);
-            // 
-            // mnuInsLog
-            // 
-            this.mnuInsLog.Name = "mnuInsLog";
-            this.mnuInsLog.Size = new System.Drawing.Size(208, 34);
-            this.mnuInsLog.Text = "افزودن لاگ جدید";
-            this.mnuInsLog.Click += new System.EventHandler(this.mnuInsLog_Click);
-            // 
-            // mnuLog
-            // 
-            this.mnuLog.Name = "mnuLog";
-            this.mnuLog.Size = new System.Drawing.Size(208, 34);
-            this.mnuLog.Text = "مشاهده لاگ مشتری";
-            this.mnuLog.Click += new System.EventHandler(this.mnuLog_Click);
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.txtSearch.Border.Class = "TextBoxBorder";
-            this.txtSearch.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtSearch.Location = new System.Drawing.Point(177, 29);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.PreventEnterBeep = true;
-            this.txtSearch.Size = new System.Drawing.Size(509, 27);
-            this.txtSearch.TabIndex = 55719;
-            this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtSearch.WatermarkText = "مورد جستجو را وارد نمایید ...";
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(615, 563);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 20);
-            this.label1.TabIndex = 55726;
-            this.label1.Text = "مانده حساب:";
-            // 
-            // lblAccount
-            // 
-            this.lblAccount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblAccount.Font = new System.Drawing.Font("B Yekan", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblAccount.Location = new System.Drawing.Point(446, 558);
-            this.lblAccount.Name = "lblAccount";
-            this.lblAccount.Size = new System.Drawing.Size(163, 36);
-            this.lblAccount.TabIndex = 55726;
-            this.lblAccount.Text = "مانده حساب:";
-            this.lblAccount.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lblAccount_
-            // 
-            this.lblAccount_.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblAccount_.AutoSize = true;
-            this.lblAccount_.Location = new System.Drawing.Point(370, 563);
-            this.lblAccount_.Name = "lblAccount_";
-            this.lblAccount_.Size = new System.Drawing.Size(70, 20);
-            this.lblAccount_.TabIndex = 55726;
-            this.lblAccount_.Text = "مانده حساب:";
             // 
             // Radif
             // 
@@ -502,6 +361,147 @@ namespace Department.Customer
             this.expireDateDataGridViewTextBoxColumn.ReadOnly = true;
             this.expireDateDataGridViewTextBoxColumn.Visible = false;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Font = new System.Drawing.Font("B Yekan", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuIns,
+            this.mnuEdit,
+            this.mnuDelete,
+            this.toolStripMenuItem1,
+            this.mnuView,
+            this.mnuChangeStatus,
+            this.toolStripMenuItem2,
+            this.mnuActivationCode,
+            this.toolStripMenuItem3,
+            this.mnuInsLog,
+            this.mnuLog});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.contextMenuStrip1.Size = new System.Drawing.Size(209, 294);
+            // 
+            // mnuIns
+            // 
+            this.mnuIns.Name = "mnuIns";
+            this.mnuIns.Size = new System.Drawing.Size(208, 34);
+            this.mnuIns.Text = "افزودن مشتری جدید";
+            this.mnuIns.Click += new System.EventHandler(this.mnuIns_Click);
+            // 
+            // mnuEdit
+            // 
+            this.mnuEdit.Name = "mnuEdit";
+            this.mnuEdit.Size = new System.Drawing.Size(208, 34);
+            this.mnuEdit.Text = "ویرایش مشتری جاری جاری";
+            this.mnuEdit.Click += new System.EventHandler(this.mnuEdit_Click);
+            // 
+            // mnuDelete
+            // 
+            this.mnuDelete.Name = "mnuDelete";
+            this.mnuDelete.Size = new System.Drawing.Size(208, 34);
+            this.mnuDelete.Text = "حذف مشتری جاری";
+            this.mnuDelete.Click += new System.EventHandler(this.mnuDelete_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(205, 6);
+            // 
+            // mnuView
+            // 
+            this.mnuView.Name = "mnuView";
+            this.mnuView.Size = new System.Drawing.Size(208, 34);
+            this.mnuView.Text = "مشاهده";
+            this.mnuView.Click += new System.EventHandler(this.mnuView_Click);
+            // 
+            // mnuChangeStatus
+            // 
+            this.mnuChangeStatus.Name = "mnuChangeStatus";
+            this.mnuChangeStatus.Size = new System.Drawing.Size(208, 34);
+            this.mnuChangeStatus.Text = "مشاهده غیرفعال ها";
+            this.mnuChangeStatus.Click += new System.EventHandler(this.mnuChangeStatus_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(205, 6);
+            // 
+            // mnuActivationCode
+            // 
+            this.mnuActivationCode.Font = new System.Drawing.Font("B Yekan", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.mnuActivationCode.Name = "mnuActivationCode";
+            this.mnuActivationCode.Size = new System.Drawing.Size(208, 34);
+            this.mnuActivationCode.Text = "کد فعالسازی";
+            this.mnuActivationCode.Click += new System.EventHandler(this.mnuActivationCode_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(205, 6);
+            // 
+            // mnuInsLog
+            // 
+            this.mnuInsLog.Name = "mnuInsLog";
+            this.mnuInsLog.Size = new System.Drawing.Size(208, 34);
+            this.mnuInsLog.Text = "افزودن لاگ جدید";
+            this.mnuInsLog.Click += new System.EventHandler(this.mnuInsLog_Click);
+            // 
+            // mnuLog
+            // 
+            this.mnuLog.Name = "mnuLog";
+            this.mnuLog.Size = new System.Drawing.Size(208, 34);
+            this.mnuLog.Text = "مشاهده لاگ مشتری";
+            this.mnuLog.Click += new System.EventHandler(this.mnuLog_Click);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.txtSearch.Border.Class = "TextBoxBorder";
+            this.txtSearch.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtSearch.Location = new System.Drawing.Point(177, 29);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.PreventEnterBeep = true;
+            this.txtSearch.Size = new System.Drawing.Size(509, 27);
+            this.txtSearch.TabIndex = 55719;
+            this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSearch.WatermarkText = "مورد جستجو را وارد نمایید ...";
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(615, 563);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 20);
+            this.label1.TabIndex = 55726;
+            this.label1.Text = "مانده حساب:";
+            // 
+            // lblAccount
+            // 
+            this.lblAccount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblAccount.Font = new System.Drawing.Font("B Yekan", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblAccount.Location = new System.Drawing.Point(446, 558);
+            this.lblAccount.Name = "lblAccount";
+            this.lblAccount.Size = new System.Drawing.Size(163, 36);
+            this.lblAccount.TabIndex = 55726;
+            this.lblAccount.Text = "مانده حساب:";
+            this.lblAccount.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblAccount_
+            // 
+            this.lblAccount_.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblAccount_.AutoSize = true;
+            this.lblAccount_.Location = new System.Drawing.Point(370, 563);
+            this.lblAccount_.Name = "lblAccount_";
+            this.lblAccount_.Size = new System.Drawing.Size(70, 20);
+            this.lblAccount_.TabIndex = 55726;
+            this.lblAccount_.Text = "مانده حساب:";
+            // 
             // frmShowCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -515,6 +515,7 @@ namespace Department.Customer
             this.Controls.Add(this.DGrid);
             this.Controls.Add(this.txtSearch);
             this.Font = new System.Drawing.Font("B Yekan", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -523,7 +524,6 @@ namespace Department.Customer
             this.Name = "frmShowCustomers";
             this.Padding = new System.Windows.Forms.Padding(27, 92, 27, 31);
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Style = MetroFramework.MetroColorStyle.Silver;
             this.Load += new System.EventHandler(this.frmShowCustomers_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmShowCustomers_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();

@@ -72,6 +72,7 @@ namespace DepartmentDal.Classes
 
             return res;
         }
+        public static ReturnedSaveFuncInfo Save(PardakhtBussines cls) => AsyncContext.Run(() => SaveAsync(cls));
         public static async Task<PardakhtBussines> GetAsync(Guid guid)
         {
             try
@@ -106,6 +107,7 @@ namespace DepartmentDal.Classes
                 return null;
             }
         }
+        public static List<PardakhtBussines> GetAll() => AsyncContext.Run(GetAllAsync);
         public static PardakhtBussines Get(Guid guid) => AsyncContext.Run(() => GetAsync(guid));
         public static async Task<ReturnedSaveFuncInfo> RemoveAsync(PardakhtBussines cls)
         {

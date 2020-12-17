@@ -11,7 +11,7 @@ using Services;
 
 namespace Department.Pardakht
 {
-    public partial class frmShowPardakht : MetroForm
+    public partial class frmShowPardakht : Form
     {
         private List<PardakhtBussines> list;
         private void Search(string search)

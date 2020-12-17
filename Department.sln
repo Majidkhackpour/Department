@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sms", "..\..\Sms\Sms\Sms\Sm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DepartmentDal", "DepartmentDal\DepartmentDal.csproj", "{29808FAC-36C9-43BC-AD9A-343D03B6F114}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsSerivces", "..\..\Services\Services\WindowsSerivces\WindowsSerivces.csproj", "{BF7C9BB1-0E5A-44B9-AA1A-59A9A2795EF5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{29808FAC-36C9-43BC-AD9A-343D03B6F114}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29808FAC-36C9-43BC-AD9A-343D03B6F114}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29808FAC-36C9-43BC-AD9A-343D03B6F114}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF7C9BB1-0E5A-44B9-AA1A-59A9A2795EF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF7C9BB1-0E5A-44B9-AA1A-59A9A2795EF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF7C9BB1-0E5A-44B9-AA1A-59A9A2795EF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF7C9BB1-0E5A-44B9-AA1A-59A9A2795EF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

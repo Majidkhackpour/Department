@@ -10,7 +10,7 @@ using Services;
 
 namespace Department.SmsPanels
 {
-    public partial class frmShowSmsPanels : MetroForm
+    public partial class frmShowSmsPanels : Form
     {
         private bool _st = true;
         private List<SmsPanelBussines> list;

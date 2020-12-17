@@ -72,6 +72,7 @@ namespace DepartmentDal.Classes
 
             return res;
         }
+        public static ReturnedSaveFuncInfo Save(ReceptionBussines cls) => AsyncContext.Run(() => SaveAsync(cls));
         public static async Task<ReceptionBussines> GetAsync(Guid guid)
         {
             try
@@ -106,6 +107,7 @@ namespace DepartmentDal.Classes
                 return null;
             }
         }
+        public static List<ReceptionBussines> GetAll() => AsyncContext.Run(GetAllAsync);
         public static ReceptionBussines Get(Guid guid) => AsyncContext.Run(() => GetAsync(guid));
         public static async Task<ReturnedSaveFuncInfo> RemoveAsync(ReceptionBussines cls)
         {

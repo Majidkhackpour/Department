@@ -10,7 +10,7 @@ using Services;
 
 namespace Department.SafeBox
 {
-    public partial class frmShowSafeBox : MetroForm
+    public partial class frmShowSafeBox : Form
     {
         private bool _st = true;
         private List<SafeBoxBussines> list;

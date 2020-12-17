@@ -2,6 +2,7 @@
 using Servicess.Interfaces.Department;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,6 +55,7 @@ namespace DepartmentDal.Classes
                 return null;
             }
         }
+        public static List<SafeBoxBussines> GetAll() => AsyncContext.Run(GetAllAsync);
         public static SafeBoxBussines Get(Guid guid) => AsyncContext.Run(() => GetAsync(guid));
         public static async Task<ReturnedSaveFuncInfo> SaveAsync(SafeBoxBussines cls)
         {
@@ -95,5 +97,27 @@ namespace DepartmentDal.Classes
 
             return res;
         }
+        public static List<SafeBoxBussines> GetAllBank() =>
+            (AsyncContext.Run(GetAllAsync))?.Where(q => q.Type == EnSafeBox.Bank)?.ToList();
+        public static List<SafeBoxBussines> GetAllSandouq() =>
+            (AsyncContext.Run(GetAllAsync))?.Where(q => q.Type == EnSafeBox.Sandouq)?.ToList();
+        public static async Task<SafeBoxBussines> GetAsync(string name)
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var res = await client.GetStringAsync(Utilities.WebApi + "/SafeBox_GetByName/" + name);
+                    var user = res.FromJson<SafeBoxBussines>();
+                    return user;
+                }
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+                return null;
+            }
+        }
+        public static SafeBoxBussines Get(string name) => AsyncContext.Run(() => GetAsync(name));
     }
 }

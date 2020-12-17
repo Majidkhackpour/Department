@@ -10,7 +10,7 @@ using Services;
 
 namespace Department.Product
 {
-    public partial class frmShowProducts : MetroForm
+    public partial class frmShowProducts : Form
     {
         private bool _st = true;
         private List<ProductBussines> list;

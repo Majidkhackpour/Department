@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Nito.AsyncEx;
 
 namespace DepartmentDal.Classes
 {
@@ -37,6 +38,7 @@ namespace DepartmentDal.Classes
                 return null;
             }
         }
+        public static List<UserLogBussines> GetAll(Guid userGuid) => AsyncContext.Run(() => GetAllAsync(userGuid));
 
     }
 }

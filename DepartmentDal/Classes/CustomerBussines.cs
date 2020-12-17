@@ -30,6 +30,15 @@ namespace DepartmentDal.Classes
         public string ExpireDateSh => Calendar.MiladiToShamsi(ExpireDate);
         public Guid UserGuid { get; set; }
         public decimal Account { get; set; }
+        public string AccountFlag
+        {
+            get
+            {
+                if (Account < 0) return "بستانکار";
+                if (Account > 0) return "بدهکار";
+                return "بی حساب";
+            }
+        }
         public string UserName_
         {
             get
@@ -42,6 +51,7 @@ namespace DepartmentDal.Classes
         public string Password { get; set; }
         public string SiteUrl { get; set; }
         public string HardSerial { get; set; }
+        public string LkSerial { get; set; }
         public Guid Guid { get; set; }
         public DateTime Modified { get; set; } = DateTime.Now;
         public bool Status { get; set; }
@@ -63,7 +73,25 @@ namespace DepartmentDal.Classes
                 return null;
             }
         }
+        public static async Task<CustomerBussines> GetAsync(string name)
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var res = await client.GetStringAsync(Utilities.WebApi + "/Customer_GetByName/" + name);
+                    var user = res.FromJson<CustomerBussines>();
+                    return user;
+                }
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+                return null;
+            }
+        }
         public static CustomerBussines Get(Guid guid) => AsyncContext.Run(() => GetAsync(guid));
+        public static CustomerBussines Get(string name) => AsyncContext.Run(() => GetAsync(name));
         public static async Task<List<CustomerBussines>> GetAllAsync()
         {
             try
@@ -81,6 +109,7 @@ namespace DepartmentDal.Classes
                 return null;
             }
         }
+        public static List<CustomerBussines> GetAll() => AsyncContext.Run(GetAllAsync);
         public static async Task<ReturnedSaveFuncInfo> SaveAsync(CustomerBussines cls)
         {
             var res = new ReturnedSaveFuncInfo();
@@ -101,5 +130,6 @@ namespace DepartmentDal.Classes
 
             return res;
         }
+        public static ReturnedSaveFuncInfo Save(CustomerBussines cls) => AsyncContext.Run(() => SaveAsync(cls));
     }
 }

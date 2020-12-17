@@ -14,6 +14,13 @@ namespace DepartmentDal.Classes
     {
         private List<CustomerBussines> listCust;
         private List<UserBussines> listUsers;
+        public static event Func<OrderDetailBussines, Task> OnDetailsChanged;
+        public static void RaiseEvent(OrderDetailBussines det)
+        {
+            var handler = OnDetailsChanged;
+            if (handler != null)
+                OnDetailsChanged(det);
+        }
         public DateTime Date { get; set; } = DateTime.Now;
         public string DateSh => Calendar.MiladiToShamsi(Date);
         public Guid CustomerGuid { get; set; }
@@ -67,6 +74,7 @@ namespace DepartmentDal.Classes
 
             return res;
         }
+        public static ReturnedSaveFuncInfo Save(OrderBussines cls) => AsyncContext.Run(() => SaveAsync(cls));
         public static async Task<OrderBussines> GetAsync(Guid guid)
         {
             try
@@ -101,6 +109,7 @@ namespace DepartmentDal.Classes
                 return null;
             }
         }
+        public static List<OrderBussines> GetAll() => AsyncContext.Run(GetAllAsync);
         public static OrderBussines Get(Guid guid) => AsyncContext.Run(() => GetAsync(guid));
         public static async Task<ReturnedSaveFuncInfo> RemoveAsync(OrderBussines cls)
         {
@@ -139,5 +148,6 @@ namespace DepartmentDal.Classes
                 return null;
             }
         }
+        public static string NextCode() => AsyncContext.Run(NextCodeAsync);
     }
 }

@@ -429,6 +429,10 @@
       <Project>{dcb5bde2-6238-422d-ad4e-f53afce9bf30}</Project>
       <Name>Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Services\Services\WindowsSerivces\WindowsSerivces.csproj">
+      <Project>{bf7c9bb1-0e5a-44b9-aa1a-59a9a2795ef5}</Project>
+      <Name>WindowsSerivces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Sms\Sms\Sms\Sms.csproj">
       <Project>{b3fb214c-0212-4375-a063-742b58bcb925}</Project>
       <Name>Sms</Name>
@@ -457,7 +461,18 @@
   <ItemGroup>
     <None Include="Resources\Mail3.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\015.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\077.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\078.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

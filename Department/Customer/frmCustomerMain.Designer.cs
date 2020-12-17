@@ -57,6 +57,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnFinish = new DevComponents.DotNetBar.ButtonX();
             this.btnCancel = new DevComponents.DotNetBar.ButtonX();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtLkSeral = new System.Windows.Forms.TextBox();
+            this.btnLkSerial = new DevComponents.DotNetBar.ButtonX();
             this.grp.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,6 +67,7 @@
             // 
             this.grp.CanvasColor = System.Drawing.SystemColors.Control;
             this.grp.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.grp.Controls.Add(this.btnLkSerial);
             this.grp.Controls.Add(this.btnSearch);
             this.grp.Controls.Add(this.txtAddress);
             this.grp.Controls.Add(this.txtDesc);
@@ -71,8 +75,10 @@
             this.grp.Controls.Add(this.txtCompanyName);
             this.grp.Controls.Add(this.label9);
             this.grp.Controls.Add(this.label1);
+            this.grp.Controls.Add(this.txtLkSeral);
             this.grp.Controls.Add(this.txtPostalCode);
             this.grp.Controls.Add(this.txtTell4);
+            this.grp.Controls.Add(this.label13);
             this.grp.Controls.Add(this.txtAppSerial);
             this.grp.Controls.Add(this.label11);
             this.grp.Controls.Add(this.label8);
@@ -132,12 +138,12 @@
             // 
             // txtDesc
             // 
-            this.txtDesc.Location = new System.Drawing.Point(25, 214);
+            this.txtDesc.Location = new System.Drawing.Point(25, 258);
             this.txtDesc.Multiline = true;
             this.txtDesc.Name = "txtDesc";
             this.txtDesc.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDesc.Size = new System.Drawing.Size(279, 189);
-            this.txtDesc.TabIndex = 12;
+            this.txtDesc.Size = new System.Drawing.Size(279, 145);
+            this.txtDesc.TabIndex = 14;
             // 
             // txtTell2
             // 
@@ -342,7 +348,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(335, 214);
+            this.label2.Location = new System.Drawing.Point(335, 261);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 20);
             this.label2.TabIndex = 5;
@@ -384,6 +390,41 @@
             this.btnCancel.Text = "انصراف (Esc)";
             this.btnCancel.TextColor = System.Drawing.Color.Black;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Location = new System.Drawing.Point(330, 218);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(63, 20);
+            this.label13.TabIndex = 8;
+            this.label13.Text = "سریال قفل";
+            // 
+            // txtLkSeral
+            // 
+            this.txtLkSeral.Location = new System.Drawing.Point(60, 215);
+            this.txtLkSeral.Name = "txtLkSeral";
+            this.txtLkSeral.Size = new System.Drawing.Size(244, 27);
+            this.txtLkSeral.TabIndex = 12;
+            this.txtLkSeral.Enter += new System.EventHandler(this.txtLkSeral_Enter);
+            this.txtLkSeral.Leave += new System.EventHandler(this.txtLkSeral_Leave);
+            // 
+            // btnLkSerial
+            // 
+            this.btnLkSerial.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnLkSerial.BackColor = System.Drawing.Color.Silver;
+            this.btnLkSerial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnLkSerial.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
+            this.btnLkSerial.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLkSerial.Location = new System.Drawing.Point(25, 214);
+            this.btnLkSerial.Name = "btnLkSerial";
+            this.btnLkSerial.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10);
+            this.btnLkSerial.Size = new System.Drawing.Size(25, 27);
+            this.btnLkSerial.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2013;
+            this.btnLkSerial.TabIndex = 13;
+            this.btnLkSerial.Text = "...";
+            this.btnLkSerial.TextColor = System.Drawing.Color.Black;
             // 
             // frmCustomerMain
             // 
@@ -441,5 +482,8 @@
         private DevComponents.DotNetBar.ButtonX btnFinish;
         private DevComponents.DotNetBar.ButtonX btnCancel;
         private DevComponents.DotNetBar.ButtonX btnSearch;
+        private DevComponents.DotNetBar.ButtonX btnLkSerial;
+        private System.Windows.Forms.TextBox txtLkSeral;
+        private System.Windows.Forms.Label label13;
     }
 }

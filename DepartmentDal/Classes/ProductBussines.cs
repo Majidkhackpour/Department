@@ -18,6 +18,7 @@ namespace DepartmentDal.Classes
         public Guid Guid { get; set; }
         public DateTime Modified { get; set; } = DateTime.Now;
         public bool Status { get; set; }
+        public bool IsChecked { get; set; }
 
         public static async Task<ProductBussines> GetAsync(Guid guid)
         {
@@ -53,6 +54,7 @@ namespace DepartmentDal.Classes
                 return null;
             }
         }
+        public static List<ProductBussines> GetAll() => AsyncContext.Run(GetAllAsync);
         public static ProductBussines Get(Guid guid) => AsyncContext.Run(() => GetAsync(guid));
         public static async Task<string> NextCodeAsync()
         {
@@ -71,6 +73,7 @@ namespace DepartmentDal.Classes
                 return null;
             }
         }
+        public static string NextCode() => AsyncContext.Run(NextCodeAsync);
         public static async Task<ReturnedSaveFuncInfo> SaveAsync(ProductBussines cls)
         {
             var res = new ReturnedSaveFuncInfo();
@@ -91,5 +94,6 @@ namespace DepartmentDal.Classes
 
             return res;
         }
+        public static ReturnedSaveFuncInfo Save(ProductBussines cls) => AsyncContext.Run(() => SaveAsync(cls));
     }
 }

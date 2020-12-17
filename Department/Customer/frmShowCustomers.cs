@@ -12,7 +12,7 @@ using Services;
 
 namespace Department.Customer
 {
-    public partial class frmShowCustomers : MetroForm
+    public partial class frmShowCustomers : Form
     {
         private bool _st = true;
         private List<CustomerBussines> list;

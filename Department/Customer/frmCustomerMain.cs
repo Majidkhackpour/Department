@@ -61,90 +61,81 @@ namespace Department.Customer
         {
             txtSetter.Focus(txtName, true);
         }
-
         private void txtCompanyName_Enter(object sender, EventArgs e)
         {
             txtSetter.Focus(txtCompanyName, true);
         }
-
         private void txtNationalCode_Enter(object sender, EventArgs e)
         {
             txtSetter.Focus(txtNationalCode, true);
         }
-
         private void txtTell1_Enter(object sender, EventArgs e)
         {
             txtSetter.Focus(txtTell1, true);
         }
-
         private void txtTell2_Enter(object sender, EventArgs e)
         {
             txtSetter.Focus(txtTell2, true);
         }
-
         private void txtTell3_Enter(object sender, EventArgs e)
         {
             txtSetter.Focus(txtTell3, true);
         }
-
         private void txtTell4_Enter(object sender, EventArgs e)
         {
             txtSetter.Focus(txtTell4, true);
         }
-
         private void txtEmail_Enter(object sender, EventArgs e)
         {
             txtSetter.Focus(txtEmail, true);
         }
-
         private void txtPostalCode_Enter(object sender, EventArgs e)
         {
             txtSetter.Focus(txtPostalCode, true);
         }
-
         private void txtPostalCode_Leave(object sender, EventArgs e)
         {
             txtSetter.Follow(txtPostalCode);
         }
-
         private void txtEmail_Leave(object sender, EventArgs e)
         {
             txtSetter.Follow(txtEmail);
         }
-
         private void txtTell3_Leave(object sender, EventArgs e)
         {
             txtSetter.Follow(txtTell3);
         }
-
         private void txtTell4_Leave(object sender, EventArgs e)
         {
             txtSetter.Follow(txtTell4);
         }
-
         private void txtTell2_Leave(object sender, EventArgs e)
         {
             txtSetter.Follow(txtTell2);
         }
-
         private void txtTell1_Leave(object sender, EventArgs e)
         {
             txtSetter.Follow(txtTell1);
         }
-
         private void txtNationalCode_Leave(object sender, EventArgs e)
         {
             txtSetter.Follow(txtNationalCode);
         }
-
         private void txtName_Leave(object sender, EventArgs e)
         {
             txtSetter.Follow(txtName);
         }
-
         private void txtCompanyName_Leave(object sender, EventArgs e)
         {
             txtSetter.Follow(txtCompanyName);
+        }
+        private void txtLkSeral_Enter(object sender, EventArgs e)
+        {
+            txtSetter.Focus(txtLkSeral, true);
+        }
+        private void txtLkSeral_Leave(object sender, EventArgs e)
+        {
+            txtSetter.Follow(txtLkSeral);
         }
         #endregion
 
@@ -153,7 +144,6 @@ namespace Department.Customer
             DialogResult = DialogResult.Cancel;
             Close();
         }
-
         private void frmCustomerMain_KeyDown(object sender, KeyEventArgs e)
         {
             try
@@ -177,7 +167,6 @@ namespace Department.Customer
                 WebErrorLog.ErrorInstence.StartErrorLog(exception);
             }
         }
-
         private async void btnFinish_Click(object sender, EventArgs e)
         {
             try
@@ -210,7 +199,7 @@ namespace Department.Customer
                 cls.Email = txtEmail.Text;
                 cls.Description = txtDesc.Text;
                 cls.Status = true;
-
+                cls.LkSerial = txtLkSeral.Text;
 
                 var res = await CustomerBussines.SaveAsync(cls);
                 if (res.HasError)
@@ -226,7 +215,6 @@ namespace Department.Customer
                 WebErrorLog.ErrorInstence.StartErrorLog(exception);
             }
         }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             try
