@@ -7,6 +7,7 @@ using DepartmentDal.Classes;
 using MetroFramework.Forms;
 using Notification;
 using Services;
+using SoftwareLock;
 
 namespace Department.Customer
 {
@@ -226,6 +227,18 @@ namespace Department.Customer
                 foreach (var item in list)
                     code += item.Code;
                 txtAppSerial.Text = code;
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
+        private void btnLkSerial_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var frm = new frmShowLk();
+                frm.ShowDialog();
             }
             catch (Exception ex)
             {

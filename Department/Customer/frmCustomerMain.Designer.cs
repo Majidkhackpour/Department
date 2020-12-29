@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCustomerMain));
             this.grp = new DevComponents.DotNetBar.PanelEx();
+            this.btnLkSerial = new DevComponents.DotNetBar.ButtonX();
             this.btnSearch = new DevComponents.DotNetBar.ButtonX();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.txtDesc = new System.Windows.Forms.TextBox();
@@ -37,8 +38,10 @@
             this.txtCompanyName = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtLkSeral = new System.Windows.Forms.TextBox();
             this.txtPostalCode = new System.Windows.Forms.TextBox();
             this.txtTell4 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.txtAppSerial = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -57,9 +60,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnFinish = new DevComponents.DotNetBar.ButtonX();
             this.btnCancel = new DevComponents.DotNetBar.ButtonX();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtLkSeral = new System.Windows.Forms.TextBox();
-            this.btnLkSerial = new DevComponents.DotNetBar.ButtonX();
             this.grp.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -109,6 +109,23 @@
             this.grp.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.grp.Style.GradientAngle = 90;
             this.grp.TabIndex = 0;
+            // 
+            // btnLkSerial
+            // 
+            this.btnLkSerial.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnLkSerial.BackColor = System.Drawing.Color.Silver;
+            this.btnLkSerial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnLkSerial.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
+            this.btnLkSerial.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLkSerial.Location = new System.Drawing.Point(25, 214);
+            this.btnLkSerial.Name = "btnLkSerial";
+            this.btnLkSerial.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10);
+            this.btnLkSerial.Size = new System.Drawing.Size(25, 27);
+            this.btnLkSerial.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2013;
+            this.btnLkSerial.TabIndex = 13;
+            this.btnLkSerial.Text = "...";
+            this.btnLkSerial.TextColor = System.Drawing.Color.Black;
+            this.btnLkSerial.Click += new System.EventHandler(this.btnLkSerial_Click);
             // 
             // btnSearch
             // 
@@ -183,6 +200,15 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "عنوان مجموعه";
             // 
+            // txtLkSeral
+            // 
+            this.txtLkSeral.Location = new System.Drawing.Point(60, 215);
+            this.txtLkSeral.Name = "txtLkSeral";
+            this.txtLkSeral.Size = new System.Drawing.Size(244, 27);
+            this.txtLkSeral.TabIndex = 12;
+            this.txtLkSeral.Enter += new System.EventHandler(this.txtLkSeral_Enter);
+            this.txtLkSeral.Leave += new System.EventHandler(this.txtLkSeral_Leave);
+            // 
             // txtPostalCode
             // 
             this.txtPostalCode.Location = new System.Drawing.Point(25, 175);
@@ -200,6 +226,16 @@
             this.txtTell4.TabIndex = 8;
             this.txtTell4.Enter += new System.EventHandler(this.txtTell4_Enter);
             this.txtTell4.Leave += new System.EventHandler(this.txtTell4_Leave);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Location = new System.Drawing.Point(330, 218);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(63, 20);
+            this.label13.TabIndex = 8;
+            this.label13.Text = "سریال قفل";
             // 
             // txtAppSerial
             // 
@@ -390,41 +426,6 @@
             this.btnCancel.Text = "انصراف (Esc)";
             this.btnCancel.TextColor = System.Drawing.Color.Black;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Location = new System.Drawing.Point(330, 218);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(63, 20);
-            this.label13.TabIndex = 8;
-            this.label13.Text = "سریال قفل";
-            // 
-            // txtLkSeral
-            // 
-            this.txtLkSeral.Location = new System.Drawing.Point(60, 215);
-            this.txtLkSeral.Name = "txtLkSeral";
-            this.txtLkSeral.Size = new System.Drawing.Size(244, 27);
-            this.txtLkSeral.TabIndex = 12;
-            this.txtLkSeral.Enter += new System.EventHandler(this.txtLkSeral_Enter);
-            this.txtLkSeral.Leave += new System.EventHandler(this.txtLkSeral_Leave);
-            // 
-            // btnLkSerial
-            // 
-            this.btnLkSerial.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnLkSerial.BackColor = System.Drawing.Color.Silver;
-            this.btnLkSerial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnLkSerial.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
-            this.btnLkSerial.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLkSerial.Location = new System.Drawing.Point(25, 214);
-            this.btnLkSerial.Name = "btnLkSerial";
-            this.btnLkSerial.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(10);
-            this.btnLkSerial.Size = new System.Drawing.Size(25, 27);
-            this.btnLkSerial.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2013;
-            this.btnLkSerial.TabIndex = 13;
-            this.btnLkSerial.Text = "...";
-            this.btnLkSerial.TextColor = System.Drawing.Color.Black;
             // 
             // frmCustomerMain
             // 

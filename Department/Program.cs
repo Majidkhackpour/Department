@@ -30,7 +30,7 @@ namespace Department
             DepartmentDal.Utilities.NEVER_EAT_POISON_Disable_CertificateValidation();
             var currentVersion = AccGlobalSettings.AppVersion.ParseToInt();
 
-            ErrorHandler.AddHandler(currentVersion.ToString(), ENSource.Department, Application.StartupPath);
+            ErrorHandler.AddHandler(currentVersion.ToString(), ENSource.Department, Application.StartupPath,"");
 
 
             clsNotification.Init(Color.Silver);

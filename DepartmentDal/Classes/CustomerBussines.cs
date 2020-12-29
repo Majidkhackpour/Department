@@ -52,6 +52,8 @@ namespace DepartmentDal.Classes
         public string SiteUrl { get; set; }
         public string HardSerial { get; set; }
         public string LkSerial { get; set; }
+        public bool isBlock { get; set; }
+        public bool isWebServiceBlock { get; set; }
         public Guid Guid { get; set; }
         public DateTime Modified { get; set; } = DateTime.Now;
         public bool Status { get; set; }
