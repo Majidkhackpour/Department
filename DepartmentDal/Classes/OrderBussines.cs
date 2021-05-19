@@ -34,7 +34,6 @@ namespace DepartmentDal.Classes
         }
         public Guid UserGuid { get; set; }
         public string ContractCode { get; set; }
-        public int LearningCount { get; set; }
         public decimal Sum { get; set; }
         public decimal Discount { get; set; }
         public decimal Total { get; set; }
@@ -64,6 +63,27 @@ namespace DepartmentDal.Classes
                     var json = Json.ToStringJson(cls);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
                     var result = await client.PostAsync(Utilities.WebApi + "/api/Order/SaveAsync", content);
+                    foreach (var item in cls.DetList) await SaveDetAsync(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+                res.AddReturnedValue(ex);
+            }
+
+            return res;
+        }
+        private static async Task<ReturnedSaveFuncInfo> SaveDetAsync(OrderDetailBussines cls)
+        {
+            var res = new ReturnedSaveFuncInfo();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var json = Json.ToStringJson(cls);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+                    var result = await client.PostAsync(Utilities.WebApi + "/api/OrderDetail/SaveAsync", content);
                 }
             }
             catch (Exception ex)

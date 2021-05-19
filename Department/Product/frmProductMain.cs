@@ -18,8 +18,8 @@ namespace Department.Product
             {
                 txtName.Text = cls?.Name;
                 txtCode.Text = cls?.Code;
-                txtPrice.Text = cls?.Price.ToString("N0");
-                txtBackUp.Text = cls?.BckUpPrice.ToString("N0");
+                txtPrice.Text = cls?.Price.ToString();
+                txtBackUp.Text = cls?.BckUpPrice.ToString();
                 if (cls?.Guid == Guid.Empty)
                     txtCode.Text = await NextCodeAsync();
             }
@@ -179,12 +179,12 @@ namespace Department.Product
 
         private void txtPrice_TextChanged(object sender, EventArgs e)
         {
-            txtSetter.Three_Ziro(txtPrice);
+            //txtSetter.Three_Ziro(txtPrice);
         }
 
         private void txtBackUp_TextChanged(object sender, EventArgs e)
         {
-            txtSetter.Three_Ziro(txtBackUp);
+            //txtSetter.Three_Ziro(txtBackUp);
         }
     }
 }

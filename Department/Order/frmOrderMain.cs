@@ -19,6 +19,7 @@ namespace Department.Order
         private OrderBussines _cls;
         private CustomerBussines _customer;
         private Guid _strGuid = Guid.Empty;
+        private decimal total = 0;
 
         private async Task SetDataAsync()
         {
@@ -31,7 +32,6 @@ namespace Department.Order
                 lblConCode.Text = _cls?.ContractCode;
                 lblDateNow.Text = _cls?.DateSh;
                 lblTimeNow.Text = DateTime.Now.ToShortTimeString();
-                txtClient.Value = _cls?.LearningCount ?? 0;
 
                 if (_cls?.Guid == Guid.Empty)
                 {
@@ -95,7 +95,11 @@ namespace Department.Order
                 var _prd = _cls.DetList.FirstOrDefault(q => q.PrdGuid == guid);
                 if (_prd != null)
                 {
-                    frmNotification.PublicInfo.ShowMessage("این محصول در لیست محصولات موجود می باشد");
+                    _cls.DetList.Remove(_prd);
+                    _prd.Count++;
+                    _prd.Total = _prd.Price * _prd.Count;
+                    _cls.DetList.Add(_prd);
+                    UpdateDets();
                     return;
                 }
 
@@ -110,7 +114,8 @@ namespace Department.Order
                     PrdGuid = prd.Guid,
                     Price = prd.Price,
                     Total = prd.Price,
-                    Discount = 0
+                    Discount = 0,
+                    Count = 1
                 };
                 _cls.DetList.Add(det);
 
@@ -172,9 +177,10 @@ namespace Department.Order
 
                 _strGuid = prd.PrdGuid;
                 txtPrdName.Text = prd.ProductName;
-                txtDiscount.Text = prd.Discount.ToString("N0");
-                txtSum.Text = prd.Price.ToString("N0");
-                txtTotal.Text = prd.Total.ToString("N0");
+                txtDiscount.Text = prd.Discount.ToString();
+                txtSum.Text = prd.Price.ToString();
+                txtTotal.Text = prd.Total.ToString();
+                total = prd.Total;
 
                 mnuEdit.Enabled = false;
                 mnuDelete.Enabled = false;
@@ -219,6 +225,7 @@ namespace Department.Order
                 txtTotal.Text = "";
 
                 _strGuid = Guid.Empty;
+                total = 0;
             }
             catch (Exception ex)
             {
@@ -238,13 +245,13 @@ namespace Department.Order
         }
         private void txtSum_TextChanged(object sender, EventArgs e)
         {
-            txtSetter.Three_Ziro(txtSum);
+            //txtSetter.Three_Ziro(txtSum);
             SetPrice();
             UpdateDets();
         }
         private void txtDiscount_TextChanged(object sender, EventArgs e)
         {
-            txtSetter.Three_Ziro(txtDiscount);
+            //txtSetter.Three_Ziro(txtDiscount);
             SetPrice();
             UpdateDets();
         }
@@ -252,11 +259,8 @@ namespace Department.Order
         {
             try
             {
-                var total = txtTotal.Text.ParseToDecimal();
-                var sum = txtSum.Text.ParseToDecimal();
                 var dis = txtDiscount.Text.ParseToDecimal();
-
-                txtTotal.Text = (sum - dis).ToString("N0");
+                txtTotal.Text = (total - dis).ToString();
             }
             catch (Exception ex)
             {
@@ -319,11 +323,10 @@ namespace Department.Order
                     return;
                 }
 
-                _cls.ContractCode = lblConCode.Text.Trim();
-                _cls.Sum = _cls.DetList.Sum(q => q.Price);
+                _cls.Total = _cls.DetList.Sum(q => q.Total);
                 _cls.Discount = _cls.DetList.Sum(q => q.Discount);
-                _cls.Total = lblTotalPrice.Text.ParseToDecimal();
-                _cls.LearningCount = (int)txtClient.Value;
+                _cls.ContractCode = lblConCode.Text.Trim();
+                _cls.Sum = _cls.Total + _cls.Discount;
                 _cls.CustomerGuid = _customer.Guid;
 
                 foreach (var item in _cls.DetList) item.OrderGuid = _cls.Guid;

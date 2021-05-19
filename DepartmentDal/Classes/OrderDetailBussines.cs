@@ -12,6 +12,8 @@ namespace DepartmentDal.Classes
 
         public Guid OrderGuid { get; set; }
         public Guid PrdGuid { get; set; }
+        public int Count { get; set; }
+
         public string ProductName
         {
             get

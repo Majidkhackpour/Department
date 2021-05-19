@@ -10,7 +10,7 @@ using Servicess.Interfaces.Building;
 
 namespace DepartmentDal.Classes
 {
-    public class ReceptionBussines : IReception
+    public class ReceptionBussines 
     {
         private List<CustomerBussines> listCust;
         private List<UserBussines> listUsers;

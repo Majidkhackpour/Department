@@ -53,7 +53,6 @@
             this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerGuidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userGuidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.learningCountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgGuid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modifiedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -63,8 +62,6 @@
             this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblUsers = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblClient = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGrid)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -146,7 +143,6 @@
             this.dateDataGridViewTextBoxColumn,
             this.customerGuidDataGridViewTextBoxColumn,
             this.userGuidDataGridViewTextBoxColumn,
-            this.learningCountDataGridViewTextBoxColumn,
             this.dgGuid,
             this.modifiedDataGridViewTextBoxColumn,
             this.statusDataGridViewCheckBoxColumn});
@@ -184,7 +180,7 @@
             this.DGrid.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.DGrid.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.DGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGrid.Size = new System.Drawing.Size(795, 492);
+            this.DGrid.Size = new System.Drawing.Size(795, 546);
             this.DGrid.TabIndex = 55763;
             this.DGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGrid_CellClick);
             this.DGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DGrid_CellFormatting);
@@ -280,14 +276,6 @@
             this.userGuidDataGridViewTextBoxColumn.ReadOnly = true;
             this.userGuidDataGridViewTextBoxColumn.Visible = false;
             // 
-            // learningCountDataGridViewTextBoxColumn
-            // 
-            this.learningCountDataGridViewTextBoxColumn.DataPropertyName = "LearningCount";
-            this.learningCountDataGridViewTextBoxColumn.HeaderText = "LearningCount";
-            this.learningCountDataGridViewTextBoxColumn.Name = "learningCountDataGridViewTextBoxColumn";
-            this.learningCountDataGridViewTextBoxColumn.ReadOnly = true;
-            this.learningCountDataGridViewTextBoxColumn.Visible = false;
-            // 
             // dgGuid
             // 
             this.dgGuid.DataPropertyName = "Guid";
@@ -358,34 +346,12 @@
             this.lblUsers.TabIndex = 55765;
             this.lblUsers.Text = "کاربر";
             // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(709, 559);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 20);
-            this.label2.TabIndex = 55769;
-            this.label2.Text = "تعداد کلاینت:";
-            // 
-            // lblClient
-            // 
-            this.lblClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblClient.Font = new System.Drawing.Font("B Yekan", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblClient.Location = new System.Drawing.Point(639, 554);
-            this.lblClient.Name = "lblClient";
-            this.lblClient.Size = new System.Drawing.Size(64, 36);
-            this.lblClient.TabIndex = 55768;
-            this.lblClient.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // frmShowOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
             this.ControlBox = false;
-            this.Controls.Add(this.lblClient);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.cmbUsers);
             this.Controls.Add(this.DGrid);
@@ -424,8 +390,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuDelete;
         private System.Windows.Forms.BindingSource orderBindingSource;
         private System.Windows.Forms.Label lblUsers;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblClient;
         private System.Windows.Forms.DataGridViewTextBoxColumn versionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgRadif;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateSh;

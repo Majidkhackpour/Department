@@ -210,24 +210,8 @@ namespace Department.Order
             }
         }
 
-        private async void DGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void DGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                if (DGrid.RowCount <= 0) return;
-                if (DGrid.CurrentRow == null) return;
-
-                var guid = (Guid)DGrid[dgGuid.Index, DGrid.CurrentRow.Index].Value;
-                var reception = await OrderBussines.GetAsync(guid);
-
-                if (reception == null) return;
-
-                lblClient.Text = reception.LearningCount.ToString();
-            }
-            catch (Exception ex)
-            {
-                WebErrorLog.ErrorInstence.StartErrorLog(ex);
-            }
         }
 
         private async void cmbUsers_SelectedIndexChanged(object sender, EventArgs e)
