@@ -2,7 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using Nito.AsyncEx;
+using Services;
 
 namespace DepartmentDal.Classes
 {
@@ -13,15 +16,15 @@ namespace DepartmentDal.Classes
         public Guid OrderGuid { get; set; }
         public Guid PrdGuid { get; set; }
         public int Count { get; set; }
-
-        public string ProductName
+        public ProductBussines Product
         {
             get
             {
                 if (listPrd == null) listPrd = AsyncContext.Run(ProductBussines.GetAllAsync);
-                return listPrd.FirstOrDefault(q => q.Guid == PrdGuid)?.Name;
+                return listPrd.FirstOrDefault(q => q.Guid == PrdGuid);
             }
         }
+        public string ProductName => Product?.Name;
         public decimal Price { get; set; }
         public decimal Discount { get; set; }
         public decimal Total { get; set; }

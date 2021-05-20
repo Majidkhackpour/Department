@@ -7,6 +7,7 @@ using Department.Users;
 using DepartmentDal.Classes;
 using MetroFramework.Forms;
 using Notification;
+using Print;
 using Services;
 
 namespace Department.Order
@@ -27,10 +28,10 @@ namespace Department.Order
                     {
                         if (!string.IsNullOrEmpty(item) && item.Trim() != "")
                         {
-                            res = list.Where(x => x.ContractCode.ToLower().Contains(item.ToLower())||
-                                                  x.CustomerName.ToLower().Contains(item.ToLower())||
-                                                  x.Sum.ToString().ToLower().Contains(item.ToLower())||
-                                                  x.Discount.ToString().ToLower().Contains(item.ToLower())||
+                            res = list.Where(x => x.ContractCode.ToLower().Contains(item.ToLower()) ||
+                                                  x.CustomerName.ToLower().Contains(item.ToLower()) ||
+                                                  x.Sum.ToString().ToLower().Contains(item.ToLower()) ||
+                                                  x.Discount.ToString().ToLower().Contains(item.ToLower()) ||
                                                   x.Total.ToString().ToLower().Contains(item.ToLower()))
                                 ?.ToList();
                         }
@@ -219,6 +220,52 @@ namespace Department.Order
             try
             {
                 await LoadDataAsync(txtSearch.Text);
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
+        private void mnuPrint_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DGrid.RowCount <= 0 || DGrid.CurrentRow == null) return;
+                var guid = (Guid)DGrid[dgGuid.Index, DGrid.CurrentRow.Index].Value;
+                var order = OrderBussines.Get(guid);
+                if (order == null) return;
+
+                var reportList = new List<OrderReportBussines>();
+
+                foreach (var item in order.DetList)
+                {
+                    reportList.Add(new OrderReportBussines()
+                    {
+                        CompanyName = "گروه فنی و مهندسی آراد",
+                        CompanyTell = "09382420272",
+                        ContractCode = order.ContractCode,
+                        CustomerAddress = order.Customer?.Address,
+                        CustomerName = order.CustomerName,
+                        CustomerSerialNumber = order.Customer?.AppSerial,
+                        CustomerTell = order.Customer?.Tell1,
+                        DateSh = order.DateSh,
+                        OdrerDiscount = order.Discount,
+                        OrderSum = order.Sum,
+                        OrderTotal = order.Total,
+                        OrderUserName = order.UserName,
+                        ProductCount = item.Count,
+                        ProductDiscount = item.Discount,
+                        ProductName = item.ProductName,
+                        ProductPrice = item.Price,
+                        ProductTotal = item.Total,
+                        Time = order.Date.ToShortTimeString(),
+                        OrderTotalName = $"{NumberToString.Num2Str(order.Total.ToString().ParseToDouble().ToString())} ریال"
+                    });
+                }
+
+                var cls = new ReportGenerator(StiType.DepartmentOrder, EnPrintType.Pdf_A4)
+                    {Lst = new List<object>(reportList?.OrderBy(q => q.ProductName))};
+                cls.PrintNew();
             }
             catch (Exception ex)
             {

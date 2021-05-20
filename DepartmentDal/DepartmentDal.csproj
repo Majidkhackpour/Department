@@ -75,6 +75,7 @@
     <Compile Include="Classes\CustomerLogBussines.cs" />
     <Compile Include="Classes\OrderBussines.cs" />
     <Compile Include="Classes\OrderDetailBussines.cs" />
+    <Compile Include="Classes\OrderReportBussines.cs" />
     <Compile Include="Classes\PardakhtBussines.cs" />
     <Compile Include="Classes\ProductBussines.cs" />
     <Compile Include="Classes\ReceptionBussines.cs" />

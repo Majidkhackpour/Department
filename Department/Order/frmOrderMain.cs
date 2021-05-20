@@ -93,6 +93,7 @@ namespace Department.Order
                 if (_cls.DetList == null) _cls.DetList = new List<OrderDetailBussines>();
 
                 var _prd = _cls.DetList.FirstOrDefault(q => q.PrdGuid == guid);
+
                 if (_prd != null)
                 {
                     _cls.DetList.Remove(_prd);
@@ -105,6 +106,7 @@ namespace Department.Order
 
                 var prd = ProductBussines.Get(guid);
                 if (prd == null) return;
+                if (prd.Price <= 0) return;
 
                 var det = new OrderDetailBussines()
                 {

@@ -60,6 +60,8 @@
             this.mnuIns = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuPrint = new System.Windows.Forms.ToolStripMenuItem();
             this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblUsers = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
@@ -306,10 +308,12 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuIns,
             this.mnuEdit,
-            this.mnuDelete});
+            this.mnuDelete,
+            this.toolStripMenuItem1,
+            this.mnuPrint});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(186, 76);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(186, 128);
             // 
             // mnuIns
             // 
@@ -331,6 +335,18 @@
             this.mnuDelete.Size = new System.Drawing.Size(185, 24);
             this.mnuDelete.Text = "حذف قرارداد جاری";
             this.mnuDelete.Click += new System.EventHandler(this.mnuDelete_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(182, 6);
+            // 
+            // mnuPrint
+            // 
+            this.mnuPrint.Name = "mnuPrint";
+            this.mnuPrint.Size = new System.Drawing.Size(185, 24);
+            this.mnuPrint.Text = "چاپ قرارداد جاری";
+            this.mnuPrint.Click += new System.EventHandler(this.mnuPrint_Click);
             // 
             // orderBindingSource
             // 
@@ -406,5 +422,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgGuid;
         private System.Windows.Forms.DataGridViewTextBoxColumn modifiedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn statusDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem mnuPrint;
     }
 }
