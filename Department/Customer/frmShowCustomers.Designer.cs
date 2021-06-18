@@ -78,6 +78,8 @@ namespace Department.Customer
             this.label1 = new System.Windows.Forms.Label();
             this.lblAccount = new System.Windows.Forms.Label();
             this.lblAccount_ = new System.Windows.Forms.Label();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuAndroids = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cusBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGrid)).BeginInit();
@@ -375,10 +377,12 @@ namespace Department.Customer
             this.mnuActivationCode,
             this.toolStripMenuItem3,
             this.mnuInsLog,
-            this.mnuLog});
+            this.mnuLog,
+            this.toolStripMenuItem4,
+            this.mnuAndroids});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(209, 294);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(209, 356);
             // 
             // mnuIns
             // 
@@ -502,6 +506,18 @@ namespace Department.Customer
             this.lblAccount_.TabIndex = 55726;
             this.lblAccount_.Text = "مانده حساب:";
             // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(205, 6);
+            // 
+            // mnuAndroids
+            // 
+            this.mnuAndroids.Name = "mnuAndroids";
+            this.mnuAndroids.Size = new System.Drawing.Size(208, 34);
+            this.mnuAndroids.Text = "مشاهده لیست اندرویدها";
+            this.mnuAndroids.Click += new System.EventHandler(this.mnuAndroids_Click);
+            // 
             // frmShowCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -578,5 +594,7 @@ namespace Department.Customer
         private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn expireDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem mnuAndroids;
     }
 }

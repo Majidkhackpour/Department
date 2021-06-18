@@ -92,6 +92,24 @@ namespace DepartmentDal.Classes
                 return null;
             }
         }
+        public static async Task<CustomerBussines> GetByImeiAsync(string imei)
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var res = await client.GetStringAsync(Utilities.WebApi + "/Customer_GetByImie/" + imei);
+                    var user = res.FromJson<CustomerBussines>();
+                    return user;
+                }
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+                return null;
+            }
+        }
+        public static CustomerBussines GetByImei(string imei) => AsyncContext.Run(() => GetByImeiAsync(imei));
         public static CustomerBussines Get(Guid guid) => AsyncContext.Run(() => GetAsync(guid));
         public static CustomerBussines Get(string name) => AsyncContext.Run(() => GetAsync(name));
         public static async Task<List<CustomerBussines>> GetAllAsync()

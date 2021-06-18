@@ -1,14 +1,13 @@
-﻿using System;
+﻿using Department.Users;
+using DepartmentDal.Classes;
+using Notification;
+using Services;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Department.Users;
-using DepartmentDal.Classes;
-using MetroFramework.Forms;
-using Notification;
-using Services;
 
 namespace Department.Customer
 {
@@ -367,6 +366,20 @@ namespace Department.Customer
                     lblAccount_.Text = "بستانکار";
                     lblAccount_.ForeColor = Color.Green;
                 }
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
+            }
+        }
+
+        private void mnuAndroids_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DGrid.RowCount <= 0 || DGrid.CurrentRow == null) return;
+                var guid = (Guid)DGrid[dgGuid.Index, DGrid.CurrentRow.Index].Value;
+                new frmShowAndroids(guid).ShowDialog();
             }
             catch (Exception ex)
             {

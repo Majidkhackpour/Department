@@ -71,6 +71,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Building\clsBuilding.cs" />
+    <Compile Include="Classes\CustomerAndroidsBussines.cs" />
     <Compile Include="Classes\CustomerBussines.cs" />
     <Compile Include="Classes\CustomerLogBussines.cs" />
     <Compile Include="Classes\OrderBussines.cs" />
@@ -97,5 +99,6 @@
       <Name>Services</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

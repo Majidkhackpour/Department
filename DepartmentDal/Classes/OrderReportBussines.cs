@@ -21,5 +21,6 @@
         public decimal OrderTotal { get; set; }
         public string OrderTotalName { get; set; }
         public string OrderUserName { get; set; }
+        public string OrderDescription { get; set; }
     }
 }

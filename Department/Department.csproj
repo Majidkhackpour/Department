@@ -251,6 +251,12 @@
     <Compile Include="Customer\frmActivationCode.Designer.cs">
       <DependentUpon>frmActivationCode.cs</DependentUpon>
     </Compile>
+    <Compile Include="Customer\frmAndroidMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer\frmAndroidMain.Designer.cs">
+      <DependentUpon>frmAndroidMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Customer\frmCustomerLog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -274,6 +280,12 @@
     </Compile>
     <Compile Include="Customer\frmSelectCustomer.Designer.cs">
       <DependentUpon>frmSelectCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\frmShowAndroids.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer\frmShowAndroids.Designer.cs">
+      <DependentUpon>frmShowAndroids.cs</DependentUpon>
     </Compile>
     <Compile Include="Customer\frmShowCustomers.cs">
       <SubType>Form</SubType>
@@ -413,6 +425,9 @@
     <EmbeddedResource Include="Customer\frmActivationCode.resx">
       <DependentUpon>frmActivationCode.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Customer\frmAndroidMain.resx">
+      <DependentUpon>frmAndroidMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Customer\frmCustomerLog.resx">
       <DependentUpon>frmCustomerLog.cs</DependentUpon>
     </EmbeddedResource>
@@ -424,6 +439,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Customer\frmSelectCustomer.resx">
       <DependentUpon>frmSelectCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customer\frmShowAndroids.resx">
+      <DependentUpon>frmShowAndroids.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Customer\frmShowCustomers.resx">
       <DependentUpon>frmShowCustomers.cs</DependentUpon>
@@ -502,6 +520,7 @@
       <DependentUpon>frmUserMain.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\DepartmentDal.Classes.CustomerAndroidsBussines.datasource" />
     <None Include="Properties\DataSources\DepartmentDal.Classes.CustomerBussines.datasource" />
     <None Include="Properties\DataSources\DepartmentDal.Classes.OrderBussines.datasource" />
     <None Include="Properties\DataSources\DepartmentDal.Classes.OrderDetailBussines.datasource" />
