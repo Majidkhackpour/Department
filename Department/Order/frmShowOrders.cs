@@ -234,10 +234,11 @@ namespace Department.Order
                 var guid = (Guid)DGrid[dgGuid.Index, DGrid.CurrentRow.Index].Value;
                 var order = OrderBussines.Get(guid);
                 if (order == null) return;
-                var desc = $"تاریخ انقضای پشتیبانی رایگان شما {order?.Customer?.ExpireDateSh} می باشد. \r\n" +
-                           $"توجه داشته باشید که پس از اتمام تاریخ پشتیبانی رایگان شما، مبلغ پشتیبانی به صورت سالیانه\r\n دریافت خواهد شد. \r\n" +
-                           $"خدمات پشتیبانی منحصر به ارائه نسخه جدید نرم افزار و رفع خطاهای احتمال آن می باشد. \r\n" +
-                           $"سایر خدمات درخواستی، جزو خدمات پشتیبانی محسوب نشده و شامل هزینه می باشد.";
+                //var desc = $"تاریخ انقضای پشتیبانی رایگان شما {order?.Customer?.ExpireDateSh} می باشد. \r\n" +
+                //           $"توجه داشته باشید که پس از اتمام تاریخ پشتیبانی رایگان شما، مبلغ پشتیبانی به صورت سالیانه\r\n دریافت خواهد شد. \r\n" +
+                //           $"خدمات پشتیبانی منحصر به ارائه نسخه جدید نرم افزار و رفع خطاهای احتمال آن می باشد. \r\n" +
+                //           $"سایر خدمات درخواستی، جزو خدمات پشتیبانی محسوب نشده و شامل هزینه می باشد.";
+                var desc = "";
                 var reportList = new List<OrderReportBussines>();
 
                 foreach (var item in order.DetList)

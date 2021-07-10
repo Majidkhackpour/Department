@@ -20,6 +20,7 @@ namespace Department.Order
         private CustomerBussines _customer;
         private Guid _strGuid = Guid.Empty;
         private decimal total = 0;
+        private int count = 1;
 
         private async Task SetDataAsync()
         {
@@ -183,9 +184,10 @@ namespace Department.Order
                 txtSum.Text = prd.Price.ToString();
                 txtTotal.Text = prd.Total.ToString();
                 total = prd.Total;
+                count = prd.Count;
 
-                mnuEdit.Enabled = false;
-                mnuDelete.Enabled = false;
+                //mnuEdit.Enabled = false;
+                //mnuDelete.Enabled = false;
                 grpProduct.Enabled = true;
             }
             catch (Exception ex)
@@ -262,7 +264,8 @@ namespace Department.Order
             try
             {
                 var dis = txtDiscount.Text.ParseToDecimal();
-                txtTotal.Text = (total - dis).ToString();
+                total = txtSum.Text.ParseToDecimal();
+                txtTotal.Text = ((total - dis) * count).ToString();
             }
             catch (Exception ex)
             {
@@ -345,6 +348,25 @@ namespace Department.Order
             catch (Exception exception)
             {
                 WebErrorLog.ErrorInstence.StartErrorLog(exception);
+            }
+        }
+        private void mnuDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DGrid.RowCount <= 0 || DGrid.CurrentRow == null) return;
+
+                var guid = (Guid)DGrid[dgGuid.Index, DGrid.CurrentRow.Index].Value;
+
+                var prd = _cls?.DetList?.FirstOrDefault(q => q.Guid == guid);
+                if (prd == null) return;
+
+                _cls?.DetList.Remove(prd);
+                UpdateDets();
+            }
+            catch (Exception ex)
+            {
+                WebErrorLog.ErrorInstence.StartErrorLog(ex);
             }
         }
     }
