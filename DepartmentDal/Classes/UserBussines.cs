@@ -30,7 +30,7 @@ namespace DepartmentDal.Classes
             {
                 using (var client = new HttpClient())
                 {
-                    var res = await client.GetStringAsync(Utilities.WebApi + "/Users_Get/" + guid);
+                    var res = await client.GetStringAsync(Services.Utilities.WebApi + "/Users_Get/" + guid);
                     var user = res.FromJson<UserBussines>();
                     return user;
                 }
@@ -47,7 +47,7 @@ namespace DepartmentDal.Classes
             {
                 using (var client = new HttpClient())
                 {
-                    var res = await client.GetStringAsync(Utilities.WebApi + "/User_Get/" + userName);
+                    var res = await client.GetStringAsync(Services.Utilities.WebApi + "/User_Get/" + userName);
                     var user = res.FromJson<UserBussines>();
                     return user;
                 }
@@ -66,7 +66,7 @@ namespace DepartmentDal.Classes
             {
                 using (var client = new HttpClient())
                 {
-                    var res = await client.GetStringAsync(Utilities.WebApi + "/Users_GetAll");
+                    var res = await client.GetStringAsync(Services.Utilities.WebApi + "/Users_GetAll");
                     var user = res.FromJson<List<UserBussines>>();
                     return user;
                 }
@@ -86,7 +86,7 @@ namespace DepartmentDal.Classes
                 {
                     var json = Json.ToStringJson(cls);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
-                    var result = await client.PostAsync(Utilities.WebApi + "/api/User/SaveAsync", content);
+                    var result = await client.PostAsync(Services.Utilities.WebApi + "/api/User/SaveAsync", content);
                 }
             }
             catch (Exception ex)
@@ -107,7 +107,7 @@ namespace DepartmentDal.Classes
                 {
                     var json = Json.ToStringJson(cls);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
-                    var result = await client.PostAsync(Utilities.WebApi + "/api/User/SaveAsync", content);
+                    var result = await client.PostAsync(Services.Utilities.WebApi + "/api/User/SaveAsync", content);
                 }
             }
             catch (Exception ex)
@@ -124,7 +124,7 @@ namespace DepartmentDal.Classes
             {
                 using (var client = new HttpClient())
                 {
-                    var res = await client.GetStringAsync(Utilities.WebApi + "/Users_CheckUserName/" + guid + "," +
+                    var res = await client.GetStringAsync(Services.Utilities.WebApi + "/Users_CheckUserName/" + guid + "," +
                                                           userName);
                     var user = res.FromJson<bool>();
                     return user;

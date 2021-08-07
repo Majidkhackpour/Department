@@ -26,7 +26,7 @@ namespace DepartmentDal.Classes
             {
                 using (var client = new HttpClient())
                 {
-                    var req = Utilities.WebApi + "/UserLog_GetAll/" + userGuid ;
+                    var req = Services.Utilities.WebApi + "/UserLog_GetAll/" + userGuid ;
                     var res = await client.GetStringAsync(req);
                     var user = res.FromJson<List<UserLogBussines>>();
                     return user;

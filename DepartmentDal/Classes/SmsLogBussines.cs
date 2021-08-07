@@ -39,7 +39,7 @@ namespace DepartmentDal.Classes
             {
                 using (var client = new HttpClient())
                 {
-                    var res = await client.GetStringAsync(Utilities.WebApi + "/SmsLog_Get/" + guid);
+                    var res = await client.GetStringAsync(Services.Utilities.WebApi + "/SmsLog_Get/" + guid);
                     var user = res.FromJson<SmsLogBussines>();
                     return user;
                 }
@@ -56,7 +56,7 @@ namespace DepartmentDal.Classes
             {
                 using (var client = new HttpClient())
                 {
-                    var res = await client.GetStringAsync(Utilities.WebApi + "/SmsLog_GetByMessageId/" + messageId);
+                    var res = await client.GetStringAsync(Services.Utilities.WebApi + "/SmsLog_GetByMessageId/" + messageId);
                     var user = res.FromJson<SmsLogBussines>();
                     return user;
                 }
@@ -77,7 +77,7 @@ namespace DepartmentDal.Classes
                 {
                     var json = Json.ToStringJson(cls);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
-                    var result = await client.PostAsync(Utilities.WebApi + "/api/SmsLog/SaveAsync", content);
+                    var result = await client.PostAsync(Services.Utilities.WebApi + "/api/SmsLog/SaveAsync", content);
                 }
             }
             catch (Exception ex)
@@ -94,7 +94,7 @@ namespace DepartmentDal.Classes
             {
                 using (var client = new HttpClient())
                 {
-                    var res = await client.GetStringAsync(Utilities.WebApi + "/SmsLog_GetAll");
+                    var res = await client.GetStringAsync(Services.Utilities.WebApi + "/SmsLog_GetAll");
                     var user = res.FromJson<List<SmsLogBussines>>();
                     return user;
                 }

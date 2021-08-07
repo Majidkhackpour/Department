@@ -31,7 +31,7 @@ namespace DepartmentDal.Classes
             {
                 using (var client = new HttpClient())
                 {
-                    var res = await client.GetStringAsync(Utilities.WebApi + "/CustomerLog_GetAll");
+                    var res = await client.GetStringAsync(Services.Utilities.WebApi + "/CustomerLog_GetAll");
                     var user = res.FromJson<List<CustomerLogBussines>>();
                     return user;
                 }
@@ -52,7 +52,7 @@ namespace DepartmentDal.Classes
                 {
                     var json = Json.ToStringJson(cls);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
-                    var result = await client.PostAsync(Utilities.WebApi + "/api/CustomerLog/SaveAsync", content);
+                    var result = await client.PostAsync(Services.Utilities.WebApi + "/api/CustomerLog/SaveAsync", content);
                 }
             }
             catch (Exception ex)
@@ -69,7 +69,7 @@ namespace DepartmentDal.Classes
             {
                 using (var client = new HttpClient())
                 {
-                    var res = await client.GetStringAsync(Utilities.WebApi + "/CustomerLog_GetLog/" + parentGuid);
+                    var res = await client.GetStringAsync(Services.Utilities.WebApi + "/CustomerLog_GetLog/" + parentGuid);
                     var user = res.FromJson<CustomerLogBussines>();
                     return user;
                 }

@@ -23,7 +23,7 @@ namespace DepartmentDal.Classes
             {
                 using (var client = new HttpClient())
                 {
-                    var res = await client.GetStringAsync(Utilities.WebApi + "/CusAndroid_GetAll/" + cusGuid);
+                    var res = await client.GetStringAsync(Services.Utilities.WebApi + "/CusAndroid_GetAll/" + cusGuid);
                     var user = res.FromJson<List<CustomerAndroidsBussines>>();
                     return user;
                 }
@@ -40,7 +40,7 @@ namespace DepartmentDal.Classes
             {
                 using (var client = new HttpClient())
                 {
-                    var res = await client.GetStringAsync(Utilities.WebApi + "/CusAndroid_Get/" + guid);
+                    var res = await client.GetStringAsync(Services.Utilities.WebApi + "/CusAndroid_Get/" + guid);
                     var user = res.FromJson<CustomerAndroidsBussines>();
                     return user;
                 }
@@ -62,7 +62,7 @@ namespace DepartmentDal.Classes
                 {
                     var json = Json.ToStringJson(cls);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
-                    var result = await client.PostAsync(Utilities.WebApi + "/api/CustomerAndroid/SaveAsync", content);
+                    var result = await client.PostAsync(Services.Utilities.WebApi + "/api/CustomerAndroid/SaveAsync", content);
                 }
             }
             catch (Exception ex)

@@ -16,7 +16,7 @@ namespace DepartmentDal.Classes.Building
             {
                 using (var client = new HttpClient())
                 {
-                    var res = await client.GetStringAsync(Utilities.WebApi + "/Buildings_GetLastList/" + hSerial);
+                    var res = await client.GetStringAsync(Services.Utilities.WebApi + "/Buildings_GetLastList/" + hSerial);
                     var user = res.FromJson<List<BuildingListViewModel>>();
                     return user;
                 }

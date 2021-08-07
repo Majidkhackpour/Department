@@ -33,7 +33,6 @@ namespace Department
             ErrorHandler.AddHandler(currentVersion.ToString(), ENSource.Department, Application.StartupPath,"");
 
 
-            clsNotification.Init(Color.Silver);
 
 
             Application.EnableVisualStyles();
