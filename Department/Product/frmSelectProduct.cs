@@ -113,6 +113,7 @@ namespace Department.Product
                 PrdList = new List<ProductBussines>();
                 for (var i = 0; i < DGrid.RowCount; i++)
                 {
+                    if (DGrid[dgChecked.Index, i].Value == null) continue;
                     if (!DGrid[dgChecked.Index, i].Value.ToString().ParseToBoolean()) continue;
                     var guid = (Guid) DGrid[dgGuid.Index, i].Value;
                     var prd = ProductBussines.Get(guid);
